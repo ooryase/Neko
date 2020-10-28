@@ -43,7 +43,6 @@ public class PlayerControll : MonoBehaviour
 
                 break;
         }
-
     }
 
 

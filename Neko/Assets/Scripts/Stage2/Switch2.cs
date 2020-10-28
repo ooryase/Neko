@@ -5,15 +5,18 @@ using UnityEngine;
 public class Switch2 : MonoBehaviour
 {
     private GameObject tex; // ボタンの上のビックリマーク
-    private GameObject wall;
-    private GameObject block;
+    private GameObject wall1;
+    private GameObject wall2;
+    // ブロックが落ちるアニメ
+    private Animator block_anim;
 
     // Start is called before the first frame update
     void Start()
     {
         tex = transform.GetChild(0).gameObject;
-        wall = transform.GetChild(1).gameObject;
-        block = transform.GetChild(2).gameObject;
+        wall1 = transform.GetChild(1).gameObject;
+        wall2 = transform.GetChild(2).gameObject;
+        block_anim = transform.GetChild(3).gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -26,17 +29,18 @@ public class Switch2 : MonoBehaviour
     {
         if (other.gameObject.tag != "Player") { return; }
 
-        if(block.GetComponent<Rigidbody>().useGravity == false)
+        if(wall1.activeSelf)
         {
             tex.SetActive(true);
         }
 
-        // スペースキーではしご出現（一旦）
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && wall1.activeSelf)
         {
-            block.GetComponent<Rigidbody>().useGravity = true;
             tex.SetActive(false);
-            wall.SetActive(false);
+            wall1.SetActive(false);
+            wall2.SetActive(true);
+
+            block_anim.SetTrigger("Block");
         }
     }
 

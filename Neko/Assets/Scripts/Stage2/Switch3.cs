@@ -5,15 +5,17 @@ using UnityEngine;
 public class Switch3 : MonoBehaviour
 {
     private GameObject tex; // ボタンの上のビックリマーク
-    private GameObject arm;
-    private GameObject arm_after;
+    private Animator arm_anim;
+    private GameObject coll;
 
     // Start is called before the first frame update
     void Start()
     {
         tex = transform.GetChild(0).gameObject;
-        arm = transform.GetChild(1).gameObject;
-        arm_after = transform.GetChild(2).gameObject;
+        // Armのアニメーター取得
+        arm_anim = transform.GetChild(1).gameObject.GetComponent<Animator>();
+
+        coll = transform.GetChild(2).gameObject;
     }
 
     // Update is called once per frame
@@ -26,17 +28,16 @@ public class Switch3 : MonoBehaviour
     {
         if (other.gameObject.tag != "Player") { return; }
 
-        if (arm.activeSelf)
+        if (coll.activeSelf == false)
         {
             tex.SetActive(true);
         }
 
-        // スペースキーではしご出現（一旦）
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && coll.activeSelf == false)
         {
             tex.SetActive(false);
-            arm.SetActive(false);
-            arm_after.SetActive(true);
+            arm_anim.SetTrigger("Move"); // アニメ実行
+            coll.SetActive(true);
         }
     }
 
