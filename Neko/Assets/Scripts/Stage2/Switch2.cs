@@ -34,7 +34,7 @@ public class Switch2 : MonoBehaviour
             tex.SetActive(true);
         }
 
-        if (Input.GetKey(KeyCode.Space) && wall1.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Space) && wall1.activeSelf)
         {
             tex.SetActive(false);
             wall1.SetActive(false);

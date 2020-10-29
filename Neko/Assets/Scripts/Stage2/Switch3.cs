@@ -33,7 +33,7 @@ public class Switch3 : MonoBehaviour
             tex.SetActive(true);
         }
 
-        if (Input.GetKey(KeyCode.Space) && coll.activeSelf == false)
+        if (Input.GetKeyDown(KeyCode.Space) && coll.activeSelf == false)
         {
             tex.SetActive(false);
             arm_anim.SetTrigger("Move"); // アニメ実行
