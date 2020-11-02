@@ -5,7 +5,8 @@ using UnityEngine;
 public enum State
 {
     Nuetral,
-    Ladder
+    Ladder,
+    Dead,
 }
 
 public class PlayerControll : MonoBehaviour
@@ -29,12 +30,17 @@ public class PlayerControll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            state = State.Dead;
+        }
+
         switch (state)
         {
             case State.Nuetral:
                 float x = Input.GetAxis("Horizontal");
                 rigidbody.velocity = new Vector3(x * speed, rigidbody.velocity.y, 0);
-                rigidbody.AddForce(0, -1.5f, 0);
+                //rigidbody.AddForce(0, -1.5f, 0);
                 rigidbody.useGravity = true;
 
                 collider.isTrigger = false;
@@ -47,6 +53,11 @@ public class PlayerControll : MonoBehaviour
                 collider.isTrigger = true;
 
                 break;
+
+            case State.Dead:
+                //rigidbody.constraints = RigidbodyConstraints.FreezePosition;
+
+                break;
         }
     }
 
@@ -54,5 +65,10 @@ public class PlayerControll : MonoBehaviour
     public void ChangeState(State newState)
     {
         state = newState;
+    }
+
+    public State GetState()
+    {
+        return state;
     }
 }
