@@ -246,12 +246,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 622162041}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.46, y: -0.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &622162044
 BoxCollider:
@@ -401,7 +401,7 @@ Transform:
   - {fileID: 289872914}
   - {fileID: 1489951678}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1489951677
 GameObject:
@@ -492,7 +492,7 @@ PrefabInstance:
     - target: {fileID: 265084617087014497, guid: 7d4b056215eed2f4bb0e6e360479010d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 265084617087014497, guid: 7d4b056215eed2f4bb0e6e360479010d,
         type: 3}
@@ -622,6 +622,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WebCam
       objectReference: {fileID: 0}
+    - target: {fileID: 7238350716442974683, guid: ab0170e317a90474889bb2c755bb5325,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7238350716442974688, guid: ab0170e317a90474889bb2c755bb5325,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -660,7 +665,7 @@ PrefabInstance:
     - target: {fileID: 7238350716442974688, guid: ab0170e317a90474889bb2c755bb5325,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7238350716442974688, guid: ab0170e317a90474889bb2c755bb5325,
         type: 3}
@@ -734,7 +739,7 @@ PrefabInstance:
     - target: {fileID: 8351979322262181083, guid: 7c14ed0e024b76f4d9baa61ed1ef5a38,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8351979322262181083, guid: 7c14ed0e024b76f4d9baa61ed1ef5a38,
         type: 3}
