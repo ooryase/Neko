@@ -23,7 +23,7 @@ public class CheckPoint : MonoBehaviour
         if (other.gameObject.tag != "Player") { return; }
 
         flag = true;
-        Debug.Log("Hit");
+        Debug.Log("CheckPoint!");
     }
 
     public bool GetFlag()

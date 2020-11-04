@@ -8,15 +8,20 @@ public class Transition : MonoBehaviour
     private GameObject mask;
     private Animator fade;
 
+    private void Awake()
+    {
+        mask = transform.GetChild(0).GetChild(0).gameObject;
+
+        // これやんないと黒い画像邪魔
+        mask.GetComponent<Image>().enabled = true;
+        fade = mask.GetComponent<Animator>();
+        //FadeIn();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        mask = transform.GetChild(0).GetChild(0).gameObject;
-        // これやんないと黒い画像邪魔
-        mask.GetComponent<Image>().enabled = true;
 
-        fade = mask.GetComponent<Animator>();
-        //FadeIn();
     }
 
     // Update is called once per frame
@@ -35,7 +40,7 @@ public class Transition : MonoBehaviour
         fade.SetTrigger("Out");
     }
 
-    // 再生が終わったらtrue
+    // 再生が終わったらtrue（これすごい使い勝手悪い）
     public bool IsEnd()
     {
         if(fade.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)

@@ -7,6 +7,8 @@ public class PlayerFloor : MonoBehaviour
     private PlayerControll parent;
     private Rigidbody parent_rigit;
 
+    [SerializeField] private EyeOpenChecker eyeOpenChecker = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,7 @@ public class PlayerFloor : MonoBehaviour
         // はしご判定
         if (other.gameObject.tag == "LadderBottom")
         {
-            if (Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetAxis("Vertical") > 0)
             {
                 parent.ChangeState(State.Ladder);
             }
@@ -32,7 +34,7 @@ public class PlayerFloor : MonoBehaviour
         }
         if (other.gameObject.tag == "LadderTop")
         {
-            if (Input.GetKey(KeyCode.DownArrow))
+            if (Input.GetAxis("Vertical") < 0)
             {
                 parent.ChangeState(State.Ladder);
             }
@@ -45,5 +47,20 @@ public class PlayerFloor : MonoBehaviour
         {
             parent.ChangeState(State.Ladder);
         }
+
+
+        // 目が閉じているときは判定なし
+        if (eyeOpenChecker.KEEP_EYE_OPEN)
+        {
+            if (other.gameObject.tag == "Enemy")
+            {
+                parent.ChangeState(State.Dead);
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
     }
 }

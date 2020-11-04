@@ -9,6 +9,28 @@ using UnityEngine;
 /// </summary>
 public class EyeOpenChecker : MonoBehaviour
 {
+    //private static EyeOpenChecker instance = null;
+    //public static EyeOpenChecker Instance
+    //{
+    //    get { return EyeOpenChecker.instance; }
+    //}
+
+    //void Awake()
+    //{
+    //    //　スクリプトが設定されていなければゲームオブジェクトを残しつつスクリプトを設定
+    //    if (instance == null)
+    //    {
+    //        DontDestroyOnLoad(gameObject);
+    //        instance = this;
+    //        //　既にGameStartスクリプトがあればこのシーンの同じゲームオブジェクトを削除
+    //    }
+    //    else
+    //    {
+    //        Destroy(gameObject);
+    //    }
+    //}
+
+
     private WebCam webCam = null;
 
 

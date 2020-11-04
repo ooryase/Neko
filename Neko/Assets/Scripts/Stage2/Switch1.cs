@@ -30,7 +30,7 @@ public class Switch1 : MonoBehaviour
         }
 
         // スペースキーではしご出現（一旦）
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1"))
         {
             ladder2.SetActive(true);
             tex.SetActive(false);

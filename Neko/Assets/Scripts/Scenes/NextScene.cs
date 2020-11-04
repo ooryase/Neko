@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class NextScene : MonoBehaviour
 {
+    [SerializeField] private GameObject trans;
     private Transition transition;
-    private bool next;
 
     // Start is called before the first frame update
     void Start()
     {
-        next = false;
+        transition = trans.GetComponent<Transition>();
+        transition.FadeIn();
     }
 
     // Update is called once per frame
@@ -25,8 +26,13 @@ public class NextScene : MonoBehaviour
     {
         if (other.gameObject.tag != "Player") { return; }
 
-        next = true;
+        // 1秒後にシーン遷移
+        transition.FadeOut();
+        Invoke("LoadScene", 1.0f);
+    }
 
+    private void LoadScene()
+    {
         string name = SceneManager.GetActiveScene().name;
 
         switch (name)
