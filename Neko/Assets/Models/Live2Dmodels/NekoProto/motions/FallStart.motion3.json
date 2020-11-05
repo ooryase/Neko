@@ -1,0 +1,161 @@
+{
+	"Version": 3,
+	"Meta": {
+		"Duration": 0.67,
+		"Fps": 30.0,
+		"Loop": true,
+		"AreBeziersRestricted": true,
+		"CurveCount": 11,
+		"TotalSegmentCount": 11,
+		"TotalPointCount": 34,
+		"UserDataCount": 0,
+		"TotalUserDataSize": 0
+	},
+	"Curves": [
+		{
+			"Target": "Parameter",
+			"Id": "FaceFront_AngleX",
+			"Segments": [
+				0,
+				24,
+				0,
+				0.667,
+				24
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "FaceFront_AngleY",
+			"Segments": [
+				0,
+				-12,
+				0,
+				0.667,
+				-12
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamBodyAngleX",
+			"Segments": [
+				0,
+				0,
+				1,
+				0.222,
+				0,
+				0.444,
+				10,
+				0.667,
+				10
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamBodyAngleZ",
+			"Segments": [
+				0,
+				4,
+				1,
+				0.222,
+				4,
+				0.444,
+				-8,
+				0.667,
+				-8
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamChain",
+			"Segments": [
+				0,
+				4,
+				1,
+				0.222,
+				4,
+				0.444,
+				10,
+				0.667,
+				10
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamBodyShakeX",
+			"Segments": [
+				0,
+				10,
+				0,
+				0.667,
+				10
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamShoulderRightAngle",
+			"Segments": [
+				0,
+				-2,
+				1,
+				0.222,
+				-2,
+				0.444,
+				-23,
+				0.667,
+				-23
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamRightArm",
+			"Segments": [
+				0,
+				0,
+				0,
+				0.667,
+				0
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamShoulderLeftAngle",
+			"Segments": [
+				0,
+				2,
+				1,
+				0.222,
+				2,
+				0.444,
+				3,
+				0.667,
+				3
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamLeg",
+			"Segments": [
+				0,
+				0,
+				1,
+				0.222,
+				0,
+				0.444,
+				12,
+				0.667,
+				12
+			]
+		},
+		{
+			"Target": "PartOpacity",
+			"Id": "Part2",
+			"Segments": [
+				0,
+				0,
+				0,
+				0.67,
+				0
+			]
+		}
+	]
+}

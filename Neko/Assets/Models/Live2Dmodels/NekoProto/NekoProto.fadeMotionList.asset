@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403ae2dd693bb1d4b924f6b8d206b053, type: 3}
+  m_Name: NekoProto.fadeMotionList
+  m_EditorClassIdentifier: 
+  MotionInstanceIds: 18f0ffff12f0ffff0ef0ffff0af0ffff06f0ffff02f0ffff28ecffff24ecffff20ecffff1cecffff18ecffff14ecffff
+  CubismFadeMotionObjects:
+  - {fileID: 11400000, guid: 0c62c7b9497bc934eb988e33a91f9ff7, type: 2}
+  - {fileID: 11400000, guid: cbdd8fb43a1b4b34ea718dbf14cef3ec, type: 2}
+  - {fileID: 11400000, guid: 5925946b05512ef43b8a86ac38b91551, type: 2}
+  - {fileID: 11400000, guid: f5118c4b7f9d3a340ad80eab49431a2b, type: 2}
+  - {fileID: 11400000, guid: ffcae904e9928dd48abbaa0f25b3f3fb, type: 2}
+  - {fileID: 11400000, guid: 65f2f0d58ecda574aabe383a1af648ed, type: 2}
+  - {fileID: 11400000, guid: 7b6f6708230955b42ae2789066f6cd27, type: 2}
+  - {fileID: 11400000, guid: 01591541f665f2f469df157aa768eb2d, type: 2}
+  - {fileID: 11400000, guid: 6e782688640241b4688259ea7c450b9d, type: 2}
+  - {fileID: 11400000, guid: 9ce9ad881d361bf4ca0be0451a98aea5, type: 2}
+  - {fileID: 11400000, guid: c689c0246c67fbc46935fb8210c0c752, type: 2}
+  - {fileID: 11400000, guid: 08649b0b0f638b840b743cb775135694, type: 2}

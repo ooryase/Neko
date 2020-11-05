@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerFloor : MonoBehaviour
 {
-    private PlayerControll parent;
+    private PlayerController parent;
     private Rigidbody parent_rigit;
 
     // Start is called before the first frame update
     void Start()
     {
-        parent = GetComponentInParent<PlayerControll>();
+        parent = GetComponentInParent<PlayerController>();
         parent_rigit = GetComponentInParent<Rigidbody>();
     }
 
@@ -22,28 +22,39 @@ public class PlayerFloor : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         // はしご判定
-        if (other.gameObject.tag == "LadderBottom")
+        switch(other.gameObject.tag)
         {
-            if (Input.GetKey(KeyCode.UpArrow))
-            {
-                parent.ChangeState(State.Ladder);
-            }
-            else parent.ChangeState(State.Nuetral);
-        }
-        if (other.gameObject.tag == "LadderTop")
-        {
-            if (Input.GetKey(KeyCode.DownArrow))
-            {
-                parent.ChangeState(State.Ladder);
-            }
-            else parent.ChangeState(State.Nuetral);
-
-            // はしごを登った後にジャンプするのを防ぐ
-            parent_rigit.velocity = new Vector3(parent_rigit.velocity.x, 0, 0);
-        }
-        if (other.gameObject.tag == "Ladder")
-        {
-            parent.ChangeState(State.Ladder);
+            case "LadderBottom":
+                if (parent.State == PlayerState.Ladder)
+                    parent.ChangeState(PlayerState.LadderBottom);
+                else if (parent.State == PlayerState.Nuetral &&
+                    Input.GetKey(KeyCode.UpArrow))
+                {
+                    StartCoroutine(parent.LadderStart(other.transform.position.x, PlayerState.LadderBottom));
+                }
+                break;
+            case "LadderTop":
+                if (parent.State == PlayerState.Ladder)
+                    parent.ChangeState(PlayerState.LadderTop);
+                else if (parent.State == PlayerState.Nuetral &&
+                    Input.GetKey(KeyCode.DownArrow))
+                {
+                    StartCoroutine(parent.LadderStart(other.transform.position.x, PlayerState.LadderTop));
+                }
+                // はしごを登った後にジャンプするのを防ぐ
+                parent_rigit.velocity = new Vector3(parent_rigit.velocity.x, 0, 0);
+                break;
+            case "Ladder":
+                if (parent.State == PlayerState.LadderTop || parent.State == PlayerState.LadderBottom)
+                    parent.ChangeState(PlayerState.Ladder);
+                break;
+            case "Floor":
+                if((parent.State == PlayerState.LadderTop || parent.State == PlayerState.LadderBottom) &&
+                    Input.GetAxis("Horizontal") != 0.0f)
+                {
+                    StartCoroutine(parent.LadderEnd());
+                }
+                break;
         }
     }
 }

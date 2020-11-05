@@ -1,0 +1,360 @@
+{
+	"Version": 3,
+	"Meta": {
+		"Duration": 0.83,
+		"Fps": 30.0,
+		"Loop": true,
+		"AreBeziersRestricted": true,
+		"CurveCount": 16,
+		"TotalSegmentCount": 32,
+		"TotalPointCount": 108,
+		"UserDataCount": 0,
+		"TotalUserDataSize": 0
+	},
+	"Curves": [
+		{
+			"Target": "Parameter",
+			"Id": "FaceBack_AngleX",
+			"Segments": [
+				0,
+				1,
+				1,
+				0.278,
+				1,
+				0.556,
+				1,
+				0.833,
+				1
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "FaceBack_AngleY",
+			"Segments": [
+				0,
+				0,
+				1,
+				0.278,
+				0,
+				0.556,
+				0,
+				0.833,
+				0
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamHairBack",
+			"Segments": [
+				0,
+				0,
+				1,
+				0.089,
+				0,
+				0.178,
+				0.7,
+				0.267,
+				0.7,
+				1,
+				0.311,
+				0.7,
+				0.356,
+				0.187,
+				0.4,
+				0,
+				1,
+				0.5,
+				-0.421,
+				0.6,
+				-0.5,
+				0.7,
+				-0.5,
+				1,
+				0.744,
+				-0.5,
+				0.789,
+				0,
+				0.833,
+				0
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamEarBack",
+			"Segments": [
+				0,
+				0,
+				1,
+				0.022,
+				0,
+				0.044,
+				-0.4,
+				0.067,
+				-0.4,
+				1,
+				0.133,
+				-0.4,
+				0.2,
+				0.6,
+				0.267,
+				0.6,
+				1,
+				0.344,
+				0.6,
+				0.422,
+				-0.2,
+				0.5,
+				-0.2,
+				1,
+				0.567,
+				-0.2,
+				0.633,
+				0.6,
+				0.7,
+				0.6,
+				1,
+				0.744,
+				0.6,
+				0.789,
+				0,
+				0.833,
+				0
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamBodyAngleX",
+			"Segments": [
+				0,
+				0,
+				1,
+				0.278,
+				0,
+				0.556,
+				0,
+				0.833,
+				0
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamBodyAngle2",
+			"Segments": [
+				0,
+				0,
+				1,
+				0.278,
+				0,
+				0.556,
+				0,
+				0.833,
+				0
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamBodyAngleY",
+			"Segments": [
+				0,
+				0,
+				1,
+				0.089,
+				0,
+				0.178,
+				8,
+				0.267,
+				8,
+				1,
+				0.311,
+				8,
+				0.356,
+				0,
+				0.4,
+				0,
+				1,
+				0.5,
+				0,
+				0.6,
+				7,
+				0.7,
+				7,
+				1,
+				0.744,
+				7,
+				0.789,
+				0,
+				0.833,
+				0
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamBodyAngleZ",
+			"Segments": [
+				0,
+				0,
+				1,
+				0.278,
+				0,
+				0.556,
+				0,
+				0.833,
+				0
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamBodyShakeX",
+			"Segments": [
+				0,
+				-4,
+				1,
+				0.133,
+				-4,
+				0.267,
+				4,
+				0.4,
+				4,
+				1,
+				0.544,
+				4,
+				0.689,
+				-4,
+				0.833,
+				-4
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamShoulderRightAngle",
+			"Segments": [
+				0,
+				18,
+				1,
+				0.133,
+				18,
+				0.267,
+				30,
+				0.4,
+				30,
+				1,
+				0.544,
+				30,
+				0.689,
+				18,
+				0.833,
+				18
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamRightArm",
+			"Segments": [
+				0,
+				19,
+				1,
+				0.133,
+				19,
+				0.267,
+				2,
+				0.4,
+				2,
+				1,
+				0.544,
+				2,
+				0.689,
+				19,
+				0.833,
+				19
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamShoulderLeftAngle",
+			"Segments": [
+				0,
+				22,
+				1,
+				0.133,
+				22,
+				0.267,
+				9,
+				0.4,
+				9,
+				1,
+				0.544,
+				9,
+				0.689,
+				22,
+				0.833,
+				22
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamLeftArm",
+			"Segments": [
+				0,
+				26,
+				1,
+				0.133,
+				26,
+				0.267,
+				30,
+				0.4,
+				30,
+				1,
+				0.544,
+				30,
+				0.689,
+				26,
+				0.833,
+				26
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamLeg",
+			"Segments": [
+				0,
+				-8,
+				1,
+				0.133,
+				-8,
+				0.267,
+				-30,
+				0.4,
+				-30,
+				1,
+				0.544,
+				-30,
+				0.689,
+				-8,
+				0.833,
+				-8
+			]
+		},
+		{
+			"Target": "PartOpacity",
+			"Id": "Part3",
+			"Segments": [
+				0,
+				0,
+				0,
+				0.83,
+				0
+			]
+		},
+		{
+			"Target": "PartOpacity",
+			"Id": "Part2",
+			"Segments": [
+				0,
+				1,
+				0,
+				0.83,
+				1
+			]
+		}
+	]
+}
