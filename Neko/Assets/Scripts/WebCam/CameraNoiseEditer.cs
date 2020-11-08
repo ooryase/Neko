@@ -41,6 +41,7 @@ public class CameraNoiseEditer : MonoBehaviour
 
     private float noiseValue = 0.0f;
 
+
     // Use this for initialization
     void OnRenderImage(RenderTexture src, RenderTexture dest)
     {

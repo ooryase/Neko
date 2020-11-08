@@ -7,6 +7,8 @@ public class PlayerFloor : MonoBehaviour
     private PlayerController parent;
     private Rigidbody parent_rigit;
 
+    [SerializeField] private EyeOpenChecker eyeOpenChecker = null;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -64,5 +66,20 @@ public class PlayerFloor : MonoBehaviour
                     parent.Cliff();
                 break;
         }
+
+
+        // 目が閉じているときは判定なし
+        if (eyeOpenChecker.KEEP_EYE_OPEN)
+        {
+            if (other.gameObject.tag == "Enemy")
+            {
+                parent.ChangeState(State.Dead);
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+
     }
 }

@@ -11,7 +11,7 @@ TagManager:
   - LadderTop
   - LadderBottom
   - Switch
-  - Cliff
+  - Enemy
   layers:
   - Default
   - TransparentFX
