@@ -5,16 +5,19 @@ using UnityEngine;
 public enum PlayerState
 {
     Nuetral,
-    LadderTransition,
+    Transition,
     LadderTop,
     Ladder,
     LadderBottom,
+    Cliff,
+    Fall,
+    Hurt,
     Dead,
 }
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody rigidbody;
+    private Rigidbody rb;
     private CapsuleCollider collider;
     private Animator animator;
     [SerializeField] private float speed = 3;
@@ -26,7 +29,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
         collider = GetComponent<CapsuleCollider>();
         animator = GetComponent<Animator>();
 
@@ -38,7 +41,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            State = PlayerState.Dead;
+            StartCoroutine(Hurt());
         }
 
         switch (State)
@@ -50,42 +53,53 @@ public class PlayerController : MonoBehaviour
                     transform.rotation = Quaternion.Euler(0,180.0f,0);
                 else if(x > 0.0f)
                     transform.rotation = Quaternion.Euler(0, 0.0f, 0);
-                rigidbody.velocity = new Vector3(x * speed, rigidbody.velocity.y, 0);
+                rb.velocity = new Vector3(x * speed, rb.velocity.y, 0);
                 //rigidbody.AddForce(0, -1.5f, 0);
-                rigidbody.useGravity = true;
-
-                collider.isTrigger = false;
                 break;
             case PlayerState.Ladder:
                 float y = Input.GetAxis("Vertical");
                 animator.SetBool("walk", y != 0.0f);
-                //transform.position = new Vector3(transform.position.x, transform.position.y + (y / 20.0f), transform.position.z);
-                rigidbody.velocity = new Vector3(0, y * speed, 0);
-                rigidbody.useGravity = false;
-                collider.isTrigger = true;
-
+                rb.velocity = new Vector3(0, y * speed, 0);
                 break;
             case PlayerState.LadderTop:
                 var down = (Input.GetKey(KeyCode.DownArrow)) ? -1.0f : 0.0f;
                 animator.SetBool("walk", down != 0.0f);
-                //transform.position = new Vector3(transform.position.x, transform.position.y + (y / 20.0f), transform.position.z);
-                rigidbody.velocity = new Vector3(0, down * speed, 0);
-                rigidbody.useGravity = false;
-                collider.isTrigger = true;
-
+                rb.velocity = new Vector3(0, down * speed, 0);
                 break;
             case PlayerState.LadderBottom:
                 var up = (Input.GetKey(KeyCode.UpArrow)) ? 1.0f : 0.0f;
                 animator.SetBool("walk", up != 0.0f);
-                //transform.position = new Vector3(transform.position.x, transform.position.y + (y / 20.0f), transform.position.z);
-                rigidbody.velocity = new Vector3(0, up * speed, 0);
-                rigidbody.useGravity = false;
-                collider.isTrigger = true;
+                rb.velocity = new Vector3(0, up * speed, 0);
+                break;
+            case PlayerState.Cliff:
+                if (transform.rotation.eulerAngles.y == 0.0f)
+                {
+                    if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        StartCoroutine(ReturnFromCliff(-1.0f));
+                    }
+                    else if(Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        rb.velocity = new Vector3(2.0f * speed, 2.0f * speed, 0);
+                        ChangeState(PlayerState.Fall);
+                        animator.SetBool("fall", true);
+                    }
+                }
+                else if (transform.rotation.eulerAngles.y == 180.0f)
+                {
+                    if (Input.GetKeyDown(KeyCode.RightArrow))
+                    {
+                        StartCoroutine(ReturnFromCliff(1.0f));
+                    }
+                    else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    {
+                        rb.velocity = new Vector3(-2.0f * speed, -2.0f * speed, 0);
+                        ChangeState(PlayerState.Fall);
+                        animator.SetBool("fall", true);
+                    }
+                }
 
                 break;
-
-
-
             case PlayerState.Dead:
                 //rigidbody.constraints = RigidbodyConstraints.FreezePosition;
 
@@ -95,7 +109,8 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator LadderStart(float ladderPosX, PlayerState state)
     {
-        ChangeState(PlayerState.LadderTransition);
+        ChangeState(PlayerState.Transition);
+        rb.velocity = Vector3.zero;
         animator.SetTrigger("ladder");
         float lenght = ladderPosX - transform.position.x;
         for(int i = 0; i < 10; i++)
@@ -105,13 +120,88 @@ public class PlayerController : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         ChangeState(state);
+        rb.useGravity = false;
+        collider.isTrigger = true;
     }
     public IEnumerator LadderEnd()
     {
-        ChangeState(PlayerState.LadderTransition);
+        ChangeState(PlayerState.Transition);
+        rb.velocity = Vector3.zero;
         animator.SetTrigger("landWalk");
         yield return new WaitForSeconds(1.0f);
         ChangeState(PlayerState.Nuetral);
+        rb.useGravity = true;
+        collider.isTrigger = false;
+    }
+    public IEnumerator ReturnFromCliff(float direction)
+    {
+        ChangeState(PlayerState.Transition);
+        animator.SetTrigger("cliff");
+        rb.velocity = new Vector3(direction * speed, rb.velocity.y, 0);
+        transform.rotation = Quaternion.Euler(0, 90.0f - 90.0f * direction, 0);
+
+        yield return new WaitForSeconds(1.0f);
+        ChangeState(PlayerState.Nuetral);
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag == "Switch") 
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                StartCoroutine(OnSwitch());
+            }
+        }
+        // 崩壊オブジェに触れたときの処理
+        //else if()
+    }
+
+    private IEnumerator OnSwitch()
+    {
+        animator.SetTrigger("switch");
+        ChangeState(PlayerState.Transition);
+        rb.velocity = Vector3.zero;
+
+        yield return new WaitForSeconds(1.83f);
+
+        if(State == PlayerState.Transition)
+            ChangeState(PlayerState.Nuetral);
+    }
+
+    public void Cliff()
+    {
+        animator.SetTrigger("cliff");
+        ChangeState(PlayerState.Cliff);
+        rb.velocity = Vector3.zero;
+    }
+
+    public void Landing()
+    {
+        Debug.Log(rb.velocity.y);
+        animator.SetBool("fall", false);
+        if (rb.velocity.y < -5.0f)
+            StartCoroutine(Hurt());
+        else
+            StartCoroutine(LandSuccess());
+    }
+
+    private IEnumerator LandSuccess()
+    {
+        animator.SetTrigger("landing");
+        ChangeState(PlayerState.Transition);
+
+        yield return new WaitForSeconds(0.66f);
+        ChangeState(PlayerState.Nuetral);
+
+    }
+    private IEnumerator Hurt()
+    {
+        animator.SetTrigger("die");
+        ChangeState(PlayerState.Transition);
+
+        yield return new WaitForSeconds(0.66f);
+        ChangeState(PlayerState.Dead);
     }
 
     public void ChangeState(PlayerState newState)

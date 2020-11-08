@@ -49,11 +49,19 @@ public class PlayerFloor : MonoBehaviour
                     parent.ChangeState(PlayerState.Ladder);
                 break;
             case "Floor":
-                if((parent.State == PlayerState.LadderTop || parent.State == PlayerState.LadderBottom) &&
+                if (parent.State == PlayerState.Fall)
+                    parent.Landing();
+                else if((parent.State == PlayerState.LadderTop || parent.State == PlayerState.LadderBottom) &&
                     Input.GetAxis("Horizontal") != 0.0f)
                 {
                     StartCoroutine(parent.LadderEnd());
                 }
+                break;
+            case "Cliff":
+                if (parent.State == PlayerState.Fall)
+                    parent.Landing();
+                else if (parent.State == PlayerState.Nuetral)
+                    parent.Cliff();
                 break;
         }
     }
