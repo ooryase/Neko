@@ -17,7 +17,7 @@ public class ProgressManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(player.GetComponent<PlayerControll>().GetState() == State.Dead)
+        if(player.GetComponent<PlayerController>().State == PlayerState.Dead)
         {
             bool flag = false;
 
@@ -30,7 +30,7 @@ public class ProgressManager : MonoBehaviour
                     {
                         flag = true;
                         player.transform.position = checkPoints[i].transform.position;
-                        player.GetComponent<PlayerControll>().ChangeState(State.Nuetral);
+                        player.GetComponent<PlayerController>().ChangeState(PlayerState.Nuetral);
                         break;
                     }
                 }

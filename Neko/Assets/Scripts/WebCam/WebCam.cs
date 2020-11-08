@@ -485,12 +485,12 @@ using System.Linq;
 
         private float getRaitoOfEyeOpen_L(List<Vector2> points)
         {
-            return Mathf.Clamp((points[47].y - points[43].y) / ((points[44].x - points[43].x) * 0.75f) - 0.5f, 0.0f, 1.0f) * 0.5f;
+            return Mathf.Clamp( Vector2.Distance(points[47], points[43]) / (Vector2.Distance(points[44], points[43]) * 0.75f) - 0.5f, 0.0f, 1.0f) * 0.5f;
         }
 
         private float getRaitoOfEyeOpen_R(List<Vector2> points)
         {
-            return Mathf.Clamp((points[40].y - points[38].y) / ((points[38].x - points[37].x) * 0.75f) - 0.5f, 0.0f, 1.0f) * 0.5f;
+            return Mathf.Clamp(Vector2.Distance(points[40], points[38]) / (Vector2.Distance(points[38], points[37]) * 0.75f) - 0.5f, 0.0f, 1.0f) * 0.5f;
         }
 
 #if (UNITY_IOS && UNITY_2018_1_OR_NEWER) || (UNITY_ANDROID && UNITY_2018_3_OR_NEWER)

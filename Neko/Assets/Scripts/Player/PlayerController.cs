@@ -18,19 +18,30 @@ public enum PlayerState
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
-    private CapsuleCollider collider;
+    private CapsuleCollider capsuleCollider;
     private Animator animator;
     [SerializeField] private float speed = 3;
+
+    [SerializeField] private EyeOpenChecker eyeOpenChecker = null;
 
     private PlayerState state;
     public PlayerState State { get => state; private set => state = value; }
 
+    /// <summary>
+    /// 着地時に死亡判定が発生する落下速度
+    /// </summary>
+    private float fallDeadSpeed = -5.0f;
+    /// <summary>
+    /// 落下速度を保持するための変数
+    /// (rigidbodyから取得だと生成順によっては着地時にvelocityが0になるため)
+    /// </summary>
+    private float fallSpeed = 0.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        collider = GetComponent<CapsuleCollider>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
         animator = GetComponent<Animator>();
 
         State = PlayerState.Nuetral;
@@ -80,7 +91,7 @@ public class PlayerController : MonoBehaviour
                     }
                     else if(Input.GetKeyDown(KeyCode.RightArrow))
                     {
-                        rb.velocity = new Vector3(2.0f * speed, 2.0f * speed, 0);
+                        rb.velocity = new Vector3(1.0f * speed, 1.0f * speed, 0);
                         ChangeState(PlayerState.Fall);
                         animator.SetBool("fall", true);
                     }
@@ -93,12 +104,14 @@ public class PlayerController : MonoBehaviour
                     }
                     else if (Input.GetKeyDown(KeyCode.LeftArrow))
                     {
-                        rb.velocity = new Vector3(-2.0f * speed, -2.0f * speed, 0);
+                        rb.velocity = new Vector3(-1.0f * speed, 1.0f * speed, 0);
                         ChangeState(PlayerState.Fall);
                         animator.SetBool("fall", true);
                     }
                 }
-
+                break;
+            case PlayerState.Fall:
+                fallSpeed = rb.velocity.y;
                 break;
             case PlayerState.Dead:
                 //rigidbody.constraints = RigidbodyConstraints.FreezePosition;
@@ -121,7 +134,7 @@ public class PlayerController : MonoBehaviour
         }
         ChangeState(state);
         rb.useGravity = false;
-        collider.isTrigger = true;
+        capsuleCollider.isTrigger = true;
     }
     public IEnumerator LadderEnd()
     {
@@ -131,7 +144,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         ChangeState(PlayerState.Nuetral);
         rb.useGravity = true;
-        collider.isTrigger = false;
+        capsuleCollider.isTrigger = false;
     }
     public IEnumerator ReturnFromCliff(float direction)
     {
@@ -155,8 +168,21 @@ public class PlayerController : MonoBehaviour
         }
         // 崩壊オブジェに触れたときの処理
         //else if()
-    }
 
+        // 目が閉じているときは判定なし
+        if (eyeOpenChecker.KEEP_EYE_OPEN)
+        {
+            if (other.gameObject.tag == "Enemy" &&
+                State != PlayerState.Hurt)
+            {
+                StartCoroutine(Hurt());
+            }
+        }
+
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+    }
     private IEnumerator OnSwitch()
     {
         animator.SetTrigger("switch");
@@ -178,10 +204,13 @@ public class PlayerController : MonoBehaviour
 
     public void Landing()
     {
-        Debug.Log(rb.velocity.y);
         animator.SetBool("fall", false);
-        if (rb.velocity.y < -5.0f)
+        //目を開けて
+        //落下速度が死亡速度を超える場合、死ぬ
+        if (eyeOpenChecker.KEEP_EYE_OPEN &&
+            fallSpeed < fallDeadSpeed)
             StartCoroutine(Hurt());
+        //そうでなければ着地
         else
             StartCoroutine(LandSuccess());
     }
@@ -198,7 +227,7 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Hurt()
     {
         animator.SetTrigger("die");
-        ChangeState(PlayerState.Transition);
+        ChangeState(PlayerState.Hurt);
 
         yield return new WaitForSeconds(0.66f);
         ChangeState(PlayerState.Dead);

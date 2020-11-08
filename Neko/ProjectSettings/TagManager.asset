@@ -12,6 +12,7 @@ TagManager:
   - LadderBottom
   - Switch
   - Enemy
+  - Cliff
   layers:
   - Default
   - TransparentFX
