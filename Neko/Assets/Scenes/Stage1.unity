@@ -127,6 +127,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2062536082}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!43 &264031994
 Mesh:
   m_ObjectHideFlags: 0
@@ -290,6 +291,20 @@ Mesh:
     offset: 0
     size: 0
     path: 
+=======
+--- !u!114 &55984391 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2419962147865789655, guid: ff0ca9c9658eaa844b44907cfa033c34,
+    type: 3}
+  m_PrefabInstance: {fileID: 2062536082}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 55984390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142ea5b4d43191940808568988c13def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+>>>>>>> RemoteNeko/StageEdit
 --- !u!1 &289872913
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,12 +349,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!43 &292976587
 Mesh:
+=======
+--- !u!1 &410042964
+GameObject:
+>>>>>>> RemoteNeko/StageEdit
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_Name: ArtMesh10
   serializedVersion: 10
   m_SubMeshes:
@@ -505,10 +526,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &344049599
 MonoBehaviour:
+=======
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 410042965}
+  - component: {fileID: 410042966}
+  m_Layer: 0
+  m_Name: Floor (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &410042965
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410042964}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.942, y: -1.17, z: 0}
+  m_LocalScale: {x: 0.18985368, y: 0.69092506, z: 1}
+  m_Children: []
+  m_Father: {fileID: 758513463}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &410042966
+BoxCollider:
+>>>>>>> RemoteNeko/StageEdit
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 344049597}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -517,10 +568,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 --- !u!43 &367464810
 Mesh:
+=======
+  m_GameObject: {fileID: 410042964}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &412484572
+GameObject:
+>>>>>>> RemoteNeko/StageEdit
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_Name: ArtMesh8
   serializedVersion: 10
   m_SubMeshes:
@@ -678,6 +741,46 @@ Mesh:
     offset: 0
     size: 0
     path: 
+=======
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 412484573}
+  - component: {fileID: 412484574}
+  m_Layer: 0
+  m_Name: Floor (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &412484573
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412484572}
+  m_LocalRotation: {x: -0, y: -0, z: 0.23280834, w: 0.9725227}
+  m_LocalPosition: {x: 0.661, y: -1.81, z: 0}
+  m_LocalScale: {x: 0.6159413, y: 0.20632079, z: 1}
+  m_Children: []
+  m_Father: {fileID: 758513463}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 26.925001}
+--- !u!65 &412484574
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 412484572}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+>>>>>>> RemoteNeko/StageEdit
 --- !u!1 &423986114
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,6 +825,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+<<<<<<< HEAD
 --- !u!43 &495324970
 Mesh:
   m_ObjectHideFlags: 0
@@ -1211,6 +1315,20 @@ Mesh:
     offset: 0
     size: 0
     path: 
+=======
+--- !u!4 &451325577 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+    type: 3}
+  m_PrefabInstance: {fileID: 1557447621}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &678043820 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+    type: 3}
+  m_PrefabInstance: {fileID: 3150547131031252249}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> RemoteNeko/StageEdit
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,6 +1626,12 @@ Transform:
   - {fileID: 423986115}
   - {fileID: 289872914}
   - {fileID: 1489951678}
+  - {fileID: 678043820}
+  - {fileID: 451325577}
+  - {fileID: 1453214565}
+  - {fileID: 412484573}
+  - {fileID: 410042965}
+  - {fileID: 1768584800}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1681,6 +1805,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 442152129930914974, guid: 696cd0480fc60194c9e9940856f6b858,
+        type: 3}
+      propertyPath: BypassReverbZones
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442152129930914974, guid: 696cd0480fc60194c9e9940856f6b858,
+        type: 3}
+      propertyPath: Loop
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 442152129930914974, guid: 696cd0480fc60194c9e9940856f6b858,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9066194878780067712, guid: 696cd0480fc60194c9e9940856f6b858,
         type: 3}
       propertyPath: m_IsActive
@@ -1745,7 +1884,21 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
+<<<<<<< HEAD
       objectReference: {fileID: 1807514443}
+=======
+      objectReference: {fileID: 8066307}
+    - target: {fileID: 9066194879606045446, guid: 696cd0480fc60194c9e9940856f6b858,
+        type: 3}
+      propertyPath: playerFollow
+      value: 
+      objectReference: {fileID: 1039491301}
+    - target: {fileID: 9066194879606045446, guid: 696cd0480fc60194c9e9940856f6b858,
+        type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 55984391}
+>>>>>>> RemoteNeko/StageEdit
     - target: {fileID: 9066194879606045447, guid: 696cd0480fc60194c9e9940856f6b858,
         type: 3}
       propertyPath: m_Name
@@ -1768,6 +1921,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 696cd0480fc60194c9e9940856f6b858, type: 3}
+<<<<<<< HEAD
 --- !u!43 &974163595
 Mesh:
   m_ObjectHideFlags: 0
@@ -2746,6 +2900,105 @@ Mesh:
     offset: 0
     size: 0
     path: 
+=======
+--- !u!114 &1039491301 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5861636058302896256, guid: 7c14ed0e024b76f4d9baa61ed1ef5a38,
+    type: 3}
+  m_PrefabInstance: {fileID: 8351979321391736449}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bc216a5af4157c4b840f86c81a9aea4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &1302829670
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 758513463}
+    m_Modifications:
+    - target: {fileID: 3150547130570000793, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_Name
+      value: Smoke (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.504
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.46
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0090276385
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.1656132
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 201062b68f115f7489c1e055405ed398, type: 3}
+--- !u!4 &1453214565 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+    type: 3}
+  m_PrefabInstance: {fileID: 1302829670}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> RemoteNeko/StageEdit
 --- !u!1 &1489951677
 GameObject:
   m_ObjectHideFlags: 0
@@ -2795,7 +3048,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 758513463}
     m_Modifications:
     - target: {fileID: 3150547130570000793, guid: 201062b68f115f7489c1e055405ed398,
         type: 3}
@@ -2805,22 +3058,22 @@ PrefabInstance:
     - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.98
+      value: 0.25872356
       objectReference: {fileID: 0}
     - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.05
+      value: 0.9100001
       objectReference: {fileID: 0}
     - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.09
+      value: -0.039581046
       objectReference: {fileID: 0}
     - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
         type: 3}
@@ -2840,7 +3093,7 @@ PrefabInstance:
     - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
         type: 3}
@@ -2856,6 +3109,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0090276385
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 201062b68f115f7489c1e055405ed398, type: 3}
@@ -3374,12 +3632,59 @@ PrefabInstance:
       objectReference: {fileID: 367464810}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d4b056215eed2f4bb0e6e360479010d, type: 3}
+<<<<<<< HEAD
 --- !u!1 &1807514443 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5491902987583257684, guid: 7d4b056215eed2f4bb0e6e360479010d,
     type: 3}
   m_PrefabInstance: {fileID: 1677497092}
   m_PrefabAsset: {fileID: 0}
+=======
+--- !u!1 &1768584799
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1768584800}
+  - component: {fileID: 1768584801}
+  m_Layer: 0
+  m_Name: Floor (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1768584800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768584799}
+  m_LocalRotation: {x: -0, y: -0, z: -0.29947677, w: 0.9541036}
+  m_LocalPosition: {x: 0.564, y: -1.78, z: 0}
+  m_LocalScale: {x: 0.6159413, y: 0.20632079, z: 1}
+  m_Children: []
+  m_Father: {fileID: 758513463}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -34.852}
+--- !u!65 &1768584801
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1768584799}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+>>>>>>> RemoteNeko/StageEdit
 --- !u!1 &1856111046
 GameObject:
   m_ObjectHideFlags: 0
@@ -4042,7 +4347,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 758513463}
     m_Modifications:
     - target: {fileID: 3150547130570000793, guid: 201062b68f115f7489c1e055405ed398,
         type: 3}
@@ -4052,22 +4357,22 @@ PrefabInstance:
     - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.58
+      value: -0.44298524
       objectReference: {fileID: 0}
     - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.05
+      value: 0.9100001
       objectReference: {fileID: 0}
     - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.09
+      value: -0.039581046
       objectReference: {fileID: 0}
     - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
         type: 3}
@@ -4087,7 +4392,7 @@ PrefabInstance:
     - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
         type: 3}
@@ -4103,6 +4408,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.0090276385
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 201062b68f115f7489c1e055405ed398, type: 3}

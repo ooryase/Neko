@@ -13,8 +13,7 @@ public class PlayerFollow : MonoBehaviour
     void Start()
     {
         rigit = GetComponent<Rigidbody>();
-        Vector3 pos = player.transform.position;
-        transform.position = new Vector3(pos.x, pos.y, transform.position.z);
+        Follow();
     }
 
     // Update is called once per frame
@@ -47,5 +46,16 @@ public class PlayerFollow : MonoBehaviour
         //Debug.Log(rigit.velocity.x);
 
         transform.position = new Vector3(transform.position.x, pos_player.y, transform.position.z);
+    }
+
+    public void Follow()
+    {
+        Vector3 pos = player.transform.position;
+        transform.position = new Vector3(pos.x, pos.y, transform.position.z);
+    }
+
+    public void VelocityReset()
+    {
+        rigit.velocity = Vector3.zero;
     }
 }

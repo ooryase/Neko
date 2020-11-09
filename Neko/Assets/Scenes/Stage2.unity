@@ -121,6 +121,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &4236409 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+    type: 3}
+  m_PrefabInstance: {fileID: 520796158}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &77133667
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -838,7 +844,11 @@ GameObject:
   - component: {fileID: 318809743}
   - component: {fileID: 318809744}
   m_Layer: 0
+<<<<<<< HEAD
   m_Name: Invisible
+=======
+  m_Name: Thorn
+>>>>>>> RemoteNeko/StageEdit
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -983,6 +993,95 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 9066194878485512459}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &520796158
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1020053512}
+    m_Modifications:
+    - target: {fileID: 2808984012638163185, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000793, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_Name
+      value: Smoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000799, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 11.275956
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000799, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 3.701445e-16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000799, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.637975
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 201062b68f115f7489c1e055405ed398, type: 3}
 --- !u!1 &522146594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1472,8 +1571,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 661061331}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: -1.57, y: -1.21, z: 0}
   m_LocalScale: {x: 12.709943, y: 0.1747649, z: 1}
+=======
+  m_LocalPosition: {x: -1.47, y: -1.32, z: 0}
+  m_LocalScale: {x: 13.014937, y: 0.1747649, z: 1}
+>>>>>>> RemoteNeko/StageEdit
   m_Children: []
   m_Father: {fileID: 1667798478}
   m_RootOrder: 4
@@ -1552,7 +1656,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 762718505}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: -6.02, y: -9.29, z: 0}
+=======
+  m_LocalPosition: {x: -6.02, y: -9.64, z: 0}
+>>>>>>> RemoteNeko/StageEdit
   m_LocalScale: {x: 21.990387, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1667798478}
@@ -1577,6 +1685,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1465649812}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &777235407 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2419962147865789655, guid: ff0ca9c9658eaa844b44907cfa033c34,
+    type: 3}
+  m_PrefabInstance: {fileID: 1465649812}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777235406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 142ea5b4d43191940808568988c13def, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &778431970
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1592,7 +1712,11 @@ PrefabInstance:
     - target: {fileID: 3675147689165389424, guid: 8f0d4eae2f6e64743b6028764efdfe13,
         type: 3}
       propertyPath: m_LocalPosition.y
+<<<<<<< HEAD
       value: -0.39
+=======
+      value: -0.45
+>>>>>>> RemoteNeko/StageEdit
       objectReference: {fileID: 0}
     - target: {fileID: 3675147689165389424, guid: 8f0d4eae2f6e64743b6028764efdfe13,
         type: 3}
@@ -1642,7 +1766,7 @@ PrefabInstance:
     - target: {fileID: 3675147689165389424, guid: 8f0d4eae2f6e64743b6028764efdfe13,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3.0489364
+      value: 2.6673315
       objectReference: {fileID: 0}
     - target: {fileID: 3675147689165389437, guid: 8f0d4eae2f6e64743b6028764efdfe13,
         type: 3}
@@ -2383,6 +2507,8 @@ Transform:
   - {fileID: 1203178780}
   - {fileID: 1292633023}
   - {fileID: 1684250785}
+  - {fileID: 4236409}
+  - {fileID: 1224414045}
   m_Father: {fileID: 193134392}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2866,6 +2992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ladder2: {fileID: 961765408}
+<<<<<<< HEAD
 --- !u!43 &1226547792
 Mesh:
   m_ObjectHideFlags: 0
@@ -3355,6 +3482,14 @@ Mesh:
     offset: 0
     size: 0
     path: 
+=======
+--- !u!4 &1224414045 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+    type: 3}
+  m_PrefabInstance: {fileID: 1936254057}
+  m_PrefabAsset: {fileID: 0}
+>>>>>>> RemoteNeko/StageEdit
 --- !u!1 &1273631755
 GameObject:
   m_ObjectHideFlags: 0
@@ -3975,6 +4110,21 @@ PrefabInstance:
     - target: {fileID: 2419962148740091382, guid: ff0ca9c9658eaa844b44907cfa033c34,
         type: 3}
       propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419962148740091382, guid: ff0ca9c9658eaa844b44907cfa033c34,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419962148740091382, guid: ff0ca9c9658eaa844b44907cfa033c34,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2419962148740091382, guid: ff0ca9c9658eaa844b44907cfa033c34,
+        type: 3}
+      propertyPath: m_Color.b
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -5268,6 +5418,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab0170e317a90474889bb2c755bb5325, type: 3}
+<<<<<<< HEAD
 --- !u!1 &1895836792
 GameObject:
   m_ObjectHideFlags: 0
@@ -5475,6 +5626,102 @@ Mesh:
     offset: 0
     size: 0
     path: 
+=======
+--- !u!1001 &1936254057
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1020053512}
+    m_Modifications:
+    - target: {fileID: 2808984012638163185, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000793, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_Name
+      value: Smoke (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 5.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000796, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.19823627
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000799, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 11.275956
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000799, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 3.701445e-16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3150547130570000799, guid: 201062b68f115f7489c1e055405ed398,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.637975
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 201062b68f115f7489c1e055405ed398, type: 3}
+>>>>>>> RemoteNeko/StageEdit
 --- !u!1001 &1947738150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6156,12 +6403,20 @@ PrefabInstance:
     - target: {fileID: 2535940426943004735, guid: 7d4b056215eed2f4bb0e6e360479010d,
         type: 3}
       propertyPath: m_LocalPosition.x
+<<<<<<< HEAD
       value: -13.02
+=======
+      value: -12.91
+>>>>>>> RemoteNeko/StageEdit
       objectReference: {fileID: 0}
     - target: {fileID: 2535940426943004735, guid: 7d4b056215eed2f4bb0e6e360479010d,
         type: 3}
       propertyPath: m_LocalPosition.y
+<<<<<<< HEAD
       value: -8.38
+=======
+      value: -7.94
+>>>>>>> RemoteNeko/StageEdit
       objectReference: {fileID: 0}
     - target: {fileID: 2535940426943004735, guid: 7d4b056215eed2f4bb0e6e360479010d,
         type: 3}
@@ -6210,6 +6465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3098188922829393802, guid: 7d4b056215eed2f4bb0e6e360479010d,
         type: 3}
+<<<<<<< HEAD
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 930421425}
@@ -6229,16 +6485,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1532804676}
     - target: {fileID: 4933380616694854128, guid: 7d4b056215eed2f4bb0e6e360479010d,
+=======
+      propertyPath: speed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5232512875125262281, guid: 7d4b056215eed2f4bb0e6e360479010d,
+>>>>>>> RemoteNeko/StageEdit
         type: 3}
       propertyPath: eyeOpenChecker
       value: 
       objectReference: {fileID: 135059980}
+<<<<<<< HEAD
     - target: {fileID: 4956360894032810352, guid: 7d4b056215eed2f4bb0e6e360479010d,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1746307326}
     - target: {fileID: 5491902987583257684, guid: 7d4b056215eed2f4bb0e6e360479010d,
+=======
+    - target: {fileID: 8163338691725551848, guid: 7d4b056215eed2f4bb0e6e360479010d,
+>>>>>>> RemoteNeko/StageEdit
         type: 3}
       propertyPath: m_Name
       value: Player
@@ -6351,7 +6617,21 @@ PrefabInstance:
         type: 3}
       propertyPath: player
       value: 
+<<<<<<< HEAD
       objectReference: {fileID: 594979977345056597}
+=======
+      objectReference: {fileID: 1103195745}
+    - target: {fileID: 9066194879606045446, guid: 696cd0480fc60194c9e9940856f6b858,
+        type: 3}
+      propertyPath: transition
+      value: 
+      objectReference: {fileID: 777235407}
+    - target: {fileID: 9066194879606045446, guid: 696cd0480fc60194c9e9940856f6b858,
+        type: 3}
+      propertyPath: playerFollow
+      value: 
+      objectReference: {fileID: 1387266609}
+>>>>>>> RemoteNeko/StageEdit
     - target: {fileID: 9066194879606045447, guid: 696cd0480fc60194c9e9940856f6b858,
         type: 3}
       propertyPath: m_Name
