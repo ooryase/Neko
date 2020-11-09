@@ -12,8 +12,6 @@ public class Transition : MonoBehaviour
     {
         mask = transform.GetChild(0).GetChild(0).gameObject;
 
-        // これやんないと黒い画像邪魔
-        mask.GetComponent<Image>().enabled = true;
         fade = mask.GetComponent<Animator>();
         //FadeIn();
     }
@@ -32,13 +30,24 @@ public class Transition : MonoBehaviour
 
     public void FadeIn()
     {
+        // これやんないと黒い画像邪魔
+        mask.GetComponent<Image>().enabled = true;
         fade.SetTrigger("In");
     }
 
     public void FadeOut()
     {
+        // これやんないと黒い画像邪魔
+        mask.GetComponent<Image>().enabled = true;
         fade.SetTrigger("Out");
     }
+
+    public void FadeIn_Dead()
+    {
+        mask.GetComponent<Image>().enabled = true;
+        fade.SetTrigger("In_Dead");
+    }
+
 
     // 再生が終わったらtrue（これすごい使い勝手悪い）
     public bool IsEnd()
