@@ -5,14 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class TitleScene : MonoBehaviour
 {
-    [SerializeField] private GameObject trans;
-    private Transition transition;
+    [SerializeField] private Transition transition = null;
 
-    [SerializeField] private AudioSource se;
+    private AudioSource se;
     // Start is called before the first frame update
     void Start()
     {
-        transition = trans.GetComponent<Transition>();
+        se = GetComponent<AudioSource>();
         transition.FadeIn();
     }
 

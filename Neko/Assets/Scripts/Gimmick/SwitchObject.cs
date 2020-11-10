@@ -2,46 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Switch1 : MonoBehaviour
+public abstract class SwitchObject : MonoBehaviour
 {
-    public GameObject ladder2; // ボタンで出現するはしご
     private GameObject tex; // ボタンの上のビックリマーク
+    private bool switch_on;
 
     // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         tex = transform.GetChild(0).gameObject;
+        switch_on = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void OnTriggerStay(Collider other)
+    protected virtual void OnTriggerStay(Collider other)
     {
         if (other.gameObject.tag != "Player") { return; }
 
-        // はしごが非アクティブなら表示する
-        if (ladder2.activeSelf == false)
+        // 押す前なら表示する
+        if (switch_on == false)
         {
             tex.SetActive(true);
         }
 
-        // スペースキーではしご出現（一旦）
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1"))
         {
-            ladder2.SetActive(true);
+            action_on();
+
+            switch_on = true;
             tex.SetActive(false);
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    protected virtual void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag != "Player") { return; }
 
         // ボタンから離れたら非表示
         tex.SetActive(false);
+    }
+
+    /// <summary>
+    /// スイッチを押したときのアクション
+    /// </summary>
+    protected abstract void action_on();
+    public virtual void action_off()
+    {
+        switch_on = false;
     }
 }

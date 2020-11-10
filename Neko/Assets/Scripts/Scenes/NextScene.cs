@@ -5,13 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class NextScene : MonoBehaviour
 {
-    [SerializeField] private GameObject trans;
-    private Transition transition;
+    [SerializeField] private Transition transition = null;
 
     // Start is called before the first frame update
     void Start()
     {
-        transition = trans.GetComponent<Transition>();
         transition.FadeIn();
     }
 

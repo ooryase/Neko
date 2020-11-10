@@ -5,24 +5,24 @@ using UnityEngine.SceneManagement;
 
 public class ProgressManager : MonoBehaviour
 {
-    [SerializeField] GameObject player;
-    [SerializeField] PlayerFollow playerFollow;
+    [SerializeField] private GameObject player = null;
+    private PlayerController playerController;
+    [SerializeField] private PlayerFollow playerFollow = null;
     [SerializeField] private Transition transition = null;
 
     private CheckPoint[] checkPoints;
-    private AudioSource se_dead;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerController = player.GetComponent<PlayerController>();
         checkPoints = GetComponentsInChildren<CheckPoint>();
-        se_dead = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(player.GetComponent<PlayerController>().State == PlayerState.Dead)
+        if(playerController.State == PlayerState.Dead)
         {
             bool flag = false;
 
@@ -31,14 +31,20 @@ public class ProgressManager : MonoBehaviour
                 for (int i = checkPoints.Length - 1; i >= 0; i--)
                 {
                     // 終わりの方のチェックポイントからフラグを見る
-                    if (checkPoints[i].GetFlag())
+                    if (checkPoints[i].Flag)
                     {
                         flag = true;
+
+                        // プレイヤーをチェックポイントまで戻す
                         player.transform.position = checkPoints[i].transform.position;
-                        player.GetComponent<PlayerController>().ChangeState(PlayerState.Nuetral);
+                        playerController.ChangeState(PlayerState.Nuetral);
+
+                        // カメラも持ってくる
                         playerFollow.Follow();
                         transition.FadeIn_Dead();
-                        se_dead.Play();
+
+                        // チェックポイントの中のスイッチを元の状態に戻す
+                        checkPoints[i].Reload();
 
                         break;
                     }

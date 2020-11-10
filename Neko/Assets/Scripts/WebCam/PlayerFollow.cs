@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class PlayerFollow : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
+    [SerializeField] private GameObject player = null;
     private Rigidbody rigit;
     [SerializeField] private float followSpeed = 5;
-    private float limitVel = 3f;
+    [SerializeField] private float limitVel = 2f;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,7 @@ public class PlayerFollow : MonoBehaviour
         }
         else if (Mathf.Abs(rigit.velocity.x) > 0.1f)
         {
-            rigit.velocity = new Vector3(rigit.velocity.x * 0.85f, rigit.velocity.y, 0);
+            rigit.velocity = new Vector3(rigit.velocity.x * 0.9f, rigit.velocity.y, 0);
         }
         else
         {
