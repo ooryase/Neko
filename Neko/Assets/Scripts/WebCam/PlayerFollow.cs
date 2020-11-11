@@ -6,7 +6,7 @@ public class PlayerFollow : MonoBehaviour
 {
     [SerializeField] private GameObject player = null;
     private Rigidbody rigit;
-    [SerializeField] private float followSpeed = 5;
+    [SerializeField] private float followSpeed = 40;
     [SerializeField] private float limitVel = 2f;
 
     // Start is called before the first frame update
@@ -24,11 +24,11 @@ public class PlayerFollow : MonoBehaviour
         {
             if (pos_player.x - transform.position.x > 0)
             {
-                rigit.AddForce(new Vector3(followSpeed, 0, 0));
+                rigit.AddForce(new Vector3(followSpeed * Time.deltaTime, 0, 0));
             }
             else
             {
-                rigit.AddForce(new Vector3(-followSpeed, 0, 0));
+                rigit.AddForce(new Vector3(-followSpeed * Time.deltaTime, 0, 0));
             }
         }
         else if (Mathf.Abs(rigit.velocity.x) > 0.1f)
