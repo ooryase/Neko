@@ -51,17 +51,17 @@ public class EyeOpenChecker : MonoBehaviour
     /// <summary>
     /// 左目が開いていることにするかどうかの値
     /// </summary>
-    private bool eyeOpenL = false;
+    private bool eyeOpenL = true;
 
     /// <summary>
     /// 右目が開いていることにするかどうかの値
     /// </summary>
-    private bool eyeOpenR = false;
+    private bool eyeOpenR = true;
 
     /// <summary>
     /// 両目が閉じているかどうか
     /// </summary>
-    private bool keepEyeOpen = false;
+    private bool keepEyeOpen = true;
     public bool KEEP_EYE_OPEN { get => keepEyeOpen; private set => keepEyeOpen = value; }
 
     /// <summary>

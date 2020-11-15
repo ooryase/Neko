@@ -123,10 +123,10 @@ using System.Linq;
         string dlibShapePredictorFilePath;
 
         [Range(0.0f, 1.0f)]
-        private float eyeOpenL;
+        private float eyeOpenL = 1.0f;
 
         [Range(0.0f, 1.0f)]
-        private float eyeOpenR;
+        private float eyeOpenR = 1.0f;
 
         public float EYE_OPEN_L { get => eyeOpenL; private set => eyeOpenL = value; }
         public float EYE_OPEN_R { get => eyeOpenR; private set => eyeOpenR = value; }
@@ -412,7 +412,6 @@ using System.Linq;
                 texture = new Texture2D(webCamTexture.width, webCamTexture.height, TextureFormat.RGBA32, false);
             }
 
-            gameObject.GetComponent<Renderer>().material.mainTexture = texture;
     }
 
     // Update is called once per frame
@@ -450,8 +449,6 @@ using System.Linq;
                     //detect face rects
                     List<Rect> detectResult = faceLandmarkDetector.Detect();
 
-                    colors = new Color32[texture.width * texture.height];
-
                     List<Vector2> points = new List<Vector2>();
 
                     foreach (var rect in detectResult)
@@ -459,17 +456,9 @@ using System.Linq;
                         //detect landmark points
                         points.AddRange(faceLandmarkDetector.DetectLandmark(rect));
 
-                        //draw landmark points
-                        faceLandmarkDetector.DrawDetectLandmarkResult<Color32>(colors, texture.width, texture.height, 4, true, 0, 255, 0, 255);
                     }
 
                     eyeParamUpdate(points);
-
-                    //draw face rect
-                    faceLandmarkDetector.DrawDetectResult<Color32>(colors, texture.width, texture.height, 4, true, 255, 0, 0, 255, 2);
-
-                    texture.SetPixels32(colors);
-                    texture.Apply(false);
                 }
             }
         }

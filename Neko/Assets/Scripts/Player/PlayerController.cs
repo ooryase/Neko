@@ -173,7 +173,8 @@ public class PlayerController : MonoBehaviour
         if (eyeOpenChecker.KEEP_EYE_OPEN)
         {
             if (other.gameObject.tag == "Enemy" &&
-                State != PlayerState.Hurt)
+                State != PlayerState.Hurt &&
+                State != PlayerState.Dead)
             {
                 StartCoroutine(Hurt());
             }
