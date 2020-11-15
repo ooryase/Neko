@@ -13,7 +13,6 @@ public class Transition : MonoBehaviour
         mask = transform.GetChild(0).GetChild(0).gameObject;
 
         fade = mask.GetComponent<Animator>();
-        //FadeIn();
     }
 
     // Start is called before the first frame update
@@ -44,6 +43,7 @@ public class Transition : MonoBehaviour
 
     public void FadeIn_Dead()
     {
+        // 赤い画像
         mask.GetComponent<Image>().enabled = true;
         fade.SetTrigger("In_Dead");
     }
