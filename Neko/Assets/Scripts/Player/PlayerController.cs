@@ -230,7 +230,7 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("die");
         ChangeState(PlayerState.Hurt);
 
-        yield return new WaitForSeconds(0.66f);
+        yield return new WaitForSeconds(0.01f);
         ChangeState(PlayerState.Dead);
     }
 

@@ -2667,8 +2667,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b41be8e1daae4b4b83b86fe1459fbb3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footsteps: {fileID: 8300000, guid: 846442c94528213419300997fd0fdb6e, type: 3}
+  footsteps:
+  - {fileID: 8300000, guid: f64cdeb421c049e44a0a6b793b1afeee, type: 3}
+  - {fileID: 8300000, guid: 370647410fa7458459ecf3b1c5465600, type: 3}
+  - {fileID: 8300000, guid: 6e37af10ba526704b92d57d27d8fb31c, type: 3}
+  - {fileID: 8300000, guid: 61e5a52d0631e6443b0c4b103b60a4e8, type: 3}
   ladder: {fileID: 8300000, guid: f10279c6b7b7e24459ed8b84cdf06fd2, type: 3}
+  beat: {fileID: 8300000, guid: ac74f0dfb1b88f74d9da7c4488ea0833, type: 3}
 --- !u!1 &5821991263438894619
 GameObject:
   m_ObjectHideFlags: 0
