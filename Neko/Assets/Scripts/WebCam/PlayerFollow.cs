@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerFollow : MonoBehaviour
 {
     [SerializeField] private GameObject player = null;
+    private PlayerController playerController;
+    private float startPosZ;
     //private Rigidbody rigit;
     //[SerializeField] private float followSpeed = 40;
     //[SerializeField] private float limitVel = 2f;
@@ -13,13 +15,15 @@ public class PlayerFollow : MonoBehaviour
     void Start()
     {
         //rigit = GetComponent<Rigidbody>();
+        startPosZ = transform.position.z;
+        playerController = player.GetComponent<PlayerController>();
         Follow();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 pos_player = player.transform.position;
+        Vector3 pos_player = new Vector3(player.transform.position.x, player.transform.position.y, startPosZ);
 
         //if (Mathf.Abs(transform.position.x - pos_player.x) > 1)
         //{
@@ -50,7 +54,18 @@ public class PlayerFollow : MonoBehaviour
 
         //Vector3 tmp = Vector3.Lerp(transform.position, pos_player, Time.deltaTime * 0.5f);
         //transform.position = new Vector3(tmp.x, tmp.y, transform.position.z);
-        transform.position = new Vector3(pos_player.x, pos_player.y, transform.position.z);
+
+        // FollowFlagがtrueならFollowPosをフォローする
+        if (playerController.FollowFlag)
+        {
+            transform.position = Vector3.Lerp(transform.position, playerController.FollowPos, Time.deltaTime * 2.0f);
+        }
+        else
+        {
+            transform.position = Vector3.Lerp(transform.position, pos_player, Time.deltaTime * 3.0f);
+        }
+
+        //transform.position = new Vector3(pos_player.x, pos_player.y, transform.position.z);
     }
 
     public void Follow()

@@ -6,6 +6,7 @@ public abstract class SwitchObject : MonoBehaviour
 {
     private GameObject tex; // ボタンの上のビックリマーク
     private bool switch_on;
+    public Vector3 ZoomPos { get; protected set; }
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -18,18 +19,18 @@ public abstract class SwitchObject : MonoBehaviour
     {
         if (other.gameObject.tag != "Player") { return; }
 
-        // 押す前なら表示する
         if (switch_on == false)
         {
+            // 押す前なら表示する
             tex.SetActive(true);
-        }
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1"))
-        {
-            action_on();
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1"))
+            {
+                Invoke("action_on", 1.0f);
 
-            switch_on = true;
-            tex.SetActive(false);
+                switch_on = true;
+                tex.SetActive(false);
+            }
         }
     }
 
