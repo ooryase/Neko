@@ -24,8 +24,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private EyeOpenChecker eyeOpenChecker = null;
 
-    private PlayerState state;
-    public PlayerState State { get => state; private set => state = value; }
+    private Vector3 prevPos;
+
+    public PlayerState State { get; private set; }
 
     public bool FollowFlag { get; private set; } // プレイヤー以外をフォローするときtrue
     public Vector3 FollowPos { get; private set; } // カメラでフォローする位置
