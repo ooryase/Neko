@@ -27,24 +27,27 @@ public class Transition : MonoBehaviour
         //Debug.Log(fade.GetCurrentAnimatorStateInfo(0).normalizedTime);
     }
 
-    public void FadeIn()
+    public void FadeIn(float speed = 1.0f)
     {
         // これやんないと黒い画像邪魔
         mask.GetComponent<Image>().enabled = true;
+        fade.speed = speed;
         fade.SetTrigger("In");
     }
 
-    public void FadeOut()
+    public void FadeOut(float speed = 1.0f)
     {
         // これやんないと黒い画像邪魔
         mask.GetComponent<Image>().enabled = true;
+        fade.speed = speed;
         fade.SetTrigger("Out");
     }
 
-    public void FadeIn_Dead()
+    public void FadeIn_Dead(float speed = 1.0f)
     {
         // 赤い画像
         mask.GetComponent<Image>().enabled = true;
+        fade.speed = speed;
         fade.SetTrigger("In_Dead");
     }
 

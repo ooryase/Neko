@@ -17,6 +17,8 @@ public class Switch2 : SwitchObject
         wall1 = transform.GetChild(1).gameObject;
         wall2 = transform.GetChild(2).gameObject;
         block_anim = transform.GetChild(3).gameObject.GetComponent<Animator>();
+
+        ZoomPos = new Vector3(wall1.transform.position.x, wall1.transform.position.y, -7.0f);
     }
 
     protected override void action_on()

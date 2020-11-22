@@ -14,6 +14,8 @@ public class Switch3 : SwitchObject
         // Armのアニメーター取得
         arm_anim = transform.GetChild(1).gameObject.GetComponent<Animator>();
         coll = transform.GetChild(2).gameObject;
+
+        ZoomPos = new Vector3(coll.transform.position.x, coll.transform.position.y, -9.0f);
     }
 
     protected override void action_on()

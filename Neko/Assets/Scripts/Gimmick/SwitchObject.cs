@@ -5,16 +5,21 @@ using UnityEngine;
 public abstract class SwitchObject : MonoBehaviour
 {
     private GameObject tex; // ボタンの上のビックリマーク
+    private Animator animator;
     private bool switch_on;
+
+    public Vector3 ZoomPos { get; protected set; }
 
     // Start is called before the first frame update
     protected virtual void Start()
     {
         tex = transform.GetChild(0).gameObject;
+        animator = tex.GetComponent<Animator>();
+        tex.SetActive(false);
         switch_on = false;
     }
 
-    protected virtual void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag != "Player") { return; }
 
@@ -22,14 +27,23 @@ public abstract class SwitchObject : MonoBehaviour
         if (switch_on == false)
         {
             tex.SetActive(true);
+            animator.SetTrigger("popUp");
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1"))
+    protected virtual void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.tag != "Player") { return; }
+
+        if (switch_on == false)
         {
-            action_on();
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1"))
+            {
+                Invoke("action_on", 1.0f);
 
-            switch_on = true;
-            tex.SetActive(false);
+                switch_on = true;
+                tex.SetActive(false);
+            }
         }
     }
 
@@ -38,7 +52,8 @@ public abstract class SwitchObject : MonoBehaviour
         if (other.gameObject.tag != "Player") { return; }
 
         // ボタンから離れたら非表示
-        tex.SetActive(false);
+        //tex.SetActive(false);
+        animator.SetTrigger("popDown");
     }
 
     /// <summary>
@@ -48,5 +63,7 @@ public abstract class SwitchObject : MonoBehaviour
     public virtual void action_off()
     {
         switch_on = false;
+        tex.SetActive(false);
+        //animator.Rebind();
     }
 }

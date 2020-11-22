@@ -24,8 +24,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private EyeOpenChecker eyeOpenChecker = null;
 
-    private PlayerState state;
-    public PlayerState State { get => state; private set => state = value; }
+    private Vector3 prevPos;
+
+    public PlayerState State { get; private set; }
+
+    public bool FollowFlag { get; private set; } // プレイヤー以外をフォローするときtrue
+    public Vector3 FollowPos { get; private set; } // カメラでフォローする位置
 
     /// <summary>
     /// 着地時に死亡判定が発生する落下速度
@@ -43,6 +47,8 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         animator = GetComponent<Animator>();
+        FollowFlag = false;
+        FollowPos = transform.position;
 
         State = PlayerState.Nuetral;
     }
@@ -163,6 +169,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                FollowPos = other.gameObject.GetComponent<SwitchObject>().ZoomPos;
                 StartCoroutine(OnSwitch());
             }
         }
@@ -186,12 +193,14 @@ public class PlayerController : MonoBehaviour
     }
     private IEnumerator OnSwitch()
     {
+        FollowFlag = true;
         animator.SetTrigger("switch");
         ChangeState(PlayerState.Transition);
         rb.velocity = Vector3.zero;
 
         yield return new WaitForSeconds(1.83f);
 
+        FollowFlag = false;
         if(State == PlayerState.Transition)
             ChangeState(PlayerState.Nuetral);
     }
@@ -230,7 +239,7 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("die");
         ChangeState(PlayerState.Hurt);
 
-        yield return new WaitForSeconds(0.66f);
+        yield return new WaitForSeconds(0.01f);
         ChangeState(PlayerState.Dead);
     }
 

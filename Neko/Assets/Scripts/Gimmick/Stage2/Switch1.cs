@@ -13,6 +13,8 @@ public class Switch1 :SwitchObject
 
         ladder2 = transform.GetChild(1).gameObject;
         drop = transform.GetChild(3).gameObject.GetComponent<Animator>();
+
+        ZoomPos = new Vector3(ladder2.transform.position.x, ladder2.transform.position.y, -5.0f);
     }
 
     protected override void action_on()

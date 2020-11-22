@@ -5,21 +5,37 @@ using UnityEngine;
 public class PlayerFollow : MonoBehaviour
 {
     [SerializeField] private GameObject player = null;
-    //private Rigidbody rigit;
+    private PlayerController playerController;
+    private float startPosZ;
+
+    //private float speed = 1.0f;
+    private Rigidbody rigit;
+
+    private Vector3 tmp_vel = Vector3.zero;
+    private Vector3 shakePos = Vector3.zero;
+    private readonly Vector3 ofset = new Vector3(0, -0.5f, 0);
+
     //[SerializeField] private float followSpeed = 40;
     //[SerializeField] private float limitVel = 2f;
 
     // Start is called before the first frame update
     void Start()
     {
-        //rigit = GetComponent<Rigidbody>();
+        rigit = GetComponent<Rigidbody>();
+        startPosZ = transform.position.z;
+        playerController = player.GetComponent<PlayerController>();
         Follow();
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
-        Vector3 pos_player = player.transform.position;
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            Shake();
+        }
+
+        Vector3 pos_player = new Vector3(player.transform.position.x, player.transform.position.y, startPosZ);
 
         //if (Mathf.Abs(transform.position.x - pos_player.x) > 1)
         //{
@@ -50,17 +66,41 @@ public class PlayerFollow : MonoBehaviour
 
         //Vector3 tmp = Vector3.Lerp(transform.position, pos_player, Time.deltaTime * 0.5f);
         //transform.position = new Vector3(tmp.x, tmp.y, transform.position.z);
-        transform.position = new Vector3(pos_player.x, pos_player.y, transform.position.z);
+
+        // FollowFlagがtrueならFollowPosをフォローする
+        if (playerController.FollowFlag)
+        {
+            transform.position = Vector3.Lerp(transform.position, playerController.FollowPos, Time.deltaTime * 2.0f);
+            //if(IsInvoking() == false)
+            //{
+            //    speed = Time.deltaTime * 2.0f;
+            //    Invoke("ResetTmp", 2.7f);
+            //}
+        }
+        else
+        {
+            Vector3.SmoothDamp(transform.position + ofset, pos_player, ref tmp_vel, 0.7f);
+            rigit.velocity = tmp_vel;
+        }
+
+        if (Mathf.Abs(shakePos.y) > 0.01f)
+        {
+            shakePos.y *= -0.8f;
+        }
+        else shakePos.y = 0;
+
+        transform.position = transform.position + shakePos;
+        //transform.position = new Vector3(pos_player.x, pos_player.y, transform.position.z);
     }
 
     public void Follow()
     {
         Vector3 pos = player.transform.position;
-        transform.position = new Vector3(pos.x, pos.y, transform.position.z);
+        transform.position = new Vector3(pos.x, pos.y, transform.position.z) + ofset;
     }
 
-    public void VelocityReset()
+    public void Shake()
     {
-        //rigit.velocity = Vector3.zero;
+        shakePos.y = 0.1f;
     }
 }

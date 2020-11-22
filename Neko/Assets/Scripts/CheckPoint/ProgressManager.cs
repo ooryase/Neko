@@ -12,6 +12,8 @@ public class ProgressManager : MonoBehaviour
 
     private CheckPoint[] checkPoints;
 
+    private bool deadReset = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,38 +26,55 @@ public class ProgressManager : MonoBehaviour
     {
         if(playerController.State == PlayerState.Dead)
         {
-            bool flag = false;
-
-            if(checkPoints.Length != 0)
+            if(deadReset == false)
             {
-                for (int i = checkPoints.Length - 1; i >= 0; i--)
+                StartCoroutine(PlayerReborn());
+                deadReset = true;
+            }
+        }
+    }
+
+    private IEnumerator PlayerReborn()
+    {
+        transition.FadeIn_Dead(2.0f);
+        yield return new WaitForSeconds(0.1f);
+
+        transition.FadeOut(1.4f);
+        yield return new WaitForSeconds(0.66f);
+
+        bool flag = false;
+
+        if (checkPoints.Length != 0)
+        {
+            for (int i = checkPoints.Length - 1; i >= 0; i--)
+            {
+                // 終わりの方のチェックポイントからフラグを見る
+                if (checkPoints[i].Flag)
                 {
-                    // 終わりの方のチェックポイントからフラグを見る
-                    if (checkPoints[i].Flag)
-                    {
-                        flag = true;
+                    flag = true;
 
-                        // プレイヤーをチェックポイントまで戻す
-                        player.transform.position = checkPoints[i].transform.position;
-                        playerController.ChangeState(PlayerState.Nuetral);
+                    // プレイヤーをチェックポイントまで戻す
+                    player.transform.position = checkPoints[i].transform.position;
+                    playerController.ChangeState(PlayerState.Nuetral);
 
-                        // カメラも持ってくる
-                        playerFollow.Follow();
-                        transition.FadeIn_Dead();
+                    // カメラも持ってくる
+                    playerFollow.Follow();
+                    transition.FadeIn();
 
-                        // チェックポイントの中のスイッチを元の状態に戻す
-                        checkPoints[i].Reload();
+                    // チェックポイントの中のスイッチを元の状態に戻す
+                    checkPoints[i].Reload();
 
-                        break;
-                    }
+                    deadReset = false;
+
+                    break;
                 }
             }
+        }
 
-            // チェックポイントを通ってなかったら初めから（使わないかも）
-            if (flag == false)
-            {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-            }
+        // チェックポイントを通ってなかったら初めから（使わないかも）
+        if (flag == false)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
