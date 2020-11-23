@@ -41,6 +41,8 @@ public class PlayerBottom : MonoBehaviour
         switch(other.gameObject.tag)
         {
             case "LadderBottom":
+                Debug.Log("Bottom");
+
                 if (parent.State == PlayerState.Ladder)
                     parent.ChangeState(PlayerState.LadderBottom);
                 else if (parent.State == PlayerState.Nuetral &&
@@ -50,6 +52,8 @@ public class PlayerBottom : MonoBehaviour
                 }
                 break;
             case "LadderTop":
+                Debug.Log("Top");
+
                 if (parent.State == PlayerState.Ladder)
                     parent.ChangeState(PlayerState.LadderTop);
                 else if (parent.State == PlayerState.Nuetral &&
@@ -63,7 +67,9 @@ public class PlayerBottom : MonoBehaviour
                     parent.ChangeState(PlayerState.Ladder);
                 break;
             case "Floor":
-                if((parent.State == PlayerState.LadderTop || parent.State == PlayerState.LadderBottom) &&
+                Debug.Log("Floor");
+
+                if ((parent.State == PlayerState.LadderTop || parent.State == PlayerState.LadderBottom) &&
                     Input.GetAxis("Horizontal") != 0.0f)
                 {
                     StartCoroutine(parent.LadderEnd());

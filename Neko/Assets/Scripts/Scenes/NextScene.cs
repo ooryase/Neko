@@ -42,8 +42,15 @@ public class NextScene : MonoBehaviour
                 SceneManager.LoadScene("Title");
                 break;
 
+            case "Stage0_1":
+                SceneManager.LoadScene("Stage1_1");
+                break;
+            case "Stage1_1":
+                SceneManager.LoadScene("Title");
+                break;
+
             default:
-                SceneManager.LoadScene("Stage1");
+                SceneManager.LoadScene("Title");
                 break;
         }
     }
