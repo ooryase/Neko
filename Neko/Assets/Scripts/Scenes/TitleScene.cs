@@ -32,6 +32,6 @@ public class TitleScene : MonoBehaviour
 
     void LoadScene()
     {
-        SceneManager.LoadScene("Stage1");
+        SceneManager.LoadScene("Stage0_1");
     }
 }
