@@ -29,8 +29,8 @@ public class PlayerController : MonoBehaviour
     public PlayerState State { get; private set; }
 
     public bool FollowFlag { get; private set; } // プレイヤー以外をフォローするときtrue
-    public Vector3 FollowPos { get; private set; } // カメラでフォローする位置
-
+    public Vector3 FollowPos { get; private set; } // カメラでギミックをフォローする位置
+    private float followTime; // フォローする時間
     /// <summary>
     /// 着地時に死亡判定が発生する落下速度
     /// </summary>
@@ -169,7 +169,9 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                FollowPos = other.gameObject.GetComponent<SwitchObject>().ZoomPos;
+                var sw = other.gameObject.GetComponent<SwitchObject>();
+                FollowPos = sw.ZoomPos;
+                followTime = sw.ZoomTime;
                 StartCoroutine(OnSwitch());
             }
         }
@@ -199,7 +201,7 @@ public class PlayerController : MonoBehaviour
         ChangeState(PlayerState.Transition);
         rb.velocity = Vector3.zero;
 
-        yield return new WaitForSeconds(1.83f);
+        yield return new WaitForSeconds(followTime);
 
         FollowFlag = false;
         if(State == PlayerState.Transition)

@@ -9,6 +9,7 @@ public abstract class SwitchObject : MonoBehaviour
     private bool switch_on;
 
     public Vector3 ZoomPos { get; protected set; }
+    public float ZoomTime { get; protected set; }
 
     // Start is called before the first frame update
     protected virtual void Start()
@@ -17,6 +18,7 @@ public abstract class SwitchObject : MonoBehaviour
         animator = tex.GetComponent<Animator>();
         tex.SetActive(false);
         switch_on = false;
+        ZoomTime = 1.83f;
     }
 
     private void OnTriggerEnter(Collider other)
