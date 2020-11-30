@@ -24,8 +24,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private EyeOpenChecker eyeOpenChecker = null;
 
-    private Vector3 prevPos;
-
     public PlayerState State { get; private set; }
 
     public bool FollowFlag { get; private set; } // プレイヤー以外をフォローするときtrue
@@ -169,6 +167,9 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                // スイッチ押した後に歩き続けるのを防ぐ
+                animator.SetBool("walk", false);
+
                 var sw = other.gameObject.GetComponent<SwitchObject>();
                 FollowPos = sw.ZoomPos;
                 followTime = sw.ZoomTime;

@@ -9,10 +9,12 @@ public class PlayerSE : MonoBehaviour
     [SerializeField] private AudioClip ladder = null;
     [SerializeField] private AudioClip beat = null;
 
+    float initVolume;
     // Start is called before the first frame update
     void Start()
     {
         source = GetComponent<AudioSource>();
+        initVolume = source.volume;
     }
 
     // Update is called once per frame
@@ -33,6 +35,8 @@ public class PlayerSE : MonoBehaviour
 
     public void PlayBeat()
     {
+        source.volume = 1;
         source.PlayOneShot(beat);
+        source.volume = initVolume;
     }
 }

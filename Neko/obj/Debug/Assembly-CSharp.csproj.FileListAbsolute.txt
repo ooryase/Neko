@@ -1,0 +1,2 @@
+D:\k019g1347\Seoson2\after\FG1\Git\Neko\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+D:\k019g1347\Seoson2\after\FG1\Git\Neko\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache

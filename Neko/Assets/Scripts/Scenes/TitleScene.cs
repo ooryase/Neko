@@ -18,6 +18,12 @@ public class TitleScene : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // エスケープで終了
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1"))
         {
             // 一応フェードインが終わってたら

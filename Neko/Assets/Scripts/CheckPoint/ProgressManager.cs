@@ -7,7 +7,7 @@ public class ProgressManager : MonoBehaviour
 {
     [SerializeField] private GameObject player = null;
     private PlayerController playerController;
-    //[SerializeField] private PlayerFollow playerFollow = null;
+    [SerializeField] private PlayerFollow playerFollow = null;
     [SerializeField] private Transition transition = null;
 
     private CheckPoint[] checkPoints;
@@ -24,7 +24,13 @@ public class ProgressManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playerController.State == PlayerState.Dead)
+        // エスケープでタイトル
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Title");
+        }
+
+        if (playerController.State == PlayerState.Dead)
         {
             if(deadReset == false)
             {
@@ -58,7 +64,7 @@ public class ProgressManager : MonoBehaviour
                     playerController.ChangeState(PlayerState.Nuetral);
 
                     // カメラも持ってくる
-                    //playerFollow.Follow();
+                    playerFollow.Follow();
                     transition.FadeIn();
 
                     // チェックポイントの中のスイッチを元の状態に戻す
