@@ -8,6 +8,7 @@ public class PlayerSE : MonoBehaviour
     [SerializeField] private AudioClip[] footsteps = null;
     [SerializeField] private AudioClip ladder = null;
     [SerializeField] private AudioClip beat = null;
+    [SerializeField] private AudioClip switchOn = null;
 
     float initVolume;
     // Start is called before the first frame update
@@ -38,5 +39,10 @@ public class PlayerSE : MonoBehaviour
         source.volume = 1;
         source.PlayOneShot(beat);
         source.volume = initVolume;
+    }
+
+    public void PlaySwitch()
+    {
+        source.PlayOneShot(switchOn);
     }
 }

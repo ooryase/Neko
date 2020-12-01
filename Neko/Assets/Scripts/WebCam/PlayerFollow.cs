@@ -99,8 +99,8 @@ public class PlayerFollow : MonoBehaviour
         transform.position = new Vector3(pos.x, pos.y, transform.position.z) + ofset;
     }
 
-    public void Shake()
+    public void Shake(float power = 0.1f)
     {
-        shakePos.y = 0.1f;
+        shakePos.y = power;
     }
 }
