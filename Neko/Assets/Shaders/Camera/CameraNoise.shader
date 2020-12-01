@@ -112,7 +112,7 @@
 				col *= tail;
 
 				// 画面端を暗くする
-				col *= _Brightness - vignet * floor(sin(_Time.w * 10) * 0.5 + 1.0) * 0.1;
+				col *= _Brightness - vignet * (floor(sin(_Time.w * 10) * 0.5 + 1.0) * 0.1 + 0.7);
 
 				return float4(col, 1);
 			}
