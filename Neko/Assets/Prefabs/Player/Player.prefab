@@ -2674,6 +2674,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 61e5a52d0631e6443b0c4b103b60a4e8, type: 3}
   ladder: {fileID: 8300000, guid: f10279c6b7b7e24459ed8b84cdf06fd2, type: 3}
   beat: {fileID: 8300000, guid: ac74f0dfb1b88f74d9da7c4488ea0833, type: 3}
+  switchOn: {fileID: 8300000, guid: 3f6fc5e7526972d4cbd12836d23e7a1b, type: 3}
 --- !u!1 &5821991263438894619
 GameObject:
   m_ObjectHideFlags: 0

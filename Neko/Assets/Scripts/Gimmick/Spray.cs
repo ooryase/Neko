@@ -11,14 +11,14 @@ public class Spray : MonoBehaviour
 
     ParticleSystem sprayParticleSystem = null;
 
-    AudioSource audio = null;
+    AudioSource audioSource = null;
 
     // Start is called before the first frame update
     void Start()
     {
         sprayCollider = GetComponent<Collider>();
         sprayParticleSystem = GetComponent<ParticleSystem>();
-        audio = GetComponent<AudioSource>();
+        audioSource = GetComponent<AudioSource>();
 
         Debug.Log(sprayParticleSystem);
 
@@ -37,13 +37,13 @@ public class Spray : MonoBehaviour
             if (sprayParticleSystem != null)
             {
                 sprayParticleSystem.Play();
-                audio.Play();
+                audioSource.Play();
             }
 
             yield return new WaitForSeconds(2.0f);
 
             sprayCollider.enabled = false;
-            audio.Pause();
+            audioSource.Pause();
 
             yield return new WaitForSeconds(3.0f);
         }
