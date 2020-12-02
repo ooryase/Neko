@@ -39,9 +39,9 @@ public class Rockfall : MonoBehaviour
 
         myCamera.Shake(0.3f);
         source.PlayOneShot(source.clip);
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < 2; i++)
         {
-            var r = Instantiate(rock, rock.transform.position + new Vector3(Random.Range(-5.0f, 5.0f), Random.Range(0, 5.0f), 0), Quaternion.Euler(Random.Range(0, 180), 90.0f, 270.0f));
+            var r = Instantiate(rock, rock.transform.position + new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(0, 5.0f), 0), Quaternion.Euler(Random.Range(0, 180), 90.0f, 270.0f));
             r.GetComponent<Rigidbody>().useGravity = true;
             r.GetComponent<AudioSource>().Play();
             rocks.Add(r);

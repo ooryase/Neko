@@ -5,6 +5,8 @@ using UnityEngine;
 public class BGMManager : MonoBehaviour
 {
     [SerializeField] private EyeOpenChecker eyeOpenChecker = null;
+    [SerializeField] private GameObject player = null;
+    private PlayerController playerController;
     private AudioSource source;
     [SerializeField] private float maxVolume = 0.5f;
 
@@ -12,11 +14,13 @@ public class BGMManager : MonoBehaviour
     void Start()
     {
         source = GetComponent<AudioSource>();
+        playerController = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
-    void Update()
+    void LateUpdate()
     {
+
         if(eyeOpenChecker.KEEP_EYE_OPEN == false)
         {
             if(source.volume > 0)
@@ -30,6 +34,16 @@ public class BGMManager : MonoBehaviour
             {
                 Mathf.Clamp(source.volume += 0.05f, 0, maxVolume);
             }
+        }
+
+        // オーディオリスナーのため
+        transform.position = player.transform.position;
+
+        if (playerController.State == PlayerState.Dead)
+        {
+            // 3Dサウンドオブジェクトの音を飛ばす
+            transform.position = new Vector3(0, 0, 200.0f);
+            source.volume = 0;
         }
     }
 }

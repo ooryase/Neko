@@ -45,8 +45,8 @@ public class PlayerBottom : MonoBehaviour
 
                 if (parent.State == PlayerState.Ladder)
                     parent.ChangeState(PlayerState.LadderBottom);
-                else if (parent.State == PlayerState.Nuetral &&
-                    Input.GetKey(KeyCode.UpArrow))
+                else if (parent.State == PlayerState.Nuetral && Input.GetKey(KeyCode.UpArrow) ||
+                    parent.State == PlayerState.Nuetral && Input.GetAxis("Vertical") > 0)
                 {
                     StartCoroutine(parent.LadderStart(other.transform.position.x, PlayerState.LadderBottom));
                 }
@@ -56,8 +56,8 @@ public class PlayerBottom : MonoBehaviour
 
                 if (parent.State == PlayerState.Ladder)
                     parent.ChangeState(PlayerState.LadderTop);
-                else if (parent.State == PlayerState.Nuetral &&
-                    Input.GetKey(KeyCode.DownArrow))
+                else if (parent.State == PlayerState.Nuetral && Input.GetKey(KeyCode.DownArrow) ||
+                    parent.State == PlayerState.Nuetral && Input.GetAxis("Vertical") < 0)
                 {
                     StartCoroutine(parent.LadderStart(other.transform.position.x, PlayerState.LadderTop));
                 }
@@ -72,7 +72,10 @@ public class PlayerBottom : MonoBehaviour
                 if ((parent.State == PlayerState.LadderTop || parent.State == PlayerState.LadderBottom) &&
                     Input.GetAxis("Horizontal") != 0.0f)
                 {
-                    StartCoroutine(parent.LadderEnd());
+                    if(Input.GetAxis("Horizontal") > 0.8f || Input.GetAxis("Horizontal") < -0.8f)
+                    {
+                        StartCoroutine(parent.LadderEnd());
+                    }
                 }
                 break;
         }

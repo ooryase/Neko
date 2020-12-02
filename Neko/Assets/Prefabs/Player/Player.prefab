@@ -2402,7 +2402,6 @@ GameObject:
   - component: {fileID: 4933380616694854126}
   - component: {fileID: 4933380616694854129}
   - component: {fileID: 4933380616694854128}
-  - component: {fileID: 7832881503567429249}
   - component: {fileID: 9173807226716176859}
   - component: {fileID: 3156810319837296391}
   m_Layer: 0
@@ -2551,14 +2550,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1.31
   eyeOpenChecker: {fileID: 0}
---- !u!81 &7832881503567429249
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5491902987583257684}
-  m_Enabled: 1
 --- !u!82 &9173807226716176859
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2674,7 +2665,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 61e5a52d0631e6443b0c4b103b60a4e8, type: 3}
   ladder: {fileID: 8300000, guid: f10279c6b7b7e24459ed8b84cdf06fd2, type: 3}
   beat: {fileID: 8300000, guid: ac74f0dfb1b88f74d9da7c4488ea0833, type: 3}
-  switchOn: {fileID: 8300000, guid: 3f6fc5e7526972d4cbd12836d23e7a1b, type: 3}
+  dead: {fileID: 8300000, guid: 354a10bd94088cc4fb3b9a10490c20c8, type: 3}
+  switchOn: {fileID: 8300000, guid: 0695844f2be1db24ea962f907c94053a, type: 3}
 --- !u!1 &5821991263438894619
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ public class Spray : MonoBehaviour
     ParticleSystem sprayParticleSystem = null;
 
     AudioSource audioSource = null;
+    [SerializeField] float maxVolume = 0.39f;
 
     // Start is called before the first frame update
     void Start()
@@ -19,12 +20,24 @@ public class Spray : MonoBehaviour
         sprayCollider = GetComponent<Collider>();
         sprayParticleSystem = GetComponent<ParticleSystem>();
         audioSource = GetComponent<AudioSource>();
+        audioSource.volume = 0;
 
-        Debug.Log(sprayParticleSystem);
+        //Debug.Log(sprayParticleSystem);
 
         StartCoroutine(SprayCoroutine());
     }
 
+    void Update()
+    {
+        if (sprayCollider.enabled)
+        {
+            Mathf.Clamp(audioSource.volume += 0.07f, 0, maxVolume);
+        }
+        else
+        {
+            Mathf.Clamp(audioSource.volume -= 0.07f, 0, maxVolume);
+        }
+    }
 
     IEnumerator SprayCoroutine()
     {
@@ -37,13 +50,11 @@ public class Spray : MonoBehaviour
             if (sprayParticleSystem != null)
             {
                 sprayParticleSystem.Play();
-                audioSource.Play();
             }
 
             yield return new WaitForSeconds(2.0f);
 
             sprayCollider.enabled = false;
-            audioSource.Pause();
 
             yield return new WaitForSeconds(3.0f);
         }

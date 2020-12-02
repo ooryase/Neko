@@ -8,6 +8,7 @@ public class PlayerSE : MonoBehaviour
     [SerializeField] private AudioClip[] footsteps = null;
     [SerializeField] private AudioClip ladder = null;
     [SerializeField] private AudioClip beat = null;
+    [SerializeField] private AudioClip dead = null;
     [SerializeField] private AudioClip switchOn = null;
 
     float initVolume;
@@ -39,6 +40,11 @@ public class PlayerSE : MonoBehaviour
         source.volume = 1;
         source.PlayOneShot(beat);
         source.volume = initVolume;
+    }
+
+    public void PlayDead()
+    {
+        source.PlayOneShot(dead);
     }
 
     public void PlaySwitch()

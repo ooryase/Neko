@@ -8,16 +8,15 @@ public class PlayerFollow : MonoBehaviour
     private PlayerController playerController;
     private float startPosZ;
 
-    //private float speed = 1.0f;
     private Rigidbody rigit;
 
     private Vector3 tmp_vel = Vector3.zero;
     private Vector3 shakePos = Vector3.zero;
+    // カメラが若干プレイヤーの上に行くように
     private readonly Vector3 ofset = new Vector3(0, -0.5f, 0);
 
-    //[SerializeField] private float followSpeed = 40;
-    //[SerializeField] private float limitVel = 2f;
-
+    private int timeScaleCounter = 0;
+    private bool timeScaleFlag = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,52 +29,42 @@ public class PlayerFollow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        //if (Input.GetKeyDown(KeyCode.W))
+        //{
+        //    Shake();
+        //}
+
+        if(Time.timeScale == 0)
         {
-            Shake();
+            timeScaleCounter++;
+            // 10フレーム止める
+            if (timeScaleCounter > 10)
+            {
+                Time.timeScale = 1.0f;
+                timeScaleCounter = 0;
+            }
         }
+
+        if(playerController.State == PlayerState.Dead)
+        {
+            if(timeScaleFlag == false)
+            {
+                // 揺らすとカービィっぽいね
+                Shake();
+                Time.timeScale = 0;
+                timeScaleFlag = true;
+            }
+            transform.position = new Vector3(player.transform.position.x, player.transform.position.y, startPosZ * 0.8f);
+        }
+        else timeScaleFlag = false;
 
         Vector3 pos_player = new Vector3(player.transform.position.x, player.transform.position.y, startPosZ);
 
-        //if (Mathf.Abs(transform.position.x - pos_player.x) > 1)
-        //{
-        //    if (pos_player.x - transform.position.x > 0)
-        //    {
-        //        rigit.AddForce(new Vector3(followSpeed * Time.deltaTime, 0, 0));
-        //    }
-        //    else
-        //    {
-        //        rigit.AddForce(new Vector3(-followSpeed * Time.deltaTime, 0, 0));
-        //    }
-        //}
-        //else if (Mathf.Abs(rigit.velocity.x) > 0.1f)
-        //{
-        //    rigit.velocity = new Vector3(rigit.velocity.x * 0.9f, rigit.velocity.y, 0);
-        //}
-        //else
-        //{
-        //    rigit.velocity = new Vector3(0, rigit.velocity.y, 0);
-        //}
-        ////transform.position = new Vector3(pos.x, pos.y, transform.position.z);
-        //if (rigit.velocity.x > limitVel) rigit.velocity = new Vector3(limitVel, rigit.velocity.y, 0);
-        //if (rigit.velocity.x < -limitVel) rigit.velocity = new Vector3(-limitVel, rigit.velocity.y, 0);
-
-        ////Debug.Log(rigit.velocity.x);
-
-        //transform.position = new Vector3(transform.position.x, pos_player.y, transform.position.z);
-
-        //Vector3 tmp = Vector3.Lerp(transform.position, pos_player, Time.deltaTime * 0.5f);
-        //transform.position = new Vector3(tmp.x, tmp.y, transform.position.z);
 
         // FollowFlagがtrueならFollowPosをフォローする
         if (playerController.FollowFlag)
         {
             transform.position = Vector3.Lerp(transform.position, playerController.FollowPos, Time.deltaTime * 2.0f);
-            //if(IsInvoking() == false)
-            //{
-            //    speed = Time.deltaTime * 2.0f;
-            //    Invoke("ResetTmp", 2.7f);
-            //}
         }
         else
         {
@@ -83,12 +72,12 @@ public class PlayerFollow : MonoBehaviour
             rigit.velocity = tmp_vel;
         }
 
+        // 画面揺れ
         if (Mathf.Abs(shakePos.y) > 0.01f)
         {
             shakePos.y *= -0.8f;
         }
         else shakePos.y = 0;
-
         transform.position = transform.position + shakePos;
         //transform.position = new Vector3(pos_player.x, pos_player.y, transform.position.z);
     }

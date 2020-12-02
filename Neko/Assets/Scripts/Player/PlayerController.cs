@@ -77,23 +77,23 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector3(0, y * speed, 0);
                 break;
             case PlayerState.LadderTop:
-                var down = (Input.GetKey(KeyCode.DownArrow)) ? -1.0f : 0.0f;
+                var down = Input.GetAxis("Vertical") == -1 ? -1.0f : 0.0f;
                 animator.SetBool("walk", down != 0.0f);
                 rb.velocity = new Vector3(0, down * speed, 0);
                 break;
             case PlayerState.LadderBottom:
-                var up = (Input.GetKey(KeyCode.UpArrow)) ? 1.0f : 0.0f;
+                var up = Input.GetAxis("Vertical") == 1 ? 1.0f : 0.0f;
                 animator.SetBool("walk", up != 0.0f);
                 rb.velocity = new Vector3(0, up * speed, 0);
                 break;
             case PlayerState.Cliff:
                 if (transform.rotation.eulerAngles.y == 0.0f)
                 {
-                    if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("Horizontal") == -1)
                     {
                         StartCoroutine(ReturnFromCliff(-1.0f));
                     }
-                    else if(Input.GetKeyDown(KeyCode.RightArrow))
+                    else if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxis("Horizontal") == 1)
                     {
                         rb.velocity = new Vector3(1.0f * speed, 1.0f * speed, 0);
                         ChangeState(PlayerState.Fall);
@@ -102,11 +102,11 @@ public class PlayerController : MonoBehaviour
                 }
                 else if (transform.rotation.eulerAngles.y == 180.0f)
                 {
-                    if (Input.GetKeyDown(KeyCode.RightArrow))
+                    if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxis("Horizontal") == 1)
                     {
                         StartCoroutine(ReturnFromCliff(1.0f));
                     }
-                    else if (Input.GetKeyDown(KeyCode.LeftArrow))
+                    else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("Horizontal") == -1)
                     {
                         rb.velocity = new Vector3(-1.0f * speed, 1.0f * speed, 0);
                         ChangeState(PlayerState.Fall);
@@ -165,7 +165,7 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Switch") 
         {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1"))
             {
                 // スイッチ押した後に歩き続けるのを防ぐ
                 animator.SetBool("walk", false);

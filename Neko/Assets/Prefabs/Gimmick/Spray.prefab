@@ -80,6 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delayTime: 0
+  maxVolume: 0.39
 --- !u!198 &360826656954048559
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -4852,8 +4853,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 08cf8d72063bd9e48bf0b1213a24f9d3, type: 3}
-  m_PlayOnAwake: 0
+  m_audioClip: {fileID: 8300000, guid: 38347b15879b6e44b94e7876dd656ba1, type: 3}
+  m_PlayOnAwake: 1
   m_Volume: 0.39
   m_Pitch: 1
   Loop: 1

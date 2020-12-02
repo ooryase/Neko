@@ -8,6 +8,7 @@ public class ArmSE : MonoBehaviour
     //[SerializeField] private AudioClip start = null;
     [SerializeField] private AudioClip end = null;
     [SerializeField] private AudioClip move = null;
+    [SerializeField] private AudioClip block = null;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +22,6 @@ public class ArmSE : MonoBehaviour
         
     }
 
-    public void PlayStart()
-    {
-        //source.PlayOneShot(start);
-    }
-
     public void PlayEnd()
     {
         source.Stop();
@@ -35,5 +31,10 @@ public class ArmSE : MonoBehaviour
     public void PlayMove()
     {
         source.PlayOneShot(move);
+    }
+
+    public void PlayBlock()
+    {
+        source.PlayOneShot(block);
     }
 }

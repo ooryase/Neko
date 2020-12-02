@@ -1066,6 +1066,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 14162
     messageOptions: 1
+  - time: 0
+    functionName: PlayDead
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 0.16666667
     functionName: PlayBeat
     data: 
