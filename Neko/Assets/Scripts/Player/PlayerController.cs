@@ -268,4 +268,13 @@ public class PlayerController : MonoBehaviour
     {
         State = newState;
     }
+
+    /// <summary>
+    /// リスタート時に呼ぶ処理
+    /// </summary>
+    public void ResetStatus()
+    {
+        ChangeState(PlayerState.Nuetral);
+        animator.SetBool("fall", false);
+    }
 }

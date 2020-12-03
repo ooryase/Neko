@@ -75,7 +75,7 @@ public class ProgressManager : MonoBehaviour
 
                     // プレイヤーをチェックポイントまで戻す
                     player.transform.position = checkPoints[i].transform.position;
-                    playerController.ChangeState(PlayerState.Nuetral);
+                    playerController.ResetStatus();
 
                     // カメラも持ってくる
                     playerFollow.Follow();
