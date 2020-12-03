@@ -12,11 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403ae2dd693bb1d4b924f6b8d206b053, type: 3}
   m_Name: Neko.fadeMotionList
   m_EditorClassIdentifier: 
-  MotionInstanceIds: 54b8ffff4eb8ffff4ab8ffff46b8ffffb0b3ffffacb3ffffa8b3ffffa4b3ffffa0b3ffff9cb3ffff98b3ffff94b3ffff5a90ffff
+  MotionInstanceIds: 54b8ffff4eb8ffff46b8ffffb0b3ffffacb3ffffa8b3ffffa4b3ffffa0b3ffff9cb3ffff98b3ffff94b3ffff5a90ffff2437000044370000183700004c3700002c37000028370000483700003c3700004037000038370000143700001c37000034e6ffff
   CubismFadeMotionObjects:
   - {fileID: 11400000, guid: 3b5cc6bdec4653947af8378f03aa5ab5, type: 2}
   - {fileID: 11400000, guid: a1a331a7d18d054498bccdc95c1f2cbb, type: 2}
-  - {fileID: 11400000, guid: 462d137d660e0434888e68abe1f9af45, type: 2}
   - {fileID: 11400000, guid: 53dbe4a8b3d451542bc5575cbbec1909, type: 2}
   - {fileID: 11400000, guid: dad323f16093dca4b8185a7ccca64439, type: 2}
   - {fileID: 11400000, guid: b8098ea6e2d051342ae5b94ae51ae703, type: 2}
@@ -27,3 +26,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7e49d9ae2349377469c91841bc08d989, type: 2}
   - {fileID: 11400000, guid: fa1e719988d6d84408160298f964d0bd, type: 2}
   - {fileID: 11400000, guid: 576aa5612a68cb4429de9bc7d43eb04a, type: 2}
+  - {fileID: 11400000, guid: 3b5cc6bdec4653947af8378f03aa5ab5, type: 2}
+  - {fileID: 11400000, guid: a1a331a7d18d054498bccdc95c1f2cbb, type: 2}
+  - {fileID: 11400000, guid: 53dbe4a8b3d451542bc5575cbbec1909, type: 2}
+  - {fileID: 11400000, guid: dad323f16093dca4b8185a7ccca64439, type: 2}
+  - {fileID: 11400000, guid: b8098ea6e2d051342ae5b94ae51ae703, type: 2}
+  - {fileID: 11400000, guid: 74e27ac5640ca2543b4579cf186b219f, type: 2}
+  - {fileID: 11400000, guid: cf426c93e05a9c44b9cb4dcb2309bd57, type: 2}
+  - {fileID: 11400000, guid: f6f0e9b4d327bd842a4367717ff5db67, type: 2}
+  - {fileID: 11400000, guid: 86bb0373bc0df954691d23337c2acf5c, type: 2}
+  - {fileID: 11400000, guid: 7e49d9ae2349377469c91841bc08d989, type: 2}
+  - {fileID: 11400000, guid: fa1e719988d6d84408160298f964d0bd, type: 2}
+  - {fileID: 11400000, guid: 576aa5612a68cb4429de9bc7d43eb04a, type: 2}
+  - {fileID: 11400000, guid: 462d137d660e0434888e68abe1f9af45, type: 2}
