@@ -14,6 +14,12 @@ public class ProgressManager : MonoBehaviour
 
     private bool deadReset = false;
 
+    /// <summary>
+    /// メインカメラに付いてるPlayerFollow
+    /// 死亡時のリセット時にこれいらん気がしてきた
+    /// </summary>
+    private PlayerFollow camerasPlayerFollow;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,11 +48,19 @@ public class ProgressManager : MonoBehaviour
 
     private IEnumerator PlayerReborn()
     {
+
         transition.FadeIn_Dead(2.0f);
         yield return new WaitForSeconds(0.1f);
 
-        transition.FadeOut(1.4f);
-        yield return new WaitForSeconds(0.66f);
+        Time.timeScale = 0f;
+
+        yield return new WaitForSecondsRealtime(0.3f);
+
+        Time.timeScale = 1.0f;
+
+
+        transition.FadeOut(2.0f);
+        yield return new WaitForSeconds(1.66f);
 
         bool flag = false;
 

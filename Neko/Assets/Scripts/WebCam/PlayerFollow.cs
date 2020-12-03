@@ -15,8 +15,6 @@ public class PlayerFollow : MonoBehaviour
     // カメラが若干プレイヤーの上に行くように
     private readonly Vector3 ofset = new Vector3(0, -0.5f, 0);
 
-    private int timeScaleCounter = 0;
-    private bool timeScaleFlag = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,35 +27,6 @@ public class PlayerFollow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        //if (Input.GetKeyDown(KeyCode.W))
-        //{
-        //    Shake();
-        //}
-
-        if(Time.timeScale == 0)
-        {
-            timeScaleCounter++;
-            // 20フレーム止める
-            if (timeScaleCounter > 20)
-            {
-                Time.timeScale = 1.0f;
-                timeScaleCounter = 0;
-            }
-        }
-
-        if(playerController.State == PlayerState.Dead)
-        {
-            if(timeScaleFlag == false)
-            {
-                // 揺らすとカービィっぽいね
-                Shake();
-                Time.timeScale = 0;
-                timeScaleFlag = true;
-            }
-            transform.position = new Vector3(player.transform.position.x, player.transform.position.y, startPosZ * 0.8f);
-        }
-        else timeScaleFlag = false;
-
         Vector3 pos_player = new Vector3(player.transform.position.x, player.transform.position.y, startPosZ);
 
 

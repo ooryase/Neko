@@ -124,6 +124,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private IEnumerator CliffStart()
+    {
+        yield return new WaitForSeconds(2.0f);
+
+        if (State == PlayerState.Cliff)
+            Fall();
+    }
+
     public void Fall()
     {
         var direction = (transform.rotation.eulerAngles.y == 0.0f) ? 1.0f : -1.0f;
@@ -165,7 +173,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector3(direction * speed, rb.velocity.y, 0);
         transform.rotation = Quaternion.Euler(0, 90.0f - 90.0f * direction, 0);
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.1f);
         ChangeState(PlayerState.Nuetral);
     }
 
@@ -222,6 +230,7 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("cliff");
         ChangeState(PlayerState.Cliff);
         rb.velocity = Vector3.zero;
+        StartCoroutine(CliffStart());
     }
 
     public void Landing()
