@@ -1,0 +1,246 @@
+{
+	"Version": 3,
+	"Meta": {
+		"Duration": 2,
+		"Fps": 30.0,
+		"Loop": true,
+		"AreBeziersRestricted": true,
+		"CurveCount": 17,
+		"TotalSegmentCount": 18,
+		"TotalPointCount": 55,
+		"UserDataCount": 0,
+		"TotalUserDataSize": 0
+	},
+	"Curves": [
+		{
+			"Target": "Parameter",
+			"Id": "FaceFront_AngleX",
+			"Segments": [
+				0,
+				17,
+				1,
+				0.667,
+				17,
+				1.333,
+				26,
+				2,
+				26
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "FaceFront_AngleY",
+			"Segments": [
+				0,
+				-14,
+				1,
+				0.667,
+				-14,
+				1.333,
+				-30,
+				2,
+				-30
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "FaceFront_AngleZ",
+			"Segments": [
+				0,
+				5,
+				1,
+				0.656,
+				5,
+				1.311,
+				19,
+				1.967,
+				19,
+				0,
+				2,
+				19
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamHairFront",
+			"Segments": [
+				0,
+				0.7,
+				0,
+				2,
+				0.7
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamEarFront",
+			"Segments": [
+				0,
+				0.7,
+				0,
+				2,
+				0.7
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamBodyAngleX",
+			"Segments": [
+				0,
+				7,
+				0,
+				2,
+				7
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamBodyAngleX2",
+			"Segments": [
+				0,
+				3,
+				1,
+				0.667,
+				3,
+				1.333,
+				6,
+				2,
+				6
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamBodyAngleZ",
+			"Segments": [
+				0,
+				-11,
+				0,
+				2,
+				-11
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamSit",
+			"Segments": [
+				0,
+				4.5,
+				1,
+				0.667,
+				4.5,
+				1.333,
+				8.1,
+				2,
+				8.1
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamCloth",
+			"Segments": [
+				0,
+				-10,
+				0,
+				2,
+				-10
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamChain",
+			"Segments": [
+				0,
+				3,
+				1,
+				0.667,
+				3,
+				1.333,
+				9,
+				2,
+				9
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamRightShoulderAngle",
+			"Segments": [
+				0,
+				-6,
+				1,
+				0.667,
+				-6,
+				1.333,
+				-17,
+				2,
+				-17
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamRightArmAngle",
+			"Segments": [
+				0,
+				-11,
+				1,
+				0.667,
+				-11,
+				1.333,
+				-8,
+				2,
+				-8
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamLeftShoulderAngle",
+			"Segments": [
+				0,
+				4,
+				1,
+				0.667,
+				4,
+				1.333,
+				9,
+				2,
+				9
+			]
+		},
+		{
+			"Target": "Parameter",
+			"Id": "ParamLeftArmAngle",
+			"Segments": [
+				0,
+				-9,
+				1,
+				0.667,
+				-9,
+				1.333,
+				3,
+				2,
+				3
+			]
+		},
+		{
+			"Target": "PartOpacity",
+			"Id": "Part",
+			"Segments": [
+				0,
+				0,
+				0,
+				2,
+				0
+			]
+		},
+		{
+			"Target": "PartOpacity",
+			"Id": "Part7",
+			"Segments": [
+				0,
+				0,
+				0,
+				2,
+				0
+			]
+		}
+	]
+}

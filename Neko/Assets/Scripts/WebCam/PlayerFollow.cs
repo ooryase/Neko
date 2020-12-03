@@ -37,8 +37,8 @@ public class PlayerFollow : MonoBehaviour
         if(Time.timeScale == 0)
         {
             timeScaleCounter++;
-            // 10フレーム止める
-            if (timeScaleCounter > 10)
+            // 20フレーム止める
+            if (timeScaleCounter > 20)
             {
                 Time.timeScale = 1.0f;
                 timeScaleCounter = 0;

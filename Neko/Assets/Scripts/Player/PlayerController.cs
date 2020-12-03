@@ -93,12 +93,12 @@ public class PlayerController : MonoBehaviour
                     {
                         StartCoroutine(ReturnFromCliff(-1.0f));
                     }
-                    else if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxis("Horizontal") == 1)
-                    {
-                        rb.velocity = new Vector3(1.0f * speed, 1.0f * speed, 0);
-                        ChangeState(PlayerState.Fall);
-                        animator.SetBool("fall", true);
-                    }
+                    //else if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxis("Horizontal") == 1)
+                    //{
+                    //    rb.velocity = new Vector3(0.75f * speed, 0.75f * speed, 0);
+                    //    ChangeState(PlayerState.Fall);
+                    //    animator.SetBool("fall", true);
+                    //}
                 }
                 else if (transform.rotation.eulerAngles.y == 180.0f)
                 {
@@ -106,12 +106,12 @@ public class PlayerController : MonoBehaviour
                     {
                         StartCoroutine(ReturnFromCliff(1.0f));
                     }
-                    else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("Horizontal") == -1)
-                    {
-                        rb.velocity = new Vector3(-1.0f * speed, 1.0f * speed, 0);
-                        ChangeState(PlayerState.Fall);
-                        animator.SetBool("fall", true);
-                    }
+                    //else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("Horizontal") == -1)
+                    //{
+                    //    rb.velocity = new Vector3(-0.75f * speed, 0.75f * speed, 0);
+                    //    ChangeState(PlayerState.Fall);
+                    //    animator.SetBool("fall", true);
+                    //}
                 }
                 break;
             case PlayerState.Fall:
@@ -122,6 +122,14 @@ public class PlayerController : MonoBehaviour
 
                 break;
         }
+    }
+
+    public void Fall()
+    {
+        var direction = (transform.rotation.eulerAngles.y == 0.0f) ? 1.0f : -1.0f;
+        rb.velocity = new Vector3(0.75f * speed * direction, 0.75f * speed, 0);
+        ChangeState(PlayerState.Fall);
+        animator.SetBool("fall", true);
     }
 
     public IEnumerator LadderStart(float ladderPosX, PlayerState state)
@@ -243,7 +251,7 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("die");
         ChangeState(PlayerState.Hurt);
 
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(0.1f);
         ChangeState(PlayerState.Dead);
     }
 
