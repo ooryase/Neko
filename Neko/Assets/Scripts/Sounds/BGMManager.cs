@@ -14,7 +14,10 @@ public class BGMManager : MonoBehaviour
     void Start()
     {
         source = GetComponent<AudioSource>();
-        playerController = player.GetComponent<PlayerController>();
+        if (player.gameObject.tag == "Player")
+        {
+            playerController = player.GetComponent<PlayerController>();
+        }
     }
 
     // Update is called once per frame
@@ -39,11 +42,14 @@ public class BGMManager : MonoBehaviour
         // オーディオリスナーのため
         transform.position = player.transform.position;
 
-        if (playerController.State == PlayerState.Dead)
+        if (player.gameObject.tag == "Player")
         {
-            // 3Dサウンドオブジェクトの音を飛ばす
-            transform.position = new Vector3(0, 0, 200.0f);
-            source.volume = 0;
+            if (playerController.State == PlayerState.Dead)
+            {
+                // 3Dサウンドオブジェクトの音を飛ばす
+                transform.position = new Vector3(0, 0, 200.0f);
+                source.volume = 0;
+            }
         }
     }
 }

@@ -112,6 +112,9 @@ public class WebCam : MonoBehaviour
     /// </summary>
     Texture2D texture;
 
+    // Rendererコンポーネントを持っているか
+    bool has_renderer = false;
+
     /// <summary>
     /// The dlib shape predictor file name.
     /// </summary>
@@ -139,6 +142,8 @@ public class WebCam : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        has_renderer = GetComponent<Renderer>()? true : false;
+
 #if UNITY_WEBGL && !UNITY_EDITOR
             getFilePath_Coroutine = Utils.getFilePathAsync(dlibShapePredictorFileName, (result) =>
             {
@@ -412,13 +417,17 @@ public class WebCam : MonoBehaviour
             texture = new Texture2D(webCamTexture.width, webCamTexture.height, TextureFormat.RGBA32, false);
         }
 
+        if (has_renderer)
+        {
+            gameObject.GetComponent<Renderer>().material.mainTexture = texture;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         gameObject.transform.position = Camera.main.transform.position;
-        gameObject.transform.position += new Vector3(0.5f, 0.5f, 3.0f);
+        gameObject.transform.position += new Vector3(0.0f, 0.0f, 7.0f);
 
 
         if (adjustPixelsDirection)
@@ -449,6 +458,8 @@ public class WebCam : MonoBehaviour
                 //detect face rects
                 List<Rect> detectResult = faceLandmarkDetector.Detect();
 
+                if(has_renderer) colors = new Color32[texture.width * texture.height];
+
                 List<Vector2> points = new List<Vector2>();
 
                 foreach (var rect in detectResult)
@@ -456,9 +467,23 @@ public class WebCam : MonoBehaviour
                     //detect landmark points
                     points.AddRange(faceLandmarkDetector.DetectLandmark(rect));
 
+                    if (has_renderer)
+                    {
+                        //draw landmark points
+                        faceLandmarkDetector.DrawDetectLandmarkResult<Color32>(colors, texture.width, texture.height, 4, true, 0, 255, 0, 255);
+                    }
                 }
 
                 eyeParamUpdate(points);
+
+                if (has_renderer)
+                {
+                    //draw face rect
+                    faceLandmarkDetector.DrawDetectResult<Color32>(colors, texture.width, texture.height, 4, true, 255, 0, 0, 255, 2);
+
+                    texture.SetPixels32(colors);
+                    texture.Apply(false);
+                }
             }
         }
     }
@@ -475,11 +500,13 @@ public class WebCam : MonoBehaviour
     private float getRaitoOfEyeOpen_L(List<Vector2> points)
     {
         return Mathf.Clamp(Vector2.Distance(points[47], points[43]) / (Vector2.Distance(points[44], points[43]) * 0.75f) - 0.5f, 0.0f, 1.0f) * 0.5f;
+        //return (Vector2.Distance(points[47].normalized, points[43].normalized) + Vector2.Distance(points[44].normalized, points[46].normalized)) / (2 * Vector2.Distance(points[42].normalized, points[45].normalized));
     }
 
     private float getRaitoOfEyeOpen_R(List<Vector2> points)
     {
         return Mathf.Clamp(Vector2.Distance(points[40], points[38]) / (Vector2.Distance(points[38], points[37]) * 0.75f) - 0.5f, 0.0f, 1.0f) * 0.5f;
+        //return (Vector2.Distance(points[37].normalized, points[41].normalized) + Vector2.Distance(points[38].normalized, points[40].normalized)) / (2 * Vector2.Distance(points[36].normalized, points[39].normalized));
     }
 
 #if (UNITY_IOS && UNITY_2018_1_OR_NEWER) || (UNITY_ANDROID && UNITY_2018_3_OR_NEWER)

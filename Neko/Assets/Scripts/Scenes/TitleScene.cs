@@ -38,6 +38,6 @@ public class TitleScene : MonoBehaviour
 
     void LoadScene()
     {
-        SceneManager.LoadScene("Stage0_1");
+        SceneManager.LoadScene("FaceTest");
     }
 }

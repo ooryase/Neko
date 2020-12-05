@@ -9,34 +9,15 @@ using UnityEngine;
 /// </summary>
 public class EyeOpenChecker : MonoBehaviour
 {
-    //private static EyeOpenChecker instance = null;
-    //public static EyeOpenChecker Instance
-    //{
-    //    get { return EyeOpenChecker.instance; }
-    //}
-
-    //void Awake()
-    //{
-    //    //　スクリプトが設定されていなければゲームオブジェクトを残しつつスクリプトを設定
-    //    if (instance == null)
-    //    {
-    //        DontDestroyOnLoad(gameObject);
-    //        instance = this;
-    //        //　既にGameStartスクリプトがあればこのシーンの同じゲームオブジェクトを削除
-    //    }
-    //    else
-    //    {
-    //        Destroy(gameObject);
-    //    }
-    //}
-
-
     private WebCam webCam = null;
 
 
     [Range(0, 10)]
     [SerializeField, TooltipAttribute("目の開閉状態を変えるまでに判定するフレーム数")]
     private int changeEyeOpenFrameCount = 8;
+
+    // 目の開閉の閾値
+    private float eyeOpenThreshold = 0.8f;
 
     /// <summary>
     /// 左目が開く(閉じる)までのカウンタ
@@ -80,11 +61,14 @@ public class EyeOpenChecker : MonoBehaviour
     private TextMesh text = null;
 
 
-
     // Start is called before the first frame update
     void Start()
     {
         webCam = GetComponent<WebCam>();
+
+        // 目の大きさによって閾値変えたいんですけどなにか？
+        eyeOpenThreshold = ((EyesData.Instance.EyeSizeL + EyesData.Instance.EyeSizeR) / 2.0f) * 0.6f;
+        Debug.Log("閾値 : " + eyeOpenThreshold);
     }
 
     // Update is called once per frame
@@ -134,11 +118,17 @@ public class EyeOpenChecker : MonoBehaviour
     /// <returns></returns>
     private int eyeOpenCounterCheck(bool eyeOpen, float webCamEyeOpen)
     {
-        //目の開閉の閾値
-        float eyeOpenThreshold = 0.1f;
 
         //現在の開閉状態とカメラの情報が異なる場合カウンタを進める
         return (eyeOpen != (webCamEyeOpen > eyeOpenThreshold)) ? 1 : -1;
+    }
 
+    public float GetOpenL()
+    {
+        return webCam.EYE_OPEN_L;
+    }
+    public float GetOpenR()
+    {
+        return webCam.EYE_OPEN_R;
     }
 }
