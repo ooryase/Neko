@@ -2011,3 +2011,10 @@ AnimationClip:
     floatParameter: 0
     intParameter: 14120
     messageOptions: 1
+  - time: 0.43333334
+    functionName: PlaySwitch
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
