@@ -67,7 +67,7 @@ public class EyeOpenChecker : MonoBehaviour
         webCam = GetComponent<WebCam>();
 
         // 目の大きさによって閾値変えたいんですけどなにか？
-        eyeOpenThreshold = ((EyesData.Instance.EyeSizeL + EyesData.Instance.EyeSizeR) / 2.0f) * 0.6f;
+        eyeOpenThreshold = GameData.Instance.eyeOpenThreshold;
         Debug.Log("閾値 : " + eyeOpenThreshold);
     }
 

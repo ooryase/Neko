@@ -90,8 +90,8 @@ public class FaceTestScene : MonoBehaviour
                     EyeSizeL = eyesSizeL.Average();
                     EyeSizeR = eyesSizeR.Average();
 
-                    EyesData.Instance.EyeSizeL = EyeSizeL;
-                    EyesData.Instance.EyeSizeR = EyeSizeR;
+                    //EyesData.Instance.EyeSizeL = EyeSizeL;
+                    //EyesData.Instance.EyeSizeR = EyeSizeR;
 
                     timerText.text = "EyeSize  L : " + EyeSizeL.ToString("F2") + "　R : " + EyeSizeR.ToString("F2");
                 }

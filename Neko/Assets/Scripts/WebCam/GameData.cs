@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EyesData : MonoBehaviour
+public class GameData : MonoBehaviour
 {
-    public static EyesData Instance
+    public static GameData Instance
     {
         get; private set;
     }
@@ -20,8 +20,7 @@ public class EyesData : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public float EyeSizeL = 0.1f;
-    public float EyeSizeR = 0.1f;
+    public float eyeOpenThreshold = 0.35f;
 
     // Start is called before the first frame update
     void Start()

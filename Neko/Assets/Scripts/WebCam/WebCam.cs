@@ -499,14 +499,14 @@ public class WebCam : MonoBehaviour
 
     private float getRaitoOfEyeOpen_L(List<Vector2> points)
     {
-        return Mathf.Clamp(Vector2.Distance(points[47], points[43]) / (Vector2.Distance(points[44], points[43]) * 0.75f) - 0.5f, 0.0f, 1.0f) * 0.5f;
-        //return (Vector2.Distance(points[47].normalized, points[43].normalized) + Vector2.Distance(points[44].normalized, points[46].normalized)) / (2 * Vector2.Distance(points[42].normalized, points[45].normalized));
+        //目の開閉度合いを0 ~ 1になるように計算
+        return Mathf.Clamp(Vector2.Distance(points[47], points[43]) / (Vector2.Distance(points[44], points[43]) * 0.85f) - 0.25f, 0.0f, 1.0f);
     }
 
     private float getRaitoOfEyeOpen_R(List<Vector2> points)
     {
-        return Mathf.Clamp(Vector2.Distance(points[40], points[38]) / (Vector2.Distance(points[38], points[37]) * 0.75f) - 0.5f, 0.0f, 1.0f) * 0.5f;
-        //return (Vector2.Distance(points[37].normalized, points[41].normalized) + Vector2.Distance(points[38].normalized, points[40].normalized)) / (2 * Vector2.Distance(points[36].normalized, points[39].normalized));
+        //目の開閉度合いを0 ~ 1になるように計算
+        return Mathf.Clamp(Vector2.Distance(points[40], points[38]) / (Vector2.Distance(points[38], points[37]) * 0.85f) - 0.25f, 0.0f, 1.0f);
     }
 
 #if (UNITY_IOS && UNITY_2018_1_OR_NEWER) || (UNITY_ANDROID && UNITY_2018_3_OR_NEWER)
