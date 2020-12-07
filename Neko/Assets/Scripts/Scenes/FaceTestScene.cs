@@ -21,6 +21,8 @@ public class FaceTestScene : MonoBehaviour
     [SerializeField] private Animator open = null;
     [SerializeField] private Animator close = null;
     [SerializeField] private Text timerText = null;
+    [SerializeField] private Slider slider = null;
+    [SerializeField] private Text sliderValue = null;
 
     List<float> eyesSizeL = new List<float>();
     List<float> eyesSizeR = new List<float>();
@@ -45,6 +47,10 @@ public class FaceTestScene : MonoBehaviour
         {
             SceneManager.LoadScene("Title");
         }
+
+        GameData.Instance.eyeOpenThreshold = Mathf.Clamp(GameData.Instance.eyeOpenThreshold + Input.GetAxis("Horizontal") / 100.0f, slider.minValue, slider.maxValue);
+        slider.value = GameData.Instance.eyeOpenThreshold;
+        sliderValue.text = GameData.Instance.eyeOpenThreshold.ToString("F2");
 
         switch (state)
         {
