@@ -120,7 +120,7 @@ public class EyeOpenChecker : MonoBehaviour
     {
 
         //現在の開閉状態とカメラの情報が異なる場合カウンタを進める
-        return (eyeOpen != (webCamEyeOpen > eyeOpenThreshold)) ? 1 : -1;
+        return (eyeOpen != (webCamEyeOpen > GameData.Instance.eyeOpenThreshold)) ? 1 : -1;
     }
 
     public float GetOpenL()
