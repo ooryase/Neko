@@ -4,8 +4,7 @@ using System.Collections;
 [ExecuteInEditMode()]
 public class CameraNoiseEditer : MonoBehaviour
 {
-    [SerializeField]
-    EyeOpenChecker eyeOpenChecker = null;
+    EyeOpenChecker eyeOpenChecker;
 
     [SerializeField]
     Material material = null;
@@ -40,6 +39,11 @@ public class CameraNoiseEditer : MonoBehaviour
     public float Brightness { get { return brightness; } set { brightness = value; } }
 
     private float noiseValue = 0.0f;
+
+    private void Start()
+    {
+        eyeOpenChecker = GameObject.FindGameObjectWithTag("WebCam").GetComponent<EyeOpenChecker>();
+    }
 
 
     // Use this for initialization

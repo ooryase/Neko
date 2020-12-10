@@ -9,7 +9,7 @@ Shader "Custom/UncertainObject" {
 		_NoiseX("NoiseX", Range(0, 1)) = 0
 		_Offset("Offset", Vector) = (0, 0, 0, 0)
 		_RGBNoise("RGBNoise", Range(0, 1)) = 0
-		_SinNoiseWidth("SineNoiseWidth", Float) = 1
+		_SinNoiseWidth("SinNoiseWidth", Float) = 1
 		_SinNoiseScale("SinNoiseScale", Float) = 1
 		_SinNoiseOffset("SinNoiseOffset", Float) = 1
 	}

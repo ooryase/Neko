@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     [SerializeField] private float speed = 3;
 
-    [SerializeField] private EyeOpenChecker eyeOpenChecker = null;
+    private EyeOpenChecker eyeOpenChecker;
 
     public PlayerState State { get; private set; }
 
@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         animator = GetComponent<Animator>();
+        eyeOpenChecker = GameObject.FindGameObjectWithTag("WebCam").GetComponent<EyeOpenChecker>();
         FollowFlag = false;
         FollowPos = transform.position;
 
@@ -93,12 +94,6 @@ public class PlayerController : MonoBehaviour
                     {
                         StartCoroutine(ReturnFromCliff(-1.0f));
                     }
-                    //else if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetAxis("Horizontal") == 1)
-                    //{
-                    //    rb.velocity = new Vector3(0.75f * speed, 0.75f * speed, 0);
-                    //    ChangeState(PlayerState.Fall);
-                    //    animator.SetBool("fall", true);
-                    //}
                 }
                 else if (transform.rotation.eulerAngles.y == 180.0f)
                 {
@@ -106,12 +101,6 @@ public class PlayerController : MonoBehaviour
                     {
                         StartCoroutine(ReturnFromCliff(1.0f));
                     }
-                    //else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetAxis("Horizontal") == -1)
-                    //{
-                    //    rb.velocity = new Vector3(-0.75f * speed, 0.75f * speed, 0);
-                    //    ChangeState(PlayerState.Fall);
-                    //    animator.SetBool("fall", true);
-                    //}
                 }
                 break;
             case PlayerState.Fall:
@@ -124,21 +113,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //private IEnumerator CliffStart()
-    //{
-    //    yield return new WaitForSeconds(2.0f);
-
-    //    if (State == PlayerState.Cliff)
-    //        FallFunc();
-    //}
-
-    public void FallFunc()
-    {
-        var direction = (transform.rotation.eulerAngles.y == 0.0f) ? 1.0f : -1.0f;
-        rb.velocity = new Vector3(0.75f * speed * direction, 0.75f * speed, 0);
-        ChangeState(PlayerState.Fall);
-        animator.SetBool("fall", true);
-    }
 
     public IEnumerator LadderStart(float ladderPosX, PlayerState state)
     {
@@ -174,6 +148,8 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 90.0f - 90.0f * direction, 0);
 
         yield return new WaitForSeconds(0.5f);
+        animator.SetBool("fall", false);
+        animator.ResetTrigger("cliff");
         ChangeState(PlayerState.Nuetral);
     }
 
@@ -181,7 +157,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Switch") 
         {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1"))
+            if (State == PlayerState.Nuetral &&
+                (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1")))
             {
                 // スイッチ押した後に歩き続けるのを防ぐ
                 animator.SetBool("walk", false);
@@ -192,8 +169,20 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(OnSwitch());
             }
         }
-        // 崩壊オブジェに触れたときの処理
-        //else if()
+        else if (other.gameObject.tag == "Push")
+        {
+            if (State == PlayerState.Nuetral &&
+                (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1")))
+            {
+                // スイッチ押した後に歩き続けるのを防ぐ
+                animator.SetBool("walk", false);
+
+                var sw = other.gameObject.GetComponent<SwitchObject>();
+                FollowPos = sw.ZoomPos;
+                followTime = sw.ZoomTime;
+                StartCoroutine(OnPush());
+            }
+        }
 
         // 目が閉じているときは判定なし
         if (eyeOpenChecker.KEEP_EYE_OPEN)
@@ -223,7 +212,35 @@ public class PlayerController : MonoBehaviour
         FollowFlag = false;
         if(State == PlayerState.Transition)
             ChangeState(PlayerState.Nuetral);
+
+        animator.ResetTrigger("switch");
     }
+
+
+    private IEnumerator OnPush()
+    {
+        FollowFlag = true;
+        animator.SetTrigger("push");
+        ChangeState(PlayerState.Transition);
+        rb.velocity = Vector3.zero;
+
+        yield return new WaitForSeconds(followTime);
+
+        FollowFlag = false;
+        if (State == PlayerState.Transition)
+            ChangeState(PlayerState.Nuetral);
+        animator.ResetTrigger("push");
+    }
+
+    public void FallFunc()
+    {
+        var direction = (transform.rotation.eulerAngles.y == 0.0f) ? 1.0f : -1.0f;
+        rb.velocity = new Vector3(0.75f * speed * direction, 0.5f * speed, 0);
+        ChangeState(PlayerState.Fall);
+        animator.SetBool("fall", true);
+        Debug.Log("Fall");
+    }
+
 
     public void Cliff()
     {
@@ -257,7 +274,6 @@ public class PlayerController : MonoBehaviour
     }
     private IEnumerator Hurt()
     {
-        animator.SetTrigger("die");
         ChangeState(PlayerState.Hurt);
 
         yield return new WaitForSeconds(0.1f);
@@ -275,6 +291,9 @@ public class PlayerController : MonoBehaviour
     public void ResetStatus()
     {
         ChangeState(PlayerState.Nuetral);
+        animator.Play("Wait");
         animator.SetBool("fall", false);
+        animator.ResetTrigger("landing");
+        animator.ResetTrigger("die");
     }
 }

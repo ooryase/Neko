@@ -13,6 +13,7 @@ TagManager:
   - Switch
   - Enemy
   - Cliff
+  - WebCam
   layers:
   - Default
   - TransparentFX

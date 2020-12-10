@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7238350716442974694}
   m_Layer: 0
   m_Name: WebCam
-  m_TagString: Untagged
+  m_TagString: WebCam
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -64,7 +64,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeEyeOpenFrameCount: 6
-  eyeOpenThreshold: 0.1
   text: {fileID: 7238350716984422889}
 --- !u!1 &7238350716984422888
 GameObject:
