@@ -20,6 +20,8 @@ public class Switch3 : SwitchObject
 
     protected override void action_on()
     {
+        base.action_on();
+
         arm_anim.SetTrigger("Move"); // アニメ実行
         coll.SetActive(true);
     }

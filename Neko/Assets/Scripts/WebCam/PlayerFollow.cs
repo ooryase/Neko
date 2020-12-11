@@ -29,11 +29,12 @@ public class PlayerFollow : MonoBehaviour
     {
         Vector3 pos_player = new Vector3(player.transform.position.x, player.transform.position.y, startPosZ);
 
-
         // FollowFlagがtrueならFollowPosをフォローする
         if (playerController.FollowFlag)
         {
-            transform.position = Vector3.Lerp(transform.position, playerController.FollowPos, Time.deltaTime * 2.0f);
+            //transform.position = Vector3.Lerp(transform.position, playerController.FollowPos, Time.deltaTime * 2.0f);
+            Vector3.SmoothDamp(transform.position, playerController.FollowPos, ref tmp_vel, 0.7f);
+            rigit.velocity = tmp_vel;
         }
         else
         {

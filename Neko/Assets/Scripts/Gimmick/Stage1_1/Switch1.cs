@@ -20,6 +20,8 @@ public class Switch1 :SwitchObject
 
     protected override void action_on()
     {
+        base.action_on();
+
         ladderCollider.SetActive(true);
 
         drop.SetTrigger("Drop");

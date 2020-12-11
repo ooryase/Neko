@@ -65,9 +65,9 @@ public class PlayerController : MonoBehaviour
             case PlayerState.Nuetral:
                 float x = Input.GetAxis("Horizontal");
                 animator.SetBool("walk", x != 0.0f);
-                if(x < 0.0f)
-                    transform.rotation = Quaternion.Euler(0,180.0f,0);
-                else if(x > 0.0f)
+                if (x < 0.0f)
+                    transform.rotation = Quaternion.Euler(0, 180.0f, 0);
+                else if (x > 0.0f)
                     transform.rotation = Quaternion.Euler(0, 0.0f, 0);
                 rb.velocity = new Vector3(x * speed, rb.velocity.y, 0);
                 //rigidbody.AddForce(0, -1.5f, 0);
@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
         rb.velocity = Vector3.zero;
         animator.SetTrigger("ladder");
         float lenght = ladderPosX - transform.position.x;
-        for(int i = 0; i < 10; i++)
+        for (int i = 0; i < 10; i++)
         {
             transform.position += new Vector3(lenght * 0.1f, 0, 0);
 
@@ -155,34 +155,35 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Switch") 
+        if (other.gameObject.tag == "Switch")
         {
-            if (State == PlayerState.Nuetral &&
-                (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1")))
+            if (State == PlayerState.Nuetral && Input.GetKeyDown(KeyCode.Space) ||
+                State == PlayerState.Nuetral && Input.GetButtonDown("Action1"))
             {
-                // スイッチ押した後に歩き続けるのを防ぐ
-                animator.SetBool("walk", false);
-
                 var sw = other.gameObject.GetComponent<SwitchObject>();
-                FollowPos = sw.ZoomPos;
-                followTime = sw.ZoomTime;
-                StartCoroutine(OnSwitch());
+                if (sw.StartAnim == false && sw.PuchRequired)
+                {
+                    // スイッチ押した後に歩き続けるのを防ぐ
+                    animator.SetBool("walk", false);
+
+                    StartCoroutine(OnSwitch(sw.AnimName));
+                }
             }
         }
-        else if (other.gameObject.tag == "Push")
-        {
-            if (State == PlayerState.Nuetral &&
-                (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1")))
-            {
-                // スイッチ押した後に歩き続けるのを防ぐ
-                animator.SetBool("walk", false);
+        //else if (other.gameObject.tag == "Push")
+        //{
+        //    if (State == PlayerState.Nuetral && Input.GetKeyDown(KeyCode.Space) ||
+        //        State == PlayerState.Nuetral && Input.GetButtonDown("Action1"))
+        //    {
+        //        // スイッチ押した後に歩き続けるのを防ぐ
+        //        animator.SetBool("walk", false);
 
-                var sw = other.gameObject.GetComponent<SwitchObject>();
-                FollowPos = sw.ZoomPos;
-                followTime = sw.ZoomTime;
-                StartCoroutine(OnPush());
-            }
-        }
+        //        var sw = other.gameObject.GetComponent<SwitchObject>();
+        //        FollowPos = sw.ZoomPos;
+        //        followTime = sw.ZoomTime;
+        //        StartCoroutine(OnPush());
+        //    }
+        //}
 
         // 目が閉じているときは判定なし
         if (eyeOpenChecker.KEEP_EYE_OPEN)
@@ -198,39 +199,54 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (other.gameObject.tag == "Switch")
+        {
+            var sw = other.gameObject.GetComponent<SwitchObject>();
+            FollowPos = sw.ZoomPos;
+            followTime = sw.ZoomTime; // 拘束時間になった
 
+            FollowFlag = true;
+        }
     }
-    private IEnumerator OnSwitch()
+    private void OnTriggerExit(Collider other)
     {
-        FollowFlag = true;
-        animator.SetTrigger("switch");
+        if (other.gameObject.tag == "Switch")
+        {
+            FollowFlag = false;
+        }
+    }
+
+    private IEnumerator OnSwitch(string name)
+    {
+        //FollowFlag = true;
+        animator.SetTrigger(name);
         ChangeState(PlayerState.Transition);
         rb.velocity = Vector3.zero;
 
-        yield return new WaitForSeconds(followTime);
+        yield return new WaitForSeconds(followTime); // 拘束
 
-        FollowFlag = false;
-        if(State == PlayerState.Transition)
-            ChangeState(PlayerState.Nuetral);
-
-        animator.ResetTrigger("switch");
-    }
-
-
-    private IEnumerator OnPush()
-    {
-        FollowFlag = true;
-        animator.SetTrigger("push");
-        ChangeState(PlayerState.Transition);
-        rb.velocity = Vector3.zero;
-
-        yield return new WaitForSeconds(followTime);
-
-        FollowFlag = false;
+        //FollowFlag = false;
         if (State == PlayerState.Transition)
             ChangeState(PlayerState.Nuetral);
-        animator.ResetTrigger("push");
+
+        animator.ResetTrigger(name);
     }
+
+
+    //private IEnumerator OnPush()
+    //{
+    //    FollowFlag = true;
+    //    animator.SetTrigger("push");
+    //    ChangeState(PlayerState.Transition);
+    //    rb.velocity = Vector3.zero;
+
+    //    yield return new WaitForSeconds(followTime);
+
+    //    FollowFlag = false;
+    //    if (State == PlayerState.Transition)
+    //        ChangeState(PlayerState.Nuetral);
+    //    animator.ResetTrigger("push");
+    //}
 
     public void FallFunc()
     {
@@ -274,6 +290,7 @@ public class PlayerController : MonoBehaviour
     }
     private IEnumerator Hurt()
     {
+        animator.SetTrigger("die");
         ChangeState(PlayerState.Hurt);
 
         yield return new WaitForSeconds(0.1f);

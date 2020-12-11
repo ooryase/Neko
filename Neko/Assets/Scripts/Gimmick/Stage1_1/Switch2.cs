@@ -21,6 +21,8 @@ public class Switch2 : SwitchObject
 
     protected override void action_on()
     {
+        base.action_on();
+
         anim.SetTrigger("RotateCore");
         block.SetActive(true);
     }

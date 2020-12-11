@@ -427,7 +427,7 @@ public class WebCam : MonoBehaviour
     void Update()
     {
         gameObject.transform.position = Camera.main.transform.position;
-        gameObject.transform.position += new Vector3(0.0f, 0.0f, 7.0f);
+        gameObject.transform.position += new Vector3(0.0f, 0.5f, 8.0f);
 
 
         if (adjustPixelsDirection)

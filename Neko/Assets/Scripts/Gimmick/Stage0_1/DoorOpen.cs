@@ -16,11 +16,14 @@ public class DoorOpen : SwitchObject
         wall = transform.GetChild(2).gameObject;
         source = GetComponent<AudioSource>();
 
-        ZoomPos = new Vector3(wall.transform.position.x, wall.transform.position.y, -9);
+        ZoomPos = new Vector3(wall.transform.position.x - 1.0f, wall.transform.position.y + 0.5f, -9);
+        AnimName = "push";
     }
 
     protected override void action_on()
     {
+        base.action_on();
+
         wall.SetActive(false);
 
         anim.SetTrigger("Open");

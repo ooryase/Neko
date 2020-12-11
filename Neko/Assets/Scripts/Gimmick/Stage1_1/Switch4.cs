@@ -24,6 +24,8 @@ public class Switch4 : SwitchObject
 
     protected override void action_on()
     {
+        base.action_on();
+
         anim.SetTrigger("RotateCore2");
         colliders.SetActive(true);
         wall.SetActive(false);

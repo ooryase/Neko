@@ -30,12 +30,6 @@ public class ProgressManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // エスケープでタイトル
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            SceneManager.LoadScene("Title");
-        }
-
         if (playerController.State == PlayerState.Dead)
         {
             if(deadReset == false)
