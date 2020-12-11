@@ -31,6 +31,8 @@ public class UncertainObject : MonoBehaviour
 
     private bool hasFloorTag;
 
+    public bool IsVanish { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,7 @@ public class UncertainObject : MonoBehaviour
 
         material.SetTexture("_MainTex", mainTex);
         material.SetTexture("_NormalMap", normalMap);
+        IsVanish = false;
     }
 
     // Update is called once per frame
@@ -80,6 +83,7 @@ public class UncertainObject : MonoBehaviour
 
     private void Vanish()
     {
+        IsVanish = true;
         animator.SetTrigger("Vanish");
         state = State.Vanish;
         if (hasFloorTag)
@@ -103,6 +107,7 @@ public class UncertainObject : MonoBehaviour
 
     public void ResetObject()
     {
+        IsVanish = false;
         objectCollider.enabled = true;
         objectRenderer.enabled = true;
         animator.Play("Certain");
