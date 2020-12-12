@@ -14,6 +14,7 @@ TagManager:
   - Enemy
   - Cliff
   - WebCam
+  - Transition
   layers:
   - Default
   - TransparentFX

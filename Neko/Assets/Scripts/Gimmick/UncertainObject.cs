@@ -9,6 +9,7 @@ public class UncertainObject : MonoBehaviour
     private Material material;
     private Animator animator;
     private Collider objectCollider;
+    private AudioSource audioSource;
 
     private enum State
     {
@@ -48,6 +49,8 @@ public class UncertainObject : MonoBehaviour
         material.SetTexture("_MainTex", mainTex);
         material.SetTexture("_NormalMap", normalMap);
         IsVanish = false;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -83,6 +86,7 @@ public class UncertainObject : MonoBehaviour
 
     private void Vanish()
     {
+        audioSource.Play();
         IsVanish = true;
         animator.SetTrigger("Vanish");
         state = State.Vanish;

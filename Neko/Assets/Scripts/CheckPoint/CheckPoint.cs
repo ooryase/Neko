@@ -8,7 +8,9 @@ public class CheckPoint : MonoBehaviour
     public bool Flag { get => flag; private set => flag = value; }
 
     // このチェックポイントを通っていた時死んだら戻すswitch
-    private SwitchObject[] switchObjects; 
+    private SwitchObject[] switchObjects;
+
+    private UncertainObject[] uncertainObjects;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +18,8 @@ public class CheckPoint : MonoBehaviour
         flag = false;
 
         switchObjects = GetComponentsInChildren<SwitchObject>();
+
+        uncertainObjects = GetComponentsInChildren<UncertainObject>();
     }
 
     // Update is called once per frame
@@ -41,6 +45,11 @@ public class CheckPoint : MonoBehaviour
         foreach(var s in switchObjects)
         {
             s.action_off();
+        }
+
+        foreach(var u in uncertainObjects)
+        {
+            u.ResetObject();
         }
     }
 }

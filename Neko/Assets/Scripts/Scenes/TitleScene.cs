@@ -26,8 +26,7 @@ public class TitleScene : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1"))
         {
-            // 一応フェードインが終わってたら
-            if (transition.IsEnd())
+            if (IsInvoking() == false)
             {
                 se.Play();
                 transition.FadeOut();
@@ -38,6 +37,6 @@ public class TitleScene : MonoBehaviour
 
     void LoadScene()
     {
-        SceneManager.LoadScene("FaceTest");
+        SceneManager.LoadScene("Stage0_1");
     }
 }

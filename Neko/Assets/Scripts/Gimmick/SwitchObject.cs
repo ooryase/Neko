@@ -2,13 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// スイッチの種類
+/// 
+/// Push 押す必要あるスイッチ /
+/// Area 入ったら即アクション /
+/// ZoomOnly ズームするだけ / 
+/// Other それ以外
+/// </summary>
+public enum SwitchType
+{
+    Push,
+    Area,
+    ZoomOnly,
+    Other
+}
 public abstract class SwitchObject : MonoBehaviour
 {
     private GameObject tex; // ボタンの上のビックリマーク
     private Animator animator;
     private bool switch_on;
-    public bool PuchRequired { get; protected set; } // スイッチを押す必要があるのか
+
+    public SwitchType Type { get; protected set; }
+    //public bool PuchRequired { get; protected set; } // スイッチを押す必要があるのか
     public bool StartAnim { get; private set; } // Actionがスタートしてるか
     public string AnimName { get; protected set; }
 
@@ -23,20 +39,30 @@ public abstract class SwitchObject : MonoBehaviour
         tex.SetActive(false);
         switch_on = false;
 
-        PuchRequired = true;
         ZoomTime = 1.83f;
         AnimName = "switch";
+
+        Type = SwitchType.Push;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag != "Player") { return; }
 
-        // 押す前なら表示する
-        if (switch_on == false && PuchRequired)
+        // 押す前なら
+        if (switch_on == false)
         {
-            tex.SetActive(true);
-            animator.SetTrigger("popUp");
+            switch (Type)
+            {
+                case SwitchType.Push:
+                    tex.SetActive(true);
+                    animator.SetTrigger("popUp");
+                    break;
+                case SwitchType.Area:
+                    Invoke("action_on", 0.7f);
+                    switch_on = true;
+                    break;
+            }
         }
     }
 
@@ -44,11 +70,11 @@ public abstract class SwitchObject : MonoBehaviour
     {
         if (other.gameObject.tag != "Player") { return; }
 
-        if (switch_on == false && PuchRequired)
+        if (switch_on == false && Type == SwitchType.Push)
         {
             if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1"))
             {
-                Invoke("action_on", 0.7f);
+                Invoke("action_on", 1.0f);
 
                 switch_on = true;
                 tex.SetActive(false);
@@ -62,7 +88,7 @@ public abstract class SwitchObject : MonoBehaviour
 
         // ボタンから離れたら非表示
         //tex.SetActive(false);
-        if (PuchRequired)
+        if (Type == SwitchType.Push)
         {
             animator.SetTrigger("popDown");
         }
