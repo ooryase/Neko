@@ -13,7 +13,7 @@ public class NekoZombie : MonoBehaviour
 
     private Vector3 startPos;
 
-    [SerializeField] private float distance = 0.5f;
+    [SerializeField] private float distance = 0.3f;
 
     public enum ZombieState
     {
@@ -29,7 +29,7 @@ public class NekoZombie : MonoBehaviour
     {
         State = ZombieState.Freeze;
         eyeOpenChecker = GameObject.FindGameObjectWithTag("WebCam").GetComponent<EyeOpenChecker>();
-        objectRenderer = GetComponent<Renderer>();
+        objectRenderer = transform.Find("Drawables").gameObject.transform.Find("ArtMesh6").gameObject.GetComponent<Renderer>();
         animator = GetComponent<Animator>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
@@ -42,7 +42,7 @@ public class NekoZombie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        animator.SetBool("eyeOpen", eyeOpenChecker.KEEP_EYE_OPEN);
+        animator.SetBool("eyeOpen", !(!eyeOpenChecker.KEEP_EYE_OPEN && objectRenderer.isVisible));
 
         switch (State)
         {

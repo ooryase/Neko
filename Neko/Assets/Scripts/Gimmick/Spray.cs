@@ -20,7 +20,8 @@ public class Spray : MonoBehaviour
         sprayCollider = GetComponent<Collider>();
         sprayParticleSystem = GetComponent<ParticleSystem>();
         audioSource = GetComponent<AudioSource>();
-        audioSource.volume = 0;
+        if (audioSource != null)
+            audioSource.volume = 0;
 
         //Debug.Log(sprayParticleSystem);
 
@@ -29,13 +30,18 @@ public class Spray : MonoBehaviour
 
     void Update()
     {
+        if (sprayCollider == null)
+            return;
+
         if (sprayCollider.enabled)
         {
-            Mathf.Clamp(audioSource.volume += 0.07f, 0, maxVolume);
+            if(audioSource != null)
+                Mathf.Clamp(audioSource.volume += 0.07f, 0, maxVolume);
         }
         else
         {
-            Mathf.Clamp(audioSource.volume -= 0.07f, 0, maxVolume);
+            if (audioSource != null)
+                Mathf.Clamp(audioSource.volume -= 0.07f, 0, maxVolume);
         }
     }
 
@@ -45,7 +51,8 @@ public class Spray : MonoBehaviour
 
         while(true)
         {
-            sprayCollider.enabled = true;
+            if (sprayCollider != null)
+                sprayCollider.enabled = true;
 
             if (sprayParticleSystem != null)
             {
@@ -54,7 +61,8 @@ public class Spray : MonoBehaviour
 
             yield return new WaitForSeconds(2.0f);
 
-            sprayCollider.enabled = false;
+            if (sprayCollider != null)
+                sprayCollider.enabled = false;
 
             yield return new WaitForSeconds(3.0f);
         }
