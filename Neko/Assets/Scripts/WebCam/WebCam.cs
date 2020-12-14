@@ -166,8 +166,11 @@ public class WebCam : MonoBehaviour
             Debug.LogError("shape predictor file does not exist. Please copy from “DlibFaceLandmarkDetector/StreamingAssets/” to “Assets/StreamingAssets/” folder. ");
         }
 
-        faceLandmarkDetector = new FaceLandmarkDetector(dlibShapePredictorFilePath);
-
+#if UNITY_EDITOR
+        faceLandmarkDetector = new FaceLandmarkDetector("Assets/StreamingAssets/" + dlibShapePredictorFileName);
+#else
+        faceLandmarkDetector = new FaceLandmarkDetector(Application.productName + "_Data/StreamingAssets/" +  dlibShapePredictorFileName);
+#endif
         Initialize();
     }
 

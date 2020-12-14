@@ -14,6 +14,7 @@ public class PlayerFollow : MonoBehaviour
     private Vector3 shakePos = Vector3.zero;
     // カメラが若干プレイヤーの上に行くように
     private readonly Vector3 ofset = new Vector3(0, -0.5f, 0);
+    private float followSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class PlayerFollow : MonoBehaviour
         rigit = GetComponent<Rigidbody>();
         startPosZ = transform.position.z;
         playerController = player.GetComponent<PlayerController>();
+        followSpeed = 0.7f;
         Follow();
     }
 
@@ -33,12 +35,12 @@ public class PlayerFollow : MonoBehaviour
         if (playerController.FollowFlag)
         {
             //transform.position = Vector3.Lerp(transform.position, playerController.FollowPos, Time.deltaTime * 2.0f);
-            Vector3.SmoothDamp(transform.position, playerController.FollowPos, ref tmp_vel, 0.7f);
+            Vector3.SmoothDamp(transform.position, playerController.FollowPos, ref tmp_vel, followSpeed);
             rigit.velocity = tmp_vel;
         }
         else
         {
-            Vector3.SmoothDamp(transform.position + ofset, pos_player, ref tmp_vel, 0.7f);
+            Vector3.SmoothDamp(transform.position + ofset, pos_player, ref tmp_vel, followSpeed);
             rigit.velocity = tmp_vel;
         }
 
@@ -61,5 +63,14 @@ public class PlayerFollow : MonoBehaviour
     public void Shake(float power = 0.1f)
     {
         shakePos.y = power;
+    }
+
+    /// <summary>
+    /// 小さいほうが速いみたい
+    /// </summary>
+    /// <param name="speed"></param>
+    public void SetFollowSpeed(float speed)
+    {
+        followSpeed = speed;
     }
 }

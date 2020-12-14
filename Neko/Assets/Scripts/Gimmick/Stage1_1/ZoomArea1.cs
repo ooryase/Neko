@@ -9,7 +9,7 @@ public class ZoomArea1 : SwitchObject
     {
         base.Start();
 
-        PuchRequired = false;
+        Type = SwitchType.ZoomOnly;
         ZoomPos = transform.position + new Vector3(0.4f, -0.8f, -14.0f);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum PlayerState
 {
@@ -55,10 +56,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+#if UNITY_EDITOR
         if (Input.GetKeyDown(KeyCode.Q))
         {
             StartCoroutine(Hurt());
         }
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+#endif
 
         switch (State)
         {
@@ -161,7 +168,7 @@ public class PlayerController : MonoBehaviour
                 State == PlayerState.Nuetral && Input.GetButtonDown("Action1"))
             {
                 var sw = other.gameObject.GetComponent<SwitchObject>();
-                if (sw.StartAnim == false && sw.PuchRequired)
+                if (sw.StartAnim == false && sw.Type == SwitchType.Push)
                 {
                     // スイッチ押した後に歩き続けるのを防ぐ
                     animator.SetBool("walk", false);
@@ -170,20 +177,6 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-        //else if (other.gameObject.tag == "Push")
-        //{
-        //    if (State == PlayerState.Nuetral && Input.GetKeyDown(KeyCode.Space) ||
-        //        State == PlayerState.Nuetral && Input.GetButtonDown("Action1"))
-        //    {
-        //        // スイッチ押した後に歩き続けるのを防ぐ
-        //        animator.SetBool("walk", false);
-
-        //        var sw = other.gameObject.GetComponent<SwitchObject>();
-        //        FollowPos = sw.ZoomPos;
-        //        followTime = sw.ZoomTime;
-        //        StartCoroutine(OnPush());
-        //    }
-        //}
 
         // 目が閉じているときは判定なし
         if (eyeOpenChecker.KEEP_EYE_OPEN)
@@ -195,8 +188,8 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(Hurt());
             }
         }
-
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Switch")
@@ -231,22 +224,6 @@ public class PlayerController : MonoBehaviour
 
         animator.ResetTrigger(name);
     }
-
-
-    //private IEnumerator OnPush()
-    //{
-    //    FollowFlag = true;
-    //    animator.SetTrigger("push");
-    //    ChangeState(PlayerState.Transition);
-    //    rb.velocity = Vector3.zero;
-
-    //    yield return new WaitForSeconds(followTime);
-
-    //    FollowFlag = false;
-    //    if (State == PlayerState.Transition)
-    //        ChangeState(PlayerState.Nuetral);
-    //    animator.ResetTrigger("push");
-    //}
 
     public void FallFunc()
     {
