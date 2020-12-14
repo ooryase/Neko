@@ -20,7 +20,7 @@ public enum SwitchType
 public abstract class SwitchObject : MonoBehaviour
 {
     private GameObject tex; // ボタンの上のビックリマーク
-    private Animator animator;
+    private Animator anim_tex;
     private bool switch_on;
 
     public SwitchType Type { get; protected set; }
@@ -35,7 +35,7 @@ public abstract class SwitchObject : MonoBehaviour
     protected virtual void Start()
     {
         tex = transform.GetChild(0).gameObject;
-        animator = tex.GetComponent<Animator>();
+        anim_tex = tex.GetComponent<Animator>();
         tex.SetActive(false);
         switch_on = false;
 
@@ -56,7 +56,7 @@ public abstract class SwitchObject : MonoBehaviour
             {
                 case SwitchType.Push:
                     tex.SetActive(true);
-                    animator.SetTrigger("popUp");
+                    anim_tex.SetTrigger("popUp");
                     break;
                 case SwitchType.Area:
                     Invoke("action_on", 0.7f);
@@ -90,7 +90,7 @@ public abstract class SwitchObject : MonoBehaviour
         //tex.SetActive(false);
         if (Type == SwitchType.Push)
         {
-            animator.SetTrigger("popDown");
+            anim_tex.SetTrigger("popDown");
         }
     }
 
@@ -106,6 +106,6 @@ public abstract class SwitchObject : MonoBehaviour
         StartAnim = false;
         switch_on = false;
         tex.SetActive(false);
-        //animator.Rebind();
+        //anim_tex.Rebind();
     }
 }

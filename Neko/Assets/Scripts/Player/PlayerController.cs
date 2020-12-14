@@ -199,6 +199,17 @@ public class PlayerController : MonoBehaviour
             followTime = sw.ZoomTime; // 拘束時間になった
 
             FollowFlag = true;
+
+            if (sw.StartAnim == false && sw.Type == SwitchType.Area)
+            {
+                if(sw.AnimName != "None")
+                {
+                    // スイッチ押した後に歩き続けるのを防ぐ
+                    animator.SetBool("walk", false);
+
+                    StartCoroutine(OnSwitch(sw.AnimName));
+                }
+            }
         }
     }
     private void OnTriggerExit(Collider other)

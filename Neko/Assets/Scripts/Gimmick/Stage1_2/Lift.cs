@@ -27,7 +27,7 @@ public class Lift : MonoBehaviour
     {
         if (bind)
         {
-            player.transform.position = new Vector3(player.transform.position.x, transform.position.y - 0.31f, player.transform.position.z);
+            player.transform.position = new Vector3(player.transform.position.x, transform.position.y - 0.32f, player.transform.position.z);
             player.GetComponent<Rigidbody>().useGravity = false;
         }
     }
@@ -53,5 +53,15 @@ public class Lift : MonoBehaviour
     public void PlayMove()
     {
         source.PlayOneShot(move);
+    }
+
+    public void ChangeTagCliff()
+    {
+        gameObject.tag = "Cliff"; // フラフラ―
+    }
+
+    public void ChangeTagFloor()
+    {
+        gameObject.tag = "Floor";
     }
 }
