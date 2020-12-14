@@ -15,11 +15,12 @@ public enum SwitchType
     Push,
     Area,
     ZoomOnly,
+    TexOnly,
     Other
 }
 public abstract class SwitchObject : MonoBehaviour
 {
-    private GameObject tex; // ボタンの上のビックリマーク
+    protected GameObject tex; // ボタンの上のビックリマーク
     private Animator anim_tex;
     private bool switch_on;
 
@@ -55,6 +56,7 @@ public abstract class SwitchObject : MonoBehaviour
             switch (Type)
             {
                 case SwitchType.Push:
+                case SwitchType.TexOnly:
                     tex.SetActive(true);
                     anim_tex.SetTrigger("popUp");
                     break;
@@ -88,7 +90,7 @@ public abstract class SwitchObject : MonoBehaviour
 
         // ボタンから離れたら非表示
         //tex.SetActive(false);
-        if (Type == SwitchType.Push)
+        if (Type == SwitchType.Push || Type == SwitchType.TexOnly)
         {
             anim_tex.SetTrigger("popDown");
         }

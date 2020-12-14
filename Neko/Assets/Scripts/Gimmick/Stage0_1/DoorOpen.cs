@@ -31,6 +31,13 @@ public class DoorOpen : SwitchObject
         playDoorOpen();
     }
 
+    public override void action_off()
+    {
+        base.action_off();
+        wall.SetActive(true);
+        anim.Rebind();
+    }
+
     private void playDoorOpen()
     {
         source.PlayOneShot(source.clip);

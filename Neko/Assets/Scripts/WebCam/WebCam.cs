@@ -16,6 +16,22 @@ using System.Linq;
 /// </summary>
 public class WebCam : MonoBehaviour
 {
+    public static WebCam Instance
+    {
+        get; private set;
+    }
+
+    void Awake()
+    {
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
     /// <summary>
     /// Set the name of the device to use.
     /// </summary>
@@ -429,6 +445,11 @@ public class WebCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(webCamTexture.isPlaying == false)
+        {
+            webCamTexture.Play();
+        }
+
         gameObject.transform.position = Camera.main.transform.position;
         gameObject.transform.position += new Vector3(0.0f, 0.5f, 8.0f);
 
@@ -567,6 +588,14 @@ public class WebCam : MonoBehaviour
             }
 #endif
     }
+
+    //private void OnApplicationQuit()
+    //{
+    //    Dispose();
+
+    //    if (faceLandmarkDetector != null)
+    //        faceLandmarkDetector.Dispose();
+    //}
 
     /// <summary>
     /// Raises the change camera button click event.

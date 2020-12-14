@@ -73,4 +73,7 @@ public class PlayerFollow : MonoBehaviour
     {
         followSpeed = speed;
     }
+
+    public void SetOfset() { 
+}
 }

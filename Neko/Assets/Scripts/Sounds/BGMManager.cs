@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BGMManager : MonoBehaviour
 {
-    [SerializeField] private EyeOpenChecker eyeOpenChecker = null;
+    private EyeOpenChecker eyeOpenChecker;
     [SerializeField] private GameObject player = null;
     private PlayerController playerController;
     private AudioSource source;
@@ -13,6 +13,8 @@ public class BGMManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        eyeOpenChecker = GameObject.FindGameObjectWithTag("WebCam").GetComponent<EyeOpenChecker>();
+
         source = GetComponent<AudioSource>();
         if (player.gameObject.tag == "Player")
         {
