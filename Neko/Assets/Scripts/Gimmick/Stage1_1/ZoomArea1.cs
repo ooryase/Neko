@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class ZoomArea1 : SwitchObject
 {
+    [SerializeField] private Vector3 ofset = Vector3.zero;
     // Start is called before the first frame update
     protected override void Start()
     {
         base.Start();
 
         Type = SwitchType.ZoomOnly;
-        ZoomPos = transform.position + new Vector3(0.4f, -0.8f, -14.0f);
+        ZoomPos = transform.position + ofset;
     }
 }

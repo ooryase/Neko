@@ -3633,7 +3633,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.31
-  eyeOpenChecker: {fileID: 0}
 --- !u!82 &9173807226716176859
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3743,10 +3742,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   footsteps:
-  - {fileID: 8300000, guid: f64cdeb421c049e44a0a6b793b1afeee, type: 3}
-  - {fileID: 8300000, guid: 370647410fa7458459ecf3b1c5465600, type: 3}
-  - {fileID: 8300000, guid: 6e37af10ba526704b92d57d27d8fb31c, type: 3}
-  - {fileID: 8300000, guid: 61e5a52d0631e6443b0c4b103b60a4e8, type: 3}
+  - {fileID: 8300000, guid: 393bbd84e168c56459422974cd701b09, type: 3}
+  - {fileID: 8300000, guid: 03d6112b1a29bf945826c80dceb163c8, type: 3}
+  - {fileID: 8300000, guid: 4bf69576320dd9f4d88342d136ef6b97, type: 3}
+  - {fileID: 8300000, guid: c09afb588ae57fd4fbc7cdc5130936f9, type: 3}
+  - {fileID: 8300000, guid: b0a7c37ec71d8bb4c97c53f4b7b31bb6, type: 3}
   ladder: {fileID: 8300000, guid: f10279c6b7b7e24459ed8b84cdf06fd2, type: 3}
   beat: {fileID: 8300000, guid: ac74f0dfb1b88f74d9da7c4488ea0833, type: 3}
   dead: {fileID: 8300000, guid: 354a10bd94088cc4fb3b9a10490c20c8, type: 3}

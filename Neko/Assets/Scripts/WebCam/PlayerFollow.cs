@@ -15,6 +15,7 @@ public class PlayerFollow : MonoBehaviour
     // カメラが若干プレイヤーの上に行くように
     private readonly Vector3 ofset = new Vector3(0, -0.5f, 0);
     private float followSpeed;
+    private readonly float followSpeedInit = 0.7f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +23,7 @@ public class PlayerFollow : MonoBehaviour
         rigit = GetComponent<Rigidbody>();
         startPosZ = transform.position.z;
         playerController = player.GetComponent<PlayerController>();
-        followSpeed = 0.7f;
+        followSpeed = followSpeedInit;
         Follow();
     }
 
@@ -30,6 +31,9 @@ public class PlayerFollow : MonoBehaviour
     void LateUpdate()
     {
         Vector3 pos_player = new Vector3(player.transform.position.x, player.transform.position.y, startPosZ);
+
+        if (playerController.State == PlayerState.Fall) followSpeed = 0.2f;
+        else followSpeed = followSpeedInit;
 
         // FollowFlagがtrueならFollowPosをフォローする
         if (playerController.FollowFlag)
@@ -69,11 +73,8 @@ public class PlayerFollow : MonoBehaviour
     /// 小さいほうが速いみたい
     /// </summary>
     /// <param name="speed"></param>
-    public void SetFollowSpeed(float speed)
+    public void SetFollowSpeed(float speed = 0.7f)
     {
         followSpeed = speed;
     }
-
-    public void SetOfset() { 
-}
 }
