@@ -36,9 +36,9 @@ public class PlayerBottom : MonoBehaviour
             case "Floor":
                 //はしごに乗ってる状態で床と当たった場合、降りる
                 if ((parent.State == PlayerState.LadderTop || parent.State == PlayerState.LadderBottom || parent.State == PlayerState.Ladder) &&
-                   Input.GetAxis("Horizontal") != 0.0f)
+                   Input.GetAxis("Horizontal") != 0.0f) // これだけだと少しでも斜め入力だとLadderが終わる
                 {
-                    //if(Input.GetAxis("Horizontal") > 0.8f || Input.GetAxis("Horizontal") < -0.8f)
+                    if(Input.GetAxis("Horizontal") > 0.8f || Input.GetAxis("Horizontal") < -0.8f)
                     StartCoroutine(parent.LadderEnd());
                 }
                 break;
