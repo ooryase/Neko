@@ -6,8 +6,8 @@ public class CameraNoiseEditer : MonoBehaviour
 {
     EyeOpenChecker eyeOpenChecker;
 
-    [SerializeField]
-    PauseManager pauseManager = null;
+    //[SerializeField]
+    //PauseManager pauseManager = null;
 
     [SerializeField]
     Material material = null;
@@ -63,10 +63,9 @@ public class CameraNoiseEditer : MonoBehaviour
 
     private void Update()
     {
-        if(pauseManager.Pause)
-        {
-            return;
-        }
+        //if (pauseManager.Pause)
+        //{
+        //}
         if (eyeOpenChecker.EYE_OPEN)
             StartCoroutine(eyeOpen());
         else if (eyeOpenChecker.EYE_CLOSE)

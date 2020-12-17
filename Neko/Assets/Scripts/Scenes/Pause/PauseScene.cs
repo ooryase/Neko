@@ -4,37 +4,98 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.EventSystems;
 
 public class PauseScene : MonoBehaviour
 {
     private EyeOpenChecker openChecker = null;
 
-    [SerializeField] private Text timerText = null;
+    [SerializeField] private Text eyeL = null;
+    [SerializeField] private Text eyeR = null;
     [SerializeField] private Slider slider = null;
+    [SerializeField] private Slider gaugeL = null;
+    [SerializeField] private Slider gaugeR = null;
     [SerializeField] private Text sliderValue = null;
+    [SerializeField] private Text explanation = null;
+    [SerializeField] private Canvas canvas = null;
 
-    int interval = 0;
+    [SerializeField] private Button button = null;
+
+    [SerializeField] private EventSystem eventSystem = null;
+
+    private PauseManager pauseManager;
+    private bool onFaceTest = false;
+
+    //int interval = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         openChecker = GameObject.FindGameObjectWithTag("WebCam").GetComponent<EyeOpenChecker>();
+        pauseManager = GameObject.FindGameObjectWithTag("PauseManager").GetComponent<PauseManager>();
 
-        timerText.text = "EyeSize";
+        button.Select();
+
+        canvas.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        GameData.Instance.eyeOpenThreshold = Mathf.Clamp(GameData.Instance.eyeOpenThreshold + Input.GetAxisRaw("Horizontal") / 100.0f, slider.minValue, slider.maxValue);
-        slider.value = GameData.Instance.eyeOpenThreshold;
-        sliderValue.text = GameData.Instance.eyeOpenThreshold.ToString("F2");
-
-        interval++;
-        if (interval >= 20)
+        if (onFaceTest)
         {
-            timerText.text = "EyeSize  L : " + openChecker.GetOpenL().ToString("F2") + "　R : " + openChecker.GetOpenL().ToString("F2");
-            interval = 0;
+            GameData.Instance.eyeOpenThreshold = Mathf.Clamp(GameData.Instance.eyeOpenThreshold + Input.GetAxisRaw("Horizontal") / 200.0f, slider.minValue, slider.maxValue);
+            slider.value = GameData.Instance.eyeOpenThreshold;
+            sliderValue.text = GameData.Instance.eyeOpenThreshold.ToString("F2");
+
+
+            eyeL.text = "L        " + openChecker.GetOpenL().ToString("F2");
+            eyeR.text = "R        " + openChecker.GetOpenR().ToString("F2");
+
+            gaugeL.value = openChecker.GetOpenL();
+            gaugeR.value = openChecker.GetOpenR();
         }
+
+        switch (eventSystem.currentSelectedGameObject.name)
+        {
+            case "Back":
+                explanation.text = "ゲームに戻ります。";
+                break;
+            case "Face":
+                explanation.text = "目の判定を調節します。\nEyesLevelより目が大きいと、「目が開いている」という判定になります。";
+                break;
+            case "Title":
+                explanation.text = "タイトルに戻ります。";
+                break;
+        }
+    }
+
+    public void OnPushBack()
+    {
+        pauseManager.PauseEnd();
+    }
+
+    public void OnPushFace()
+    {
+        if (onFaceTest)
+        {
+            onFaceTest = false;
+            canvas.enabled = false;
+
+            pauseManager.LandMarkFalse();
+        }
+        else
+        {
+            onFaceTest = true;
+            canvas.enabled = true;
+
+            pauseManager.LandMarkTrue();
+        }
+
+    }
+
+    public void OnPushTitle()
+    {
+        pauseManager.TitleBackStart();
     }
 }

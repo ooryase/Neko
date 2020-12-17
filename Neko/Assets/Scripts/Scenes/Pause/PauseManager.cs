@@ -9,7 +9,6 @@ public class PauseManager : MonoBehaviour
     private WebCam webCam;
     private EyeOpenChecker openChecker;
     private Transition transition;
-    private float pushTime = 0.0f;
 
     [SerializeField] private bool canPause = true;
 
@@ -29,73 +28,63 @@ public class PauseManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canPause == false || openChecker.KEEP_EYE_OPEN == false)
+        if (canPause == false) return;
+
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Pause"))
         {
-            pushTime = 0.0f;
-            return;
-        }
-
-
-        if (Input.GetKey(KeyCode.Escape) || Input.GetButton("Pause"))
-        {
-            if (Pause) pushTime += Time.unscaledDeltaTime;
-            else pushTime += Time.deltaTime;
-
-            // 長押しでタイトルに戻る
-            if (pushTime > 2.0f)
-            {
-                Time.timeScale = 1;
-                Invoke("TitleBack", 1.0f);
-                transition.FadeOut();
-                pushTime = 0.0f;
-                if (Pause)
-                {
-                    //サブシーンを破棄
-                    SceneManager.UnloadSceneAsync("PauseScene");
-                }
-            }
-        }
-
-        if (Input.GetKeyUp(KeyCode.Escape) || Input.GetButtonUp("Pause"))
-        {
-            // ちょい押しでポーズ
-            if (pushTime < 0.5f && IsInvoking() == false)
+            if (IsInvoking() == false)
             {
                 if (Pause == false)
                 {
-                    Time.timeScale = 0;
-                    // 非表示にするオブジェクト
-                    foreach (GameObject obj in GameObjectsTohidden)
-                    {
-                        obj.SetActive(false);
-                    }
-
-                    //メインシーンにサブシーンを追加表示する
-                    //Application.LoadLevelAdditive("PauseScene");
-                    SceneManager.LoadScene("PauseScene", LoadSceneMode.Additive);
-
-                    webCam.GetComponent<MeshRenderer>().enabled = true;
-                    Pause = true;
+                    PauseStart();
                 }
                 else
                 {
-                    Time.timeScale = 1;
-
-                    foreach (GameObject obj in GameObjectsTohidden)
-                    {
-                        obj.SetActive(true);
-                    }
-
-                    //サブシーンを破棄してメインシーンを表示する
-                    SceneManager.UnloadSceneAsync("PauseScene");
-
-                    webCam.GetComponent<MeshRenderer>().enabled = false;
-                    Pause = false;
+                    PauseEnd();
                 }
             }
-
-            pushTime = 0.0f;
         }
+    }
+
+    void PauseStart()
+    {
+        Time.timeScale = 0;
+        // 非表示にするオブジェクト
+        foreach (GameObject obj in GameObjectsTohidden)
+        {
+            obj.SetActive(false);
+        }
+
+        //メインシーンにサブシーンを追加表示する
+        //Application.LoadLevelAdditive("PauseScene");
+        SceneManager.LoadScene("PauseScene", LoadSceneMode.Additive);
+
+        //webCam.GetComponent<MeshRenderer>().enabled = true;
+        Pause = true;
+    }
+
+    public void PauseEnd()
+    {
+        Time.timeScale = 1;
+
+        foreach (GameObject obj in GameObjectsTohidden)
+        {
+            obj.SetActive(true);
+        }
+
+        //サブシーンを破棄してメインシーンを表示する
+        SceneManager.UnloadSceneAsync("PauseScene");
+
+        webCam.GetComponent<MeshRenderer>().enabled = false;
+        Pause = false;
+    }
+
+    public void TitleBackStart()
+    {
+        PauseEnd();
+
+        Invoke("TitleBack", 1.0f);
+        transition.FadeOut();
     }
 
     void TitleBack()
@@ -103,4 +92,12 @@ public class PauseManager : MonoBehaviour
         SceneManager.LoadScene("Title");
     }
 
+    public void LandMarkTrue()
+    {
+        webCam.GetComponent<MeshRenderer>().enabled = true;
+    }
+    public void LandMarkFalse()
+    {
+        webCam.GetComponent<MeshRenderer>().enabled = false;
+    }
 }

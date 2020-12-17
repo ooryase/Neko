@@ -72,10 +72,14 @@ public class PlayerController : MonoBehaviour
             case PlayerState.Nuetral:
                 float x = Input.GetAxis("Horizontal");
                 animator.SetBool("walk", x != 0.0f);
-                if (x < 0.0f)
-                    transform.rotation = Quaternion.Euler(0, 180.0f, 0);
-                else if (x > 0.0f)
-                    transform.rotation = Quaternion.Euler(0, 0.0f, 0);
+                if(Time.timeScale != 0)
+                {
+                    if (x < 0.0f)
+                        transform.rotation = Quaternion.Euler(0, 180.0f, 0);
+                    else if (x > 0.0f)
+                        transform.rotation = Quaternion.Euler(0, 0.0f, 0);
+                }
+
                 rb.velocity = new Vector3(x * speed, rb.velocity.y, 0);
                 //rigidbody.AddForce(0, -1.5f, 0);
                 break;
