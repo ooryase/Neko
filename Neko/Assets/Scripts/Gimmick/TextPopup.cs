@@ -2,14 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TextPopup : SwitchObject
+public class TextPopup : MonoBehaviour
 {
-    // Start is called before the first frame update
-    protected override void Start()
-    {
-        base.Start();
+    protected GameObject tex;
+    private Animator anim_tex;
 
-        Type = SwitchType.TexOnly;
-        ZoomPos = tex.transform.position + new Vector3(0.0f, 0.0f, -13.0f);
+    // Start is called before the first frame update
+    void Start()
+    {
+        tex = transform.GetChild(0).gameObject;
+        anim_tex = tex.GetComponent<Animator>();
+        tex.SetActive(false);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            tex.SetActive(true);
+            anim_tex.SetTrigger("popUp");
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            anim_tex.SetTrigger("popDown");
+        }
+
     }
 }

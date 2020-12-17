@@ -1064,10 +1064,10 @@ AnimationClip:
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
-    intParameter: 14174
+    intParameter: -70936
     messageOptions: 1
   - time: 1.4333333
-    functionName: SetAwake
+    functionName: SetAwakeState
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

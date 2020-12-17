@@ -66,8 +66,9 @@ public class NekoZombie : MonoBehaviour
         }
     }
 
-    public void SetAwake()
+    public void SetAwakeState()
     {
+        Debug.Log("Awake");
         State = ZombieState.Awake;
         capsuleCollider.enabled = true;
     }
