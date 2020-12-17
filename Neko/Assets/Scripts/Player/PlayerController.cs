@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// 着地時に死亡判定が発生する落下速度
     /// </summary>
-    private float fallDeadSpeed = -5.0f;
+    private float fallDeadSpeed = -10.0f;
     /// <summary>
     /// 落下速度を保持するための変数
     /// (rigidbodyから取得だと生成順によっては着地時にvelocityが0になるため)

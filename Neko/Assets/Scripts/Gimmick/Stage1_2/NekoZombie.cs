@@ -18,9 +18,7 @@ public class NekoZombie : MonoBehaviour
     public enum ZombieState
     {
         Freeze,
-        Transition,
         Awake,
-        Prey
     }
     public ZombieState State { get; set; }
 
@@ -35,7 +33,6 @@ public class NekoZombie : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         capsuleCollider.enabled = false;
-        rb.useGravity = false;
         startPos = gameObject.transform.position;
     }
 
@@ -44,31 +41,21 @@ public class NekoZombie : MonoBehaviour
     {
         animator.SetBool("eyeOpen", !(!eyeOpenChecker.KEEP_EYE_OPEN && objectRenderer.isVisible));
 
-        switch (State)
+        if(State == ZombieState.Awake)
         {
-            case ZombieState.Freeze:
+            var length = playerTransform.position.x - gameObject.transform.position.x;
+            var walk = Mathf.Abs(length) > distance;
+            animator.SetBool("walk", walk);
+            if (walk)
+            {
+                var speedX = (length > 0) ? 0.5f : -0.5f;
+                rb.velocity = new Vector3(speedX, 0, 0);
+            }
+            else
+                rb.velocity = new Vector3(0, 0, 0);
 
-                break;
-            case ZombieState.Transition:
-                break;
-            case ZombieState.Awake:
-                var length = playerTransform.position.x - gameObject.transform.position.x;
-                var walk = Mathf.Abs(length) > distance;
-                animator.SetBool("walk", walk);
-                if (walk)
-                {
-                    var speedX = (length > 0) ? 0.5f: -0.5f;
-                    rb.velocity = new Vector3(speedX, 0, 0);
-                }
-                else
-                    rb.velocity = new Vector3(0, 0, 0);
-
-                var direction = (length > 0.0f) ? 0.0f : 180.0f;
-                gameObject.transform.rotation = Quaternion.Euler(0.0f, direction, 0.0f);
-
-                break;
-            case ZombieState.Prey:
-                break;
+            var direction = (length > 0.0f) ? 0.0f : 180.0f;
+            gameObject.transform.rotation = Quaternion.Euler(0.0f, direction, 0.0f);
         }
     }
 
