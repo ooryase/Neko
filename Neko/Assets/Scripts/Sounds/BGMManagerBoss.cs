@@ -5,7 +5,7 @@ using UnityEngine;
 public class BGMManagerBoss : MonoBehaviour
 {
     [SerializeField] private AudioClip intro = null;
-    [SerializeField] private AudioClip loop = null;
+    //[SerializeField] private AudioClip loop = null;
 
     private AudioSource source;
     private PlayerController playerController;
@@ -51,5 +51,11 @@ public class BGMManagerBoss : MonoBehaviour
             source.PlayOneShot(intro);
             state = BGMState.Intro;
         }
+    }
+
+    public void BGMStop()
+    {
+        source.Stop();
+        state = BGMState.None;
     }
 }

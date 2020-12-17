@@ -8,6 +8,7 @@ public class NekoZombie : MonoBehaviour
     private Renderer objectRenderer;
     private Animator animator;
     private Transform playerTransform;
+    private PlayerController playerController;
     private Rigidbody rb;
     private CapsuleCollider capsuleCollider;
 
@@ -30,6 +31,7 @@ public class NekoZombie : MonoBehaviour
         objectRenderer = transform.Find("Drawables").gameObject.transform.Find("ArtMesh6").gameObject.GetComponent<Renderer>();
         animator = GetComponent<Animator>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerController = playerTransform.GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
         capsuleCollider.enabled = false;
@@ -56,6 +58,11 @@ public class NekoZombie : MonoBehaviour
 
             var direction = (length > 0.0f) ? 0.0f : 180.0f;
             gameObject.transform.rotation = Quaternion.Euler(0.0f, direction, 0.0f);
+        }
+
+        if (playerController.State == PlayerState.Hurt && IsInvoking() == false)
+        {
+            Invoke("ResetStatus", 1.2f);
         }
     }
 

@@ -14,7 +14,7 @@ public class Switch3_1 : SwitchObject
         drop = transform.GetChild(1).gameObject.GetComponent<Animator>();
         wall = transform.GetChild(2).gameObject;
 
-        ZoomPos = new Vector3(transform.position.x - 1.4f, transform.position.y, -17.0f);
+        ZoomPos = new Vector3(transform.position.x - 1.7f, transform.position.y + 1.0f, -13.0f);
         AnimName = "push";
     }
 

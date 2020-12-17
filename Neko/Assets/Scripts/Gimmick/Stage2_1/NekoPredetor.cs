@@ -7,6 +7,7 @@ public class NekoPredetor : MonoBehaviour
     private EyeOpenChecker eyeOpenChecker;
     private Animator animator;
     private Transform playerTransform;
+    private PlayerController playerController;
     private Rigidbody rb;
     private CapsuleCollider attackCollider;
 
@@ -14,6 +15,8 @@ public class NekoPredetor : MonoBehaviour
 
     [SerializeField] private float distance = 1.5f;
     [SerializeField] private float speed = 0.9f;
+
+    public bool DeadFlag { get; private set; }
 
 
     enum PredetorState
@@ -31,11 +34,13 @@ public class NekoPredetor : MonoBehaviour
         state = PredetorState.Walk;
         eyeOpenChecker = GameObject.FindGameObjectWithTag("WebCam").GetComponent<EyeOpenChecker>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        playerController = playerTransform.GetComponent<PlayerController>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         attackCollider = transform.Find("Collider").gameObject.GetComponent<CapsuleCollider>();
         attackCollider.enabled = false;
         resetPos = gameObject.transform.position;
+        DeadFlag = false;
     }
 
     // Update is called once per frame
@@ -68,6 +73,10 @@ public class NekoPredetor : MonoBehaviour
                 break;
         }
 
+        if(playerController.State == PlayerState.Hurt && IsInvoking() == false)
+        {
+            Invoke("ResetStatus", 1.5f);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -82,6 +91,7 @@ public class NekoPredetor : MonoBehaviour
             if (state != PredetorState.Hurt)
                 animator.SetTrigger("hurt");
             animator.SetBool("die", true);
+            DeadFlag = true;
         }
     }
 
@@ -122,5 +132,6 @@ public class NekoPredetor : MonoBehaviour
     {
         transform.position = resetPos;
         animator.Play("Wait");
+        Recover();
     }
 }
