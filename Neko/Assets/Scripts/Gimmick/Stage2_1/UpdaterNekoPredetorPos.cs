@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class UpdaterNekoPredetorPos : MonoBehaviour
 {
-    [SerializeField] private Transform resetPos;
-    [SerializeField] private NekoPredetor nekoPredetor;
+    [SerializeField] private Transform resetPos = null;
+    [SerializeField] private NekoPredetor nekoPredetor = null;
 
     private BoxCollider boxCollider;
 

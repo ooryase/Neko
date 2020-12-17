@@ -31,6 +31,8 @@ public class PauseScene : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Cursor.lockState = CursorLockMode.Locked;
+
         openChecker = GameObject.FindGameObjectWithTag("WebCam").GetComponent<EyeOpenChecker>();
         pauseManager = GameObject.FindGameObjectWithTag("PauseManager").GetComponent<PauseManager>();
 
@@ -54,6 +56,11 @@ public class PauseScene : MonoBehaviour
 
             gaugeL.value = openChecker.GetOpenL();
             gaugeR.value = openChecker.GetOpenR();
+        }
+
+        if(eventSystem.currentSelectedGameObject == null)
+        {
+            button.Select();
         }
 
         switch (eventSystem.currentSelectedGameObject.name)
