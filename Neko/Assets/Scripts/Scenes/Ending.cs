@@ -11,7 +11,7 @@ public class Ending : MonoBehaviour
 
     private AudioSource audioSource;
     private EyeOpenChecker openChecker;
-    [SerializeField] private Text text;
+    [SerializeField] private Text text = null;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +41,8 @@ public class Ending : MonoBehaviour
         if (openChecker.EYE_OPEN || openChecker.EYE_CLOSE)
         {
             i++;
+            //OutOfRangeしたので応急処置
+            i = (i > 10) ? 10 : 0;
             if (i == storys.Length)
             {
                 Invoke("Title", 1.5f);

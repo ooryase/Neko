@@ -23,6 +23,7 @@ public class NekoPredetor : MonoBehaviour
     {
         Walk,
         Prey,
+        WarCry,
         Hurt,
         Die
     }
@@ -126,12 +127,20 @@ public class NekoPredetor : MonoBehaviour
     {
         resetPos = pos;
         transform.position = pos;
+        //speed += 0.1f;
+    }
+
+    public void WarCry()
+    {
+        animator.SetTrigger("warCry");
+        state = PredetorState.WarCry;
     }
 
     public void ResetStatus()
     {
         transform.position = resetPos;
         animator.Play("Wait");
+        animator.SetBool("die", false);
         Recover();
     }
 }

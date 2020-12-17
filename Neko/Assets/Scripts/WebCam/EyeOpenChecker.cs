@@ -93,6 +93,8 @@ public class EyeOpenChecker : MonoBehaviour
         EYE_CLOSE = (keepEyeOpen && !(eyeOpenL || eyeOpenR));
         keepEyeOpen = (eyeOpenL || eyeOpenR);
 
+        if (text == null)
+            return;
         string outputText = "";
         outputText += webCam.EYE_OPEN_L.ToString("F2");
         outputText += " ";

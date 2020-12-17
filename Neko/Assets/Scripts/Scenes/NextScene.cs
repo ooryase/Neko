@@ -45,7 +45,8 @@ public class NextScene : MonoBehaviour
                 SceneManager.LoadScene("Stage2_1");
                 break;
             case "Stage2_1":
-                SceneManager.LoadScene("Ending");
+                SceneManager.LoadScene("Title");
+                //SceneManager.LoadScene("Ending");
                 break;
             default:
                 SceneManager.LoadScene("Title");
