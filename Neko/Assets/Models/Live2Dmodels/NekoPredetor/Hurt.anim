@@ -2038,3 +2038,10 @@ AnimationClip:
     floatParameter: 0
     intParameter: 14170
     messageOptions: 1
+  - time: 0
+    functionName: Hurt
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
