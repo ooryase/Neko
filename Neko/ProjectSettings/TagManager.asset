@@ -16,6 +16,8 @@ TagManager:
   - WebCam
   - Transition
   - PauseManager
+  - EnemyKiller
+  - Fire
   layers:
   - Default
   - TransparentFX
@@ -25,9 +27,9 @@ TagManager:
   - UI
   - 
   - 
+  - Player
+  - NoPlayerCollision
   - WebCam
-  - 
-  - 
   - 
   - 
   - 
