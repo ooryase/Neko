@@ -40,25 +40,24 @@ public class Ending : MonoBehaviour
     {
         if (openChecker.EYE_OPEN || openChecker.EYE_CLOSE)
         {
-            i++;
+            if (i < storys.Length) i++;
             //OutOfRangeしたので応急処置
-            i = (i > 10) ? 10 : 0;
-            if (i == storys.Length)
+            //i = (i > 10) ? 10 : 0;
+            if (i == storys.Length && IsInvoking() == false)
             {
                 Invoke("Title", 1.5f);
                 audioSource.Play();
             }
+            if (i > storys.Length - 1) i = storys.Length - 1;
+
+            text.text = storys[i];
+            if (i % 2 == 1)
+            {
+                text.color = new Color(255, 0, 0);
+            }
             else
             {
-                text.text = storys[i];
-                if(i % 2 == 1)
-                {
-                    text.color = new Color(255, 0, 0);
-                }
-                else
-                {
-                    text.color = new Color(255, 255, 255);
-                }
+                text.color = new Color(255, 255, 255);
             }
         }
     }
