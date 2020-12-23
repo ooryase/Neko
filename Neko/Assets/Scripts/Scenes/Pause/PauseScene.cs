@@ -74,6 +74,9 @@ public class PauseScene : MonoBehaviour
             case "Title":
                 explanation.text = "タイトルに戻ります。";
                 break;
+            case "Reboot":
+                explanation.text = "再起動します。";
+                break;
         }
     }
 
@@ -104,5 +107,10 @@ public class PauseScene : MonoBehaviour
     public void OnPushTitle()
     {
         pauseManager.TitleBackStart();
+    }
+
+    public void OnPushReboot()
+    {
+        pauseManager.RebootStart();
     }
 }

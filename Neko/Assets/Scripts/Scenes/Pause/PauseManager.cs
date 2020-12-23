@@ -87,9 +87,31 @@ public class PauseManager : MonoBehaviour
         transition.FadeOut();
     }
 
+    public void RebootStart()
+    {
+        PauseEnd();
+
+        Invoke("Reboot", 1.0f);
+        transition.FadeOut();
+    }
+
     void TitleBack()
     {
         SceneManager.LoadScene("Title");
+    }
+
+    /// <summary>
+    /// 再起動
+    /// </summary>
+    void Reboot()
+    {
+
+#if !UNITY_EDITOR
+        System.Diagnostics.Process.Start(Application.dataPath.Replace("_Data", ".exe"));
+        Application.Quit();
+#else
+        TitleBack(); // エディターの場合タイトルに戻るだけ
+#endif
     }
 
     public void LandMarkTrue()

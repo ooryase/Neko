@@ -205,7 +205,6 @@ GameObject:
   m_Component:
   - component: {fileID: 180828036}
   - component: {fileID: 180828035}
-  - component: {fileID: 180828038}
   - component: {fileID: 180828037}
   m_Layer: 0
   m_Name: EndingManager
@@ -251,10 +250,10 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 79a72b735b7bd784c9d64dbe46e3e88a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: aadaef152ed480b4f910d7b6fe2cf8d7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.696
-  m_Pitch: 1
+  m_Volume: 0.77
+  m_Pitch: 0.45
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -337,14 +336,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!81 &180828038
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 180828034}
-  m_Enabled: 1
 --- !u!1 &208784737
 GameObject:
   m_ObjectHideFlags: 0

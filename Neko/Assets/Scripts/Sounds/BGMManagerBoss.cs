@@ -39,8 +39,7 @@ public class BGMManagerBoss : MonoBehaviour
         // 曲が流れててプレイヤーが死んだらリセット
         if(state != BGMState.None && playerController.State == PlayerState.Dead)
         {
-            source.Stop();
-            state = BGMState.None;
+            BGMStop();
         }
     }
 
@@ -48,9 +47,14 @@ public class BGMManagerBoss : MonoBehaviour
     {
         if(other.gameObject.tag == "Player" && state == BGMState.None)
         {
-            source.PlayOneShot(intro);
-            state = BGMState.Intro;
+            BGMStart();
         }
+    }
+
+    public void BGMStart()
+    {
+        source.PlayOneShot(intro);
+        state = BGMState.Intro;
     }
 
     public void BGMStop()

@@ -130,6 +130,10 @@ public class WebCam : MonoBehaviour
 
     // Rendererコンポーネントを持っているか
     bool has_renderer = false;
+    // エラーのCanvas
+    private GameObject errorText;
+    // 接続されてるカメラの数
+    private WebCamDevice[] devices;
 
     /// <summary>
     /// The dlib shape predictor file name.
@@ -158,7 +162,9 @@ public class WebCam : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        has_renderer = GetComponent<Renderer>()? true : false;
+        has_renderer = GetComponent<Renderer>() ? true : false;
+        errorText = transform.GetChild(1).gameObject;
+        errorText.SetActive(false);
 
 #if UNITY_WEBGL && !UNITY_EDITOR
             getFilePath_Coroutine = Utils.getFilePathAsync(dlibShapePredictorFileName, (result) =>
@@ -292,7 +298,8 @@ public class WebCam : MonoBehaviour
 #endif
 
         // Creates the camera
-        var devices = WebCamTexture.devices;
+        devices = WebCamTexture.devices;
+
         if (!String.IsNullOrEmpty(requestedDeviceName))
         {
             int requestedDeviceIndex = -1;
@@ -349,13 +356,14 @@ public class WebCam : MonoBehaviour
             {
                 Debug.LogError("Camera device does not exist.");
                 isInitWaiting = false;
+                errorText.SetActive(true);
                 yield break;
             }
         }
 
-
         // Starts the camera
         webCamTexture.Play();
+
 
         while (true)
         {
@@ -445,7 +453,7 @@ public class WebCam : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(webCamTexture.isPlaying == false)
+        if (webCamTexture.isPlaying == false && devices.Length > 0)
         {
             webCamTexture.Play();
         }
@@ -482,7 +490,7 @@ public class WebCam : MonoBehaviour
                 //detect face rects
                 List<Rect> detectResult = faceLandmarkDetector.Detect();
 
-                if(has_renderer) colors = new Color32[texture.width * texture.height];
+                if (has_renderer) colors = new Color32[texture.width * texture.height];
 
                 List<Vector2> points = new List<Vector2>();
 
