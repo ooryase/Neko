@@ -74,7 +74,7 @@ public abstract class SwitchObject : MonoBehaviour
 
         if (switch_on == false && Type == SwitchType.Push)
         {
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1"))
+            if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetButtonDown("Action1"))
             {
                 Invoke("action_on", 1.0f);
 

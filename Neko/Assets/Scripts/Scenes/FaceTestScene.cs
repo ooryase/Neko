@@ -68,7 +68,7 @@ public class FaceTestScene : MonoBehaviour
         switch (state)
         {
             case FaceState.None:
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1"))
+                if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetButtonDown("Action1"))
                 {
                     transition.FadeOut();
                     audioSource.Play();

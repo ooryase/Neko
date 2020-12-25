@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Hurt());
         }
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
@@ -168,7 +168,8 @@ public class PlayerController : MonoBehaviour
     {
         if (other.gameObject.tag == "Switch")
         {
-            if (State == PlayerState.Nuetral && Input.GetKeyDown(KeyCode.Space) ||
+            if (State == PlayerState.Nuetral && Input.GetKeyDown(KeyCode.Return) ||
+                State == PlayerState.Nuetral && Input.GetKeyDown(KeyCode.Z) ||
                 State == PlayerState.Nuetral && Input.GetButtonDown("Action1"))
             {
                 var sw = other.gameObject.GetComponent<SwitchObject>();

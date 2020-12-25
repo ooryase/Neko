@@ -24,7 +24,7 @@ public class TitleScene : MonoBehaviour
             Application.Quit();
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Action1"))
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Z) || Input.GetButtonDown("Action1"))
         {
             if (IsInvoking() == false)
             {
