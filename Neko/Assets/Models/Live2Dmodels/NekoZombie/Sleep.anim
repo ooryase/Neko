@@ -778,7 +778,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: -3668
     messageOptions: 1
-  - time: 0
+  - time: 0.033333335
     functionName: SetFreeze
     data: 
     objectReferenceParameter: {fileID: 0}

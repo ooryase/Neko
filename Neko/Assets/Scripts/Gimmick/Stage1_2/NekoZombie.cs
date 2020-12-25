@@ -89,7 +89,10 @@ public class NekoZombie : MonoBehaviour
     public void ResetStatus()
     {
         gameObject.transform.position = startPos;
+        rb.velocity = new Vector3(0, 0, 0);
+        State = ZombieState.Freeze;
         animator.Play("Freeze");
         animator.SetBool("walk", false);
+        gameObject.tag = "Untagged";
     }
 }

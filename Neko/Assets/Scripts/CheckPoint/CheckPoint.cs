@@ -32,6 +32,10 @@ public class CheckPoint : MonoBehaviour
     {
         if (other.gameObject.tag != "Player") { return; }
 
+        var playerState = other.gameObject.GetComponent<PlayerController>().State;
+        if (playerState == PlayerState.Hurt || playerState == PlayerState.Dead)
+            return;
+
         flag = true;
         Debug.Log("CheckPoint : " + name);
     }
