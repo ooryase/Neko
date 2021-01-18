@@ -39,6 +39,7 @@ public class PauseScene : MonoBehaviour
         button.Select();
 
         canvas.enabled = false;
+        slider.value = GameData.Instance.eyeOpenThreshold;
     }
 
     // Update is called once per frame
@@ -78,6 +79,12 @@ public class PauseScene : MonoBehaviour
                 explanation.text = "再起動します。";
                 break;
         }
+    }
+
+    public void OnDestroy()
+    {
+        PlayerPrefs.SetFloat(GameData.Instance.key_eye, slider.value);
+        PlayerPrefs.Save();
     }
 
     public void OnPushBack()
