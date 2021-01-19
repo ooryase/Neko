@@ -19,20 +19,22 @@ public class GameData : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
-
+    // 目の閾値
     public readonly string key_eye = "Eye";
     public float eyeOpenThreshold = 0.35f;
+
+    // フルスクリーンかどうか
+    public readonly string key_full = "Full";
+    public int fullScreen = 1; // 仕方なくint
 
     // Start is called before the first frame update
     void Start()
     {
         // データがなかったら0.35fを入れる
-        //if (PlayerPrefs.HasKey(key_eye))
-        //{
-        //    PlayerPrefs.SetFloat(key_eye, 0.35f);
-        //}
-
         eyeOpenThreshold = PlayerPrefs.GetFloat(key_eye, 0.35f);
+
+        fullScreen = PlayerPrefs.GetInt(key_full, 1);
+        Screen.fullScreen = fullScreen == 1 ? true : false;
     }
 
     // Update is called once per frame

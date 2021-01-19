@@ -78,12 +78,17 @@ public class PauseScene : MonoBehaviour
             case "Reboot":
                 explanation.text = "再起動します。";
                 break;
+            case "Screen":
+                if(Screen.fullScreen) explanation.text = "ウインドウモードに変更します。";
+                else explanation.text = "フルスクリーンモードに変更します。";
+                break;
         }
     }
 
     public void OnDestroy()
     {
         PlayerPrefs.SetFloat(GameData.Instance.key_eye, slider.value);
+        PlayerPrefs.SetInt(GameData.Instance.key_full, Screen.fullScreen ? 1 : 0);
         PlayerPrefs.Save();
     }
 
@@ -119,5 +124,11 @@ public class PauseScene : MonoBehaviour
     public void OnPushReboot()
     {
         pauseManager.RebootStart();
+    }
+
+    public void OnPushScreen()
+    {
+        if (Screen.fullScreen) Screen.fullScreen = false;
+        else Screen.fullScreen = true;
     }
 }
