@@ -103,16 +103,16 @@ public class PauseManager : MonoBehaviour
     /// <summary>
     /// 再起動
     /// </summary>
-    void Reboot()
-    {
+//    void Reboot()
+//    {
 
-#if !UNITY_EDITOR
-        System.Diagnostics.Process.Start(Application.dataPath.Replace("_Data", ".exe"));
-        Application.Quit();
-#else
-        TitleBack(); // エディターの場合タイトルに戻るだけ
-#endif
-    }
+//#if !UNITY_EDITOR
+//        System.Diagnostics.Process.Start(Application.dataPath.Replace("_Data", ".exe"));
+//        Application.Quit();
+//#else
+//        TitleBack(); // エディターの場合タイトルに戻るだけ
+//#endif
+//    }
 
     public void LandMarkTrue()
     {

@@ -75,8 +75,8 @@ public class PauseScene : MonoBehaviour
             case "Title":
                 explanation.text = "タイトルに戻ります。";
                 break;
-            case "Reboot":
-                explanation.text = "再起動します。";
+            case "Exit":
+                explanation.text = "ゲームを終了します。";
                 break;
             case "Screen":
                 if(Screen.fullScreen) explanation.text = "ウインドウモードに変更します。";
@@ -121,9 +121,13 @@ public class PauseScene : MonoBehaviour
         pauseManager.TitleBackStart();
     }
 
-    public void OnPushReboot()
+    //public void OnPushReboot()
+    //{
+    //    pauseManager.RebootStart();
+    //}
+    public void OnPuchExit()
     {
-        pauseManager.RebootStart();
+        Application.Quit();
     }
 
     public void OnPushScreen()

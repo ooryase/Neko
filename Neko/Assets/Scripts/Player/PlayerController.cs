@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public bool FollowFlag { get; private set; } // プレイヤー以外をフォローするときtrue
     public Vector3 FollowPos { get; private set; } // カメラでギミックをフォローする位置
     private float followTime; // フォローする時間
+    public bool CinemaOn { get; private set; } // 黒帯出すやつ
     /// <summary>
     /// 着地時に死亡判定が発生する落下速度
     /// </summary>
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
         eyeOpenChecker = GameObject.FindGameObjectWithTag("WebCam").GetComponent<EyeOpenChecker>();
         FollowFlag = false;
         FollowPos = transform.position;
+        CinemaOn = false;
 
         State = PlayerState.Nuetral;
     }
@@ -179,6 +181,7 @@ public class PlayerController : MonoBehaviour
                     animator.SetBool("walk", false);
 
                     StartCoroutine(OnSwitch(sw.AnimName));
+                    CinemaOn = true;
                 }
             }
         }
@@ -213,6 +216,7 @@ public class PlayerController : MonoBehaviour
                     animator.SetBool("walk", false);
 
                     StartCoroutine(OnSwitch(sw.AnimName));
+                    CinemaOn = true;
                 }
             }
         }
@@ -222,6 +226,7 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "Switch")
         {
             FollowFlag = false;
+            CinemaOn = false;
         }
     }
 
@@ -239,6 +244,8 @@ public class PlayerController : MonoBehaviour
             ChangeState(PlayerState.Nuetral);
 
         animator.ResetTrigger(name);
+
+        CinemaOn = false;
     }
 
     public void FallFunc()
